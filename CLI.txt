@@ -1,4 +1,4 @@
-KilnBio 0.2.0-research.1 research release (Linux/WSL2)
+KilnBio 0.2.0-research.2 research release (Linux/WSL2)
 
 PREPROCESSING ADAPTERS (pinned nf-core; explicitly recorded in provenance)
   kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq} samples.csv params.json RUN_DIR

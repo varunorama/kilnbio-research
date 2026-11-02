@@ -8,6 +8,7 @@ Each recipe downloads or verifies public measurements, computes new results loca
 | Quartet | Does adjustment reduce same-material technical error without increasing error in known biological contrasts in held-out labs? RNA, protein and metabolite are evaluated separately. | Per-lab errors and paired comparisons |
 | K562 | Across held-out CRISPR enhancer–gene measurements, does CpG methylation improve predictions beyond chromatin and coverage features on the same set of elements? | Coverage table, average precision, shortlists and conditional resampling interval |
 | Lung adenocarcinoma | Separate the effect of restricting the RNA cohort from the effect of adding protein; compare an exact-ID join with audited pairing and deliberate label conflicts. Freeze rankings before external RNA evaluation. | Pairing audit, frozen targets, external tests and target-by-target changes |
+| Bladder cancer | Independently run the restriction/addition comparison for a new FGFR3 contrast using only the release. Start with the [researcher handoff](../README.md#researcher-handoff-which-bladder-cancer-targets-change-when-you-add-protein). | Group denominators, exact-ID audit, per-arm rankings, target changes and run receipt |
 
 Use Python 3.12 and a separate virtual environment per recipe to avoid conflicts. Shell examples below write to a new directory under your home directory. Change the output name for a repeat run.
 

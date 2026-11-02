@@ -1,0 +1,14 @@
+{
+  "study": "blca_tcga_pan_can_atlas_2018",
+  "revision": "860b63a7f2d23540c94e25dd35302e133c29f48b",
+  "lfs_batch": "https://nsssw8k94d.execute-api.us-east-1.amazonaws.com/objects/batch",
+  "files": {
+    "data_clinical_sample.txt": ["0addd03ac8ed17879a8809f7dd1cd663765da559bd35be9414a84f95307db5c3", 94436],
+    "case_lists/cases_sequenced.txt": ["7740539eb1477585744dfab420102b11fc7381a72aef904fd8e9bb09373652b9", 6835],
+    "data_mutations.txt": ["9a0db2407fe54796d991c970bb8a1122a2ec1a8af757003506813b36b48c270c", 160640229],
+    "meta_rppa.txt": ["1ce11e6fb0805995e18fb4b5fca9855c69134868e8f807eba730fe15f447a655", 315],
+    "data_rppa.txt": ["48c5794fa57f57ed82969eb3a07598e009971c47fdb99cab8206673f06fa21ed", 831217],
+    "meta_mrna_seq_v2_rsem.txt": ["2eb6f615034525a43cbf987ef395997eb6d46340bb9aa1a0a98e0ed1eb342672", 394],
+    "data_mrna_seq_v2_rsem.txt": ["30905179b797d19f396aa96a1cdc4f0bb2aff4d76ccdaa703192526c347ac9e3", 57824648]
+  }
+}
