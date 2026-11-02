@@ -6,6 +6,15 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 **Release:** [v0.2.0-research.2](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.2). This is a versioned distribution for approved **noncommercial research**. Read [permitted uses and access](ACCESS.md) and the [license](LICENSE). For commercial or industry-sponsored projects, contact Varun B. Dwaraka before use.
 
+**Choose the version for your analysis.**
+
+| Example | Version and instructions |
+|---|---|
+| Glioma, Quartet reference materials, K562 enhancer–gene links, lung adenocarcinoma | [Original research archive](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.1) · [Versioned recipe guide](https://github.com/varunorama/kilnbio-research/blob/v0.2.0-research.1/recipes/README.md) |
+| TCGA bladder cancer: separate changes due to patient selection from those due to adding protein | [Bladder research archive](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.2) · [README shipped in that archive](https://github.com/varunorama/kilnbio-research/blob/v0.2.0-research.2/README.md) |
+
+To reproduce an analysis, use the README inside its named ZIP. You can run the bladder recipe for your own research without completing a form. The timing and return form below are for volunteers evaluating the instructions; their feedback helps maintain the software.
+
 ### Researcher handoff: which bladder cancer targets change when you add protein?
 
 Start here if you received this release for the independent run. You need only the ZIP, its checksum, this README, public internet access, Python 3.10+ and R 4.6.x (tested: Python 3.12 and R 4.6.2). No GitHub account is needed for a ZIP supplied by the maintainer. The analysis starts from deposited TCGA RNA abundance, reverse-phase protein arrays (RPPA) and somatic mutation calls, not FASTQs or mass spectrometry. Allow 1 GB of free disk space. No Python packages, Docker, Nextflow or full KilnBio installation are needed for this example.
