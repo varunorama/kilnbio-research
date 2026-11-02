@@ -1,0 +1,11 @@
+{
+  "fasta":"/references/GRCh38/genome.fa",
+  "gtf":"/references/GRCh38/genes.gtf",
+  "igenomes_ignore":true,
+  "aligner":"star",
+  "protocol":"10XV3",
+  "barcode_whitelist":"/references/10x/3M-february-2018.txt.gz",
+  "star_feature":"Gene",
+  "skip_cellbender":true,
+  "skip_qcatch":true
+}

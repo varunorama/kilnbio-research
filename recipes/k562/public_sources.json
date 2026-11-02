@@ -1,0 +1,27 @@
+[
+  {
+    "file": "enhancer-crispr.tsv.gz",
+    "url": "https://raw.githubusercontent.com/EngreitzLab/CRISPR_comparison/50587422e6b11259ead6fbc6f867681c788f39b7/resources/crispr_data/EPCrisprBenchmark_combined_data.training_K562.GRCh38.tsv.gz",
+    "sha256": "9eddfe18f6797ba33db8ba7e75378cc6af6b79cbb83f62d470c6e0cefed79405"
+  },
+  {
+    "file": "enhancer-heldout.tsv.gz",
+    "url": "https://raw.githubusercontent.com/EngreitzLab/CRISPR_comparison/50587422e6b11259ead6fbc6f867681c788f39b7/resources/crispr_data/EPCrisprBenchmark_combined_data.heldout_5_cell_types.GRCh38.tsv.gz",
+    "sha256": "7783534a5ecd0a3b4bccb1923d60c0507536afb81dc0c886392667df4e5ffd38"
+  },
+  {
+    "file": "ENCFF855PCP.bed.gz",
+    "url": "https://encode-public.s3.amazonaws.com/2021/03/16/015cf308-609f-4678-ba9f-ca228635bcb7/ENCFF855PCP.bed.gz",
+    "md5": "bee81b0efe50b144c24d2060a87aa843"
+  },
+  {
+    "file": "ENCFF867JRG.bed.gz",
+    "url": "https://encode-public.s3.amazonaws.com/2016/03/11/fad52ebb-fc16-4593-b064-08e77e50bcb6/ENCFF867JRG.bed.gz",
+    "md5": "224655ccfdcadb286a4e8d363df68312"
+  },
+  {
+    "file": "ENCFF721JMB.bed.gz",
+    "url": "https://encode-public.s3.amazonaws.com/2016/03/11/4c0f872a-e8d4-4b74-a890-329922e37c99/ENCFF721JMB.bed.gz",
+    "md5": "20f5eee313513bb715d2df3e8122e072"
+  }
+]

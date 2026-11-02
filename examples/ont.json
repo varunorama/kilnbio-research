@@ -1,0 +1,8 @@
+{
+  "input_stage":"aligned_modbam", "input":"/study/sample.mod.bam",
+  "reference":"/references/GRCh38/genome.fa", "assembly":"GRCh38",
+  "channels":["5mC","5hmC"], "models_reviewed":true,
+  "duplicate_policy":"retain_pcr_free", "threads":4,
+  "filter_threshold":0.8,
+  "versions":{"dorado":"2.1.2","modkit":"0.6.4","samtools":"1.24"}
+}

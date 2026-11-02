@@ -1,0 +1,12 @@
+specimen	owner_type	owner	day	tissue	endpoint	unit	replicate	value
+A15	lot	lotA	15	culture	hsc_identity	index	well1	0.4
+A15	lot	lotA	15	culture	hsc_identity	index	well2	0.6
+B15	lot	lotB	15	culture	hsc_identity	index	well1	0.7
+C15	lot	lotC	15	culture	hsc_identity	index	well1	0.8
+P1BM	recipient	M1	140	marrow	hCD45_of_live	percent	panel1	22
+P2BM	recipient	M2	140	marrow	hCD45_of_live	percent	panel1	34
+P3BM	recipient	M3	140	marrow	hCD45_of_live	percent	panel1	40
+S1BM	recipient	S1	140	marrow	hCD45_of_live	percent	panel1	12
+S1BM	recipient	S1	140	marrow	hCD45_of_live	percent	panel2	18
+S3BM	recipient	S3	140	marrow	hCD45_of_live	percent	panel1	53
+S4BM	recipient	S4	140	marrow	hCD45_of_live	percent	panel1	24

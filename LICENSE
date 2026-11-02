@@ -1,0 +1,58 @@
+KilnBio Noncommercial Research License 1.0 (2 November 2026)
+Copyright 2026 Varun B. Dwaraka. All rights reserved except as stated below.
+
+1. What is covered. "KilnBio Material" means the original code, documentation
+and artwork in this release to the extent Varun B. Dwaraka ("the Licensor")
+controls the relevant rights. This license does not restrict rights you have in
+third-party material under its own terms, or rights you have independently
+under applicable law. See THIRD_PARTY_NOTICES.txt and upstream_licenses/.
+
+2. Who may use it. This is a project-specific license. Before using KilnBio
+Material, obtain written approval from the Licensor identifying the release,
+study, approved users and any time limit, and accept these terms in writing.
+Only those users may exercise this permission. Receipt of a copy or access to
+a repository by itself does not constitute approval. No fee is due for an
+approved noncommercial research project.
+
+3. Permission. Approved users receive a nonexclusive, nontransferable license
+to inspect, install, run, make necessary copies of, and privately adapt the
+KilnBio Material solely for the approved noncommercial study. This includes
+analysis, method evaluation, independent replication and publication of the
+study's findings, including unfavorable findings. Keep this license and all
+attribution and third-party notices with copies and adaptations. Identify the
+release and any material modifications when reporting results. This license
+claims no ownership of your data, outputs or findings. You may share ordinary
+scientific outputs such as tables, figures and summaries, subject to applicable
+data and third-party terms. Publishing findings needs no further approval.
+
+4. Limits. Do not distribute, publish, sublicense, host for others or give
+access to the original or modified KilnBio Material outside the approved
+users. A new project, user or version requires written approval. Paid consulting,
+fee-for-service analysis, contract research for a client, commercial internal
+R&D, product development, commercial hosting, resale and training or validating
+models intended for commercial use are not authorized. Industry sponsorship,
+mixed-purpose projects and work conveying commercialization rights to a sponsor
+require separate written review and permission before use. Ordinary salary,
+public or charitable grants, and publication fees alone do not make a study
+commercial. Eligibility depends on the activity, not just the institution.
+
+5. Reserved rights. No exclusivity, sublicensing right, trademark license,
+patent license or rights in future versions are granted. The Licensor may use
+his own material commercially and grant other licenses, including to a
+consulting practice or venture. This license does not authorize or override
+separate rights in software, reference genomes, data or model weights.
+
+6. End of permission. Permission ends at any agreed end date, or upon written
+notice of material breach if not corrected within 30 days after notice. On
+expiry or termination, stop using the KilnBio Material and delete copies under
+your control, except one non-operational copy if required by law or binding
+research-records policy. Ending permission does not require retracting properly
+published findings or deleting independently owned research data or outputs.
+
+7. Disclaimer. The material is provided as is for research, without warranty,
+including as to accuracy, fitness, merchantability or noninfringement. To the
+extent permitted by law the Licensor is not liable for damages arising from
+its use. It is not authorized for clinical diagnostic or treatment decisions.
+
+Permissions: Varun B. Dwaraka, varun.dwaraka@gmail.com. A separate written
+agreement signed by the Licensor may grant different rights.

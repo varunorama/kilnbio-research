@@ -1,0 +1,7 @@
+{
+  "gtf": "/data/references/gencode.annotation.gtf",
+  "libraries": "featurecounts.csv",
+  "layout": "paired",
+  "runtime": "docker",
+  "threads": 2
+}

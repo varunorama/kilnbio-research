@@ -1,0 +1,168 @@
+{
+  "retrieved_utc": "2026-11-01T16:44:58.179013+00:00",
+  "transport": "KilnBio PubMed MCP stdio / NCBI EFetch",
+  "records": {
+    "records": [
+      {
+        "pmid": "24926665",
+        "doi": "10.1371/journal.pone.0099625",
+        "pmcid": "PMC4057123",
+        "title": "RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells.",
+        "journal": "PloS one",
+        "year": "2014",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2014",
+            "month": "06",
+            "day": "13"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, N.I.H., Extramural",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Himes BE",
+          "Jiang X",
+          "Wagner P",
+          "Hu R",
+          "Wang Q",
+          "Klanderman B",
+          "Whitaker RM",
+          "Duan Q",
+          "Lasky-Su J",
+          "Nikolos C",
+          "Jester W",
+          "Johnson M",
+          "Panettieri RA",
+          "Tantisira KG",
+          "Weiss ST",
+          "Lu Q"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24926665/"
+      },
+      {
+        "pmid": "29227470",
+        "doi": "10.1038/nbt.4042",
+        "pmcid": "PMC5784859",
+        "title": "Multiplexed droplet single-cell RNA-sequencing using natural genetic variation.",
+        "journal": "Nature biotechnology",
+        "year": "2018",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2017",
+            "month": "12",
+            "day": "11"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, N.I.H., Extramural",
+          "Research Support, U.S. Gov't, Non-P.H.S."
+        ],
+        "related_notices": [
+          {
+            "type": "ErratumIn",
+            "pmid": "33057163",
+            "citation": "Nat Biotechnol. 2020 Nov;38(11):1356. doi: 10.1038/s41587-020-0715-9."
+          }
+        ],
+        "safety_flags": [],
+        "authors": [
+          "Kang HM",
+          "Subramaniam M",
+          "Targ S",
+          "Nguyen M",
+          "Maliskova L",
+          "McCarthy E",
+          "Wan E",
+          "Wong S",
+          "Byrnes L",
+          "Lanata CM",
+          "Gate RE",
+          "Mostafavi S",
+          "Marson A",
+          "Zaitlen N",
+          "Criswell LA",
+          "Ye CJ"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29227470/"
+      },
+      {
+        "pmid": "21706001",
+        "doi": "10.1038/ng.865",
+        "pmcid": "PMC3145050",
+        "title": "Increased methylation variation in epigenetic domains across cancer types.",
+        "journal": "Nature genetics",
+        "year": "2011",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2011",
+            "month": "06",
+            "day": "26"
+          }
+        ],
+        "publication_types": [
+          "Comparative Study",
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ],
+        "related_notices": [
+          {
+            "type": "CommentIn",
+            "pmid": "21792236",
+            "citation": "Nat Genet. 2011 Jul 27;43(8):724-6. doi: 10.1038/ng.897."
+          }
+        ],
+        "safety_flags": [],
+        "authors": [
+          "Hansen KD",
+          "Timp W",
+          "Bravo HC",
+          "Sabunciyan S",
+          "Langmead B",
+          "McDonald OG",
+          "Wen B",
+          "Wu H",
+          "Liu Y",
+          "Diep D",
+          "Briem E",
+          "Zhang K",
+          "Irizarry RA",
+          "Feinberg AP"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21706001/"
+      },
+      {
+        "pmid": "39271835",
+        "doi": "10.1038/s41587-024-02377-y",
+        "pmcid": "PMC12266361",
+        "title": "The Wild West of spike-in normalization.",
+        "journal": "Nature biotechnology",
+        "year": "2024",
+        "article_dates": [],
+        "publication_types": [
+          "Journal Article"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Patel LA",
+          "Cao Y",
+          "Mendenhall EM",
+          "Benner C",
+          "Goren A"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39271835/"
+      }
+    ],
+    "scope": "PubMed metadata, not independent scientific approval"
+  },
+  "scope": "Bibliographic and indexed-notice check, not independent scientific review"
+}

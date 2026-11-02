@@ -1,0 +1,2 @@
+sample,fastq_1,fastq_2
+LIB001,/data/LIB001_R1.fastq.gz,/data/LIB001_R2.fastq.gz

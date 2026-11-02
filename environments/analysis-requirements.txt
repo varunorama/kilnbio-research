@@ -1,0 +1,5 @@
+# Tested Python 3.12; install into a dedicated venv, never system Python.
+scanpy==1.12.5
+anndata==0.13.4
+leidenalg==0.11.0
+# Optional evidence MCP server (not needed for running analyses): mcp==2.3.0

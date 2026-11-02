@@ -1,0 +1,6 @@
+{
+  "ranks":"/study/ranks.tsv", "gmt":"/references/pathways/versioned_sets.gmt",
+  "species":"human", "gene_id_type":"Ensembl gene ID without version suffix",
+  "rank_definition":"wald_statistic", "annotation_reviewed":true,
+  "min_size":15, "max_size":500, "fdr":0.05
+}

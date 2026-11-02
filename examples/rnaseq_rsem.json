@@ -1,0 +1,7 @@
+{
+  "fasta": "/data/references/GRCh38.fa",
+  "gtf": "/data/references/gencode.annotation.gtf",
+  "igenomes_ignore": true,
+  "aligner": "star_rsem",
+  "skip_deseq2_qc": true
+}

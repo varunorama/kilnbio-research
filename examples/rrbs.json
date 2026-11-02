@@ -1,0 +1,8 @@
+{
+  "fasta": "/data/references/GRCh38.fa",
+  "igenomes_ignore": true,
+  "aligner": "bismark",
+  "non_directional": false,
+  "rrbs": true,
+  "skip_deduplication": true
+}

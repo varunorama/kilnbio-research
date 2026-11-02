@@ -1,0 +1,34 @@
+[
+  {
+    "file": "ENCFF855PCP.bed.gz",
+    "source": "https://encode-public.s3.amazonaws.com/2021/03/16/015cf308-609f-4678-ba9f-ca228635bcb7/ENCFF855PCP.bed.gz",
+    "md5": "bee81b0efe50b144c24d2060a87aa843",
+    "bytes": 4047527,
+    "replicates": [
+      1,
+      2,
+      3
+    ],
+    "type": "conservative IDR thresholded peaks"
+  },
+  {
+    "file": "ENCFF867JRG.bed.gz",
+    "source": "https://encode-public.s3.amazonaws.com/2016/03/11/fad52ebb-fc16-4593-b064-08e77e50bcb6/ENCFF867JRG.bed.gz",
+    "md5": "224655ccfdcadb286a4e8d363df68312",
+    "bytes": 648867003,
+    "replicates": [
+      1
+    ],
+    "type": "methylation state at CpG"
+  },
+  {
+    "file": "ENCFF721JMB.bed.gz",
+    "source": "https://encode-public.s3.amazonaws.com/2016/03/11/4c0f872a-e8d4-4b74-a890-329922e37c99/ENCFF721JMB.bed.gz",
+    "md5": "20f5eee313513bb715d2df3e8122e072",
+    "bytes": 639786728,
+    "replicates": [
+      2
+    ],
+    "type": "methylation state at CpG"
+  }
+]

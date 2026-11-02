@@ -1,0 +1,37 @@
+{
+  "data_clinical_sample.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/data_clinical_sample.txt",
+    "bytes": 111469,
+    "sha256": "b443896a6aed8256f3aa1b5e2f41e700392c76461be10936d2c344988bc5d84e"
+  },
+  "case_lists/cases_sequenced.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/case_lists/cases_sequenced.txt",
+    "bytes": 9331,
+    "sha256": "0a804793afbbf753b4ade84f86884430692e62dd41951b093ca585c59252d263"
+  },
+  "data_mutations.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/data_mutations.txt",
+    "bytes": 232136490,
+    "sha256": "a08847f9536886be6de4399caabf87202afacf19ee79f0500284020d58827079"
+  },
+  "meta_rppa.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/meta_rppa.txt",
+    "bytes": 315,
+    "sha256": "7d4b865c3c19abaace03c185ecd776b1d77aaf2c4f1e6e3658c95df1aef7156c"
+  },
+  "data_rppa.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/data_rppa.txt",
+    "bytes": 870061,
+    "sha256": "41184dcdb69bd1b9c85469322fc50bf859adf7ef7c694b2403d5b2d6b108f5c5"
+  },
+  "meta_mrna_seq_v2_rsem.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/meta_mrna_seq_v2_rsem.txt",
+    "bytes": 394,
+    "sha256": "7e37df3cd33cf11129bc66e80624ace11313df2dea9f3c04203ea77656ee4b71"
+  },
+  "data_mrna_seq_v2_rsem.txt": {
+    "url": "https://raw.githubusercontent.com/cBioPortal/datahub/860b63a7f2d23540c94e25dd35302e133c29f48b/public/luad_tcga_pan_can_atlas_2018/data_mrna_seq_v2_rsem.txt",
+    "bytes": 73411929,
+    "sha256": "de8e782877b5239af448eaf8e8658b36d7cc32981cc040f97921ceac9c7a5a55"
+  }
+}

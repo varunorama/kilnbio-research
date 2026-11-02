@@ -1,0 +1,18 @@
+args<-commandArgs(TRUE);extra<-Sys.getenv('KILNBIO_R_LIBRARY');if(nzchar(extra)).libPaths(c(extra,.libPaths()))
+cfg<-jsonlite::fromJSON(args[1]);out<-args[2];set.seed(20261031)
+x<-read.delim(cfg$ranks,check.names=FALSE);ranks<-sort(setNames(x$statistic,x$gene_id),decreasing=TRUE)
+sets<-fgsea::gmtPathways(cfg$gmt)
+if(anyDuplicated(names(sets)))stop('GMT pathway names must be unique')
+if(!length(sets))stop('No gene sets')
+overlap<-vapply(sets,function(s)length(intersect(s,names(ranks))),integer(1))
+write.table(data.frame(pathway=names(sets),genes_in_ranked_universe=overlap),file.path(out,'gene_set_overlap.tsv'),sep='\t',row.names=FALSE,quote=FALSE)
+if(!any(overlap>=cfg$min_size & overlap<=cfg$max_size))stop('No gene sets pass overlap/size limits; check identifier compatibility')
+result<-fgsea::fgseaMultilevel(pathways=sets,stats=ranks,minSize=cfg$min_size,maxSize=cfg$max_size,eps=0,nproc=1)
+result<-as.data.frame(result);saveRDS(result,file.path(out,'enrichment.rds'))
+result$leadingEdge<-vapply(result$leadingEdge,paste,collapse=';',character(1))
+write.table(result,file.path(out,'all_pathways.tsv'),sep='\t',row.names=FALSE,quote=FALSE,na='NA')
+write.table(result[!is.na(result$padj)&result$padj<cfg$fdr,,drop=FALSE],file.path(out,'discoveries.tsv'),sep='\t',row.names=FALSE,quote=FALSE,na='NA')
+writeLines(capture.output(sessionInfo()),file.path(out,'sessionInfo.txt'))
+writeLines(c('Enrichment is conditional on the ranked genes, identifiers, annotations and gene-set collection.',
+             'Overlapping gene sets are correlated. Enrichment does not prove pathway activation or causality.',
+             'Missing/non-testable genes must be documented upstream; significant-only rankings are inappropriate.'),file.path(out,'INTERPRETATION.txt'))

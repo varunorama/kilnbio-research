@@ -1,0 +1,2 @@
+sample,fastq_1,fastq_2,strandedness
+SAMPLE01,/data/reads/SAMPLE01_R1.fastq.gz,/data/reads/SAMPLE01_R2.fastq.gz,auto

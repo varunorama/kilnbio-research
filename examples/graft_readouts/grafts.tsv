@@ -1,0 +1,10 @@
+recipient	passage	source
+M1	primary	lotA
+M2	primary	lotA
+M3	primary	lotB
+M4	primary	lotC
+S1	secondary	M1
+S2	secondary	M2
+S3	secondary	M1
+S3	secondary	M4
+S4	secondary	M3

@@ -1,0 +1,23 @@
+KilnBio — maintained by Varun B Dwaraka (@varunorama)
+
+KilnBio supplies its own launcher, input validation, deployment helpers,
+examples, and documentation. Alignment, quantification, methylation calling,
+peak calling, and upstream QC are performed by external software through
+nf-core/Nextflow workflows.
+
+Pinned workflows:
+  nf-core/methylseq 4.2.0 — https://github.com/nf-core/methylseq
+  nf-core/atacseq   2.1.2 — https://github.com/nf-core/atacseq
+  nf-core/chipseq   2.1.0 — https://github.com/nf-core/chipseq
+  nf-core/rnaseq    3.27.0 — https://github.com/nf-core/rnaseq
+  nf-core/scrnaseq  4.2.0 — https://github.com/nf-core/scrnaseq
+
+Expansion modules call scientific packages directly: DESeq2, edgeR, DSS, bsseq,
+dmrseq, tximport, fgsea, Scanpy/AnnData and anndataR/SingleCellExperiment.
+The featurecounts command invokes Subread featureCounts 2.1.1 from a local
+installation or the BioContainers image. RSEM runs through nf-core/rnaseq.
+See upstream_citations/ for workflow citations. The nf-core JSON schemas are covered by the applicable license in upstream_licenses/. Other software invoked by the adapters, including Nextflow, R, Bioconductor and Python packages, retains its own terms.
+
+The EpiDiff locus maps can be generated locally from the published model feature IDs and the source manifest. Upstream models and weights and public cohort data must be obtained from their publishers on their own terms. The public HGNC identifier mapping for the glioma recipe is fetched from the HGNC archive.
+
+The root LICENSE governs original KilnBio material only. This release grants no rights to third-party data, models, software, trademarks or reference materials.

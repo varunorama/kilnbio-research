@@ -1,0 +1,38 @@
+KilnBio 0.2.0-research.1 research release (Linux/WSL2)
+
+PREPROCESSING ADAPTERS (pinned nf-core; explicitly recorded in provenance)
+  kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq} samples.csv params.json RUN_DIR
+          [--dry-run] [--resume] [--profile docker|apptainer|singularity]
+          [--cpus N] [--memory-gb N]
+
+DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
+  kilnbio genomic-panel germline.vcf.gz panel.tsv sample_map.tsv --assembly GRCh38 --out calls.tsv
+  kilnbio genomic-associate calls.tsv EVENT assay_samples.tsv traits.tsv {specimen|donor} NEW_OUTPUT
+  kilnbio method-agreement features.tsv method_manifest.tsv --out agreement.tsv
+  kilnbio differential-compare {rna-counts|protein-log2} matrix.tsv design.tsv REFERENCE TEST NEW_OUTPUT
+  kilnbio assay-audit {pair|reach|policy} --help
+  kilnbio candidate-evidence nominations.tsv endpoints.tsv observations.tsv [--perturbations references.tsv] --out NEW.json
+  kilnbio compare-assays design.tsv assay_A.tsv assay_B.tsv NEW_OUTPUT
+  kilnbio compare-predictions predictions.tsv --baseline MODEL --out NEW_OUTPUT
+  kilnbio clock-panel beta.tsv.gz [--metadata metadata.tsv] --out NEW_OUTPUT
+  kilnbio featurecounts config.json NEW_OUTPUT [--dry-run]
+  kilnbio spikein-factors counts.csv NEW_OUTPUT --group GROUP [--min-reference 1000]
+  kilnbio de config.json NEW_OUTPUT [--dry-run]
+  kilnbio dm config.json NEW_OUTPUT [--dry-run]
+  kilnbio enrich config.json NEW_OUTPUT
+  kilnbio scrna config.json NEW_OUTPUT
+  kilnbio pseudobulk config.json NEW_OUTPUT
+  kilnbio import-mods config.json NEW_OUTPUT
+  kilnbio clocks {catalog|score|fetch-marioni} --help
+  kilnbio assay-clocks {fetch|features|score} --help
+  kilnbio epidiff-coverage {audit|panel|rrbs-example|make-map} --help
+  kilnbio erythroid-stage --help
+  kilnbio graft-readouts --help
+  kilnbio ont config.json NEW_OUTPUT [--dry-run]
+
+Use explicit local references, assay chemistry and biological sample metadata.
+Outputs are immutable per run. Failed runs remain for inspection; retry into a
+new directory. Nothing automatically deletes raw data. See docs/USER_GUIDE.md.
+KILNBIO_PYTHON selects an analysis environment; KILNBIO_RSCRIPT and
+KILNBIO_R_LIBRARY select R and its private library. Containers are used by the
+preprocessing adapters. The featurecounts command also supports pinned Docker.

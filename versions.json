@@ -1,0 +1,27 @@
+{
+  "methylseq": {
+    "version": "4.2.0",
+    "schema_url": "https://raw.githubusercontent.com/nf-core/methylseq/4.2.0/nextflow_schema.json",
+    "schema_sha256": "d36c0badea1d18fe483a5736d5f36add86e34b03bc8fd7bd958769a89581239f"
+  },
+  "atacseq": {
+    "version": "2.1.2",
+    "schema_url": "https://raw.githubusercontent.com/nf-core/atacseq/2.1.2/nextflow_schema.json",
+    "schema_sha256": "efe37d724f78ebb205df20ce3c7d17397c0e578542a301d44f1356bc302eefba"
+  },
+  "chipseq": {
+    "version": "2.1.0",
+    "schema_url": "https://raw.githubusercontent.com/nf-core/chipseq/2.1.0/nextflow_schema.json",
+    "schema_sha256": "216737980f7cac1b5e7c339df76b4570364258b100283e168d1242336b36d7ab"
+  },
+  "rnaseq": {
+    "version": "3.27.0",
+    "schema_url": "https://raw.githubusercontent.com/nf-core/rnaseq/3.27.0/nextflow_schema.json",
+    "schema_sha256": "ccce9ef4f2aa4b88ead615108d8535b168628e1002df88465397bf2538f1e56b"
+  },
+  "scrnaseq": {
+    "version": "4.2.0",
+    "schema_url": "https://raw.githubusercontent.com/nf-core/scrnaseq/4.2.0/nextflow_schema.json",
+    "schema_sha256": "2f77f4bef724c94e0e69a41b2c012406551259aa6da50648be7384b5a4e15700"
+  }
+}

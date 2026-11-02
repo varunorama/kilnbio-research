@@ -1,0 +1,12 @@
+{
+  "fasta": "/data/references/GRCh38.fa",
+  "gtf": "/data/references/gencode.annotation.gtf",
+  "blacklist": "/data/references/hg38-blacklist.v2.bed",
+  "igenomes_ignore": true,
+  "aligner": "bowtie2",
+  "macs_gsize": 2913022398,
+  "narrow_peak": true,
+  "skip_deseq2_qc": true,
+  "save_unaligned": true,
+  "save_macs_pileup": true
+}

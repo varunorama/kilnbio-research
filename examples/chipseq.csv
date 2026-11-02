@@ -1,0 +1,3 @@
+sample,fastq_1,fastq_2,replicate,antibody,control,control_replicate
+CONDITION_A_H3K27ac,/data/reads/IP_R1.fastq.gz,/data/reads/IP_R2.fastq.gz,1,H3K27ac,INPUT_A,1
+INPUT_A,/data/reads/INPUT_R1.fastq.gz,/data/reads/INPUT_R2.fastq.gz,1,,,

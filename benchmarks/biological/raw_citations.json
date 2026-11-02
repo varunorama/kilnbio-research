@@ -1,0 +1,290 @@
+{
+  "retrieved_utc": "2026-11-01T18:09:30.481284+00:00",
+  "transport": "KilnBio PubMed MCP stdio / NCBI EFetch",
+  "records": {
+    "records": [
+      {
+        "pmid": "27875550",
+        "doi": "10.1371/journal.pone.0166438",
+        "pmcid": "PMC5119738",
+        "title": "An Alternative Approach to ChIP-Seq Normalization Enables Detection of Genome-Wide Changes in Histone H3 Lysine 27 Trimethylation upon EZH2 Inhibition.",
+        "journal": "PloS one",
+        "year": "2016",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2016",
+            "month": "11",
+            "day": "22"
+          }
+        ],
+        "publication_types": [
+          "Journal Article"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Egan B",
+          "Yuan CC",
+          "Craske ML",
+          "Labhart P",
+          "Guler GD",
+          "Arnott D",
+          "Maile TM",
+          "Busby J",
+          "Henry C",
+          "Kelly TK",
+          "Tindell CA",
+          "Jhunjhunwala S",
+          "Zhao F",
+          "Hatton C",
+          "Bryant BM",
+          "Classon M",
+          "Trojer P"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27875550/"
+      },
+      {
+        "pmid": "39271835",
+        "doi": "10.1038/s41587-024-02377-y",
+        "pmcid": "PMC12266361",
+        "title": "The Wild West of spike-in normalization.",
+        "journal": "Nature biotechnology",
+        "year": "2024",
+        "article_dates": [],
+        "publication_types": [
+          "Journal Article"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Patel LA",
+          "Cao Y",
+          "Mendenhall EM",
+          "Benner C",
+          "Goren A"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39271835/"
+      },
+      {
+        "pmid": "24926665",
+        "doi": "10.1371/journal.pone.0099625",
+        "pmcid": "PMC4057123",
+        "title": "RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells.",
+        "journal": "PloS one",
+        "year": "2014",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2014",
+            "month": "06",
+            "day": "13"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, N.I.H., Extramural",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Himes BE",
+          "Jiang X",
+          "Wagner P",
+          "Hu R",
+          "Wang Q",
+          "Klanderman B",
+          "Whitaker RM",
+          "Duan Q",
+          "Lasky-Su J",
+          "Nikolos C",
+          "Jester W",
+          "Johnson M",
+          "Panettieri RA",
+          "Tantisira KG",
+          "Weiss ST",
+          "Lu Q"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24926665/"
+      },
+      {
+        "pmid": "23104886",
+        "doi": "10.1093/bioinformatics/bts635",
+        "pmcid": "PMC3530905",
+        "title": "STAR: ultrafast universal RNA-seq aligner.",
+        "journal": "Bioinformatics (Oxford, England)",
+        "year": "2013",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2012",
+            "month": "10",
+            "day": "25"
+          }
+        ],
+        "publication_types": [
+          "Evaluation Study",
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Dobin A",
+          "Davis CA",
+          "Schlesinger F",
+          "Drenkow J",
+          "Zaleski C",
+          "Jha S",
+          "Batut P",
+          "Chaisson M",
+          "Gingeras TR"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23104886/"
+      },
+      {
+        "pmid": "21816040",
+        "doi": "10.1186/1471-2105-12-323",
+        "pmcid": "PMC3163565",
+        "title": "RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome.",
+        "journal": "BMC bioinformatics",
+        "year": "2011",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2011",
+            "month": "08",
+            "day": "04"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, N.I.H., Extramural",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Li B",
+          "Dewey CN"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21816040/"
+      },
+      {
+        "pmid": "24227677",
+        "doi": "10.1093/bioinformatics/btt656",
+        "pmcid": null,
+        "title": "featureCounts: an efficient general purpose program for assigning sequence reads to genomic features.",
+        "journal": "Bioinformatics (Oxford, England)",
+        "year": "2014",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2013",
+            "month": "11",
+            "day": "13"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Liao Y",
+          "Smyth GK",
+          "Shi W"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24227677/"
+      },
+      {
+        "pmid": "19451168",
+        "doi": "10.1093/bioinformatics/btp324",
+        "pmcid": "PMC2705234",
+        "title": "Fast and accurate short read alignment with Burrows-Wheeler transform.",
+        "journal": "Bioinformatics (Oxford, England)",
+        "year": "2009",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2009",
+            "month": "05",
+            "day": "18"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Li H",
+          "Durbin R"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19451168/"
+      },
+      {
+        "pmid": "33590861",
+        "doi": "10.1093/gigascience/giab008",
+        "pmcid": "PMC7931819",
+        "title": "Twelve years of SAMtools and BCFtools.",
+        "journal": "GigaScience",
+        "year": "2021",
+        "article_dates": [],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Danecek P",
+          "Bonfield JK",
+          "Liddle J",
+          "Marshall J",
+          "Ohan V",
+          "Pollard MO",
+          "Whitwham A",
+          "Keane T",
+          "McCarthy SA",
+          "Davies RM",
+          "Li H"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33590861/"
+      },
+      {
+        "pmid": "31249361",
+        "doi": "10.1038/s41598-019-45839-z",
+        "pmcid": "PMC6597582",
+        "title": "The ENCODE Blacklist: Identification of Problematic Regions of the Genome.",
+        "journal": "Scientific reports",
+        "year": "2019",
+        "article_dates": [
+          {
+            "type": "Electronic",
+            "year": "2019",
+            "month": "06",
+            "day": "27"
+          }
+        ],
+        "publication_types": [
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ],
+        "related_notices": [],
+        "safety_flags": [],
+        "authors": [
+          "Amemiya HM",
+          "Kundaje A",
+          "Boyle AP"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31249361/"
+      }
+    ],
+    "scope": "PubMed metadata, not independent scientific approval"
+  },
+  "scope": "Bibliographic/indexed-notice check, not scientific certification"
+}
