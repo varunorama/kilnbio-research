@@ -6,6 +6,12 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 **Release:** [v0.2.0-research.2](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.2). This is a versioned distribution for approved **noncommercial research**. Read [permitted uses and access](ACCESS.md) and the [license](LICENSE). For commercial or industry-sponsored projects, contact Varun B. Dwaraka before use.
 
+## Follow your data through KilnBio
+
+[![KilnBio workflow from sequencing reads or existing measurements through specimen and feature matching to method comparison, target selection and model evaluation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
+
+Start with your assay in the top row. The middle row shows which specimens or features you can compare. The bottom row shows what each analysis returns, from agreement between differential expression methods to the list of targets you would follow up.
+
 **Choose the version for your analysis.**
 
 | Example | Version and instructions |
