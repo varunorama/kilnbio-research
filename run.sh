@@ -5,6 +5,7 @@ trap 'printf "ERROR: launcher failed at line %s\n" "$LINENO" >&2' ERR
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # Direct scientific modules share the installed entry point. They do not call nf-core.
 case "${1:-}" in
+  capture-panel) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/capture_panel.py" "$@" ;;
   genomic-panel) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/genomic_panel.py" "$@" ;;
   genomic-associate) shift; exec "${KILNBIO_RSCRIPT:-Rscript}" --vanilla "$ROOT/downstream/genomic_associate.R" "$@" ;;
   method-agreement) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/method_agreement.py" "$@" ;;

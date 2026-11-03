@@ -6,6 +6,7 @@ PREPROCESSING ADAPTERS (pinned nf-core; explicitly recorded in provenance)
           [--cpus N] [--memory-gb N]
 
 DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
+  kilnbio capture-panel --targets targets.bed --sizes genome.fa.fai --assembly GRCh38 --name PANEL --out NEW_OUTPUT [--bam sorted.bam --data-assembly GRCh38]
   kilnbio genomic-panel germline.vcf.gz panel.tsv sample_map.tsv --assembly GRCh38 --out calls.tsv
   kilnbio genomic-associate calls.tsv EVENT assay_samples.tsv traits.tsv {specimen|donor} NEW_OUTPUT
   kilnbio method-agreement features.tsv method_manifest.tsv --out agreement.tsv
