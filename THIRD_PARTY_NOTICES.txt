@@ -6,6 +6,7 @@ peak calling, and upstream QC are performed by external software through
 nf-core/Nextflow workflows.
 
 Pinned workflows:
+  nf-core/sarek    3.12.0 — https://github.com/nf-core/sarek
   nf-core/methylseq 4.2.0 — https://github.com/nf-core/methylseq
   nf-core/atacseq   2.1.2 — https://github.com/nf-core/atacseq
   nf-core/chipseq   2.1.0 — https://github.com/nf-core/chipseq
@@ -21,3 +22,11 @@ See upstream_citations/ for workflow citations. The nf-core JSON schemas are cov
 The EpiDiff locus maps can be generated locally from the published model feature IDs and the source manifest. Upstream models and weights and public cohort data must be obtained from their publishers on their own terms. The public HGNC identifier mapping for the glioma recipe is fetched from the HGNC archive.
 
 The root LICENSE governs original KilnBio material only. This release grants no rights to third-party data, models, software, trademarks or reference materials.
+
+Olink/shared-contrast and public exome/CH methods are documented in docs/MULTIOMIC_AND_OLINK.md and docs/EXOME_AND_CH.md. Sarek schema notices are retained; no proprietary exome resources or private participant returns are bundled.
+
+Optional AlphaGenome SDK 2.0.0 (Google LLC; Apache-2.0):
+https://github.com/google-deepmind/alphagenome/tree/v2.0.0
+The SDK is an external dependency, not vendored. Hosted service and output
+terms are separate: https://alphagenome.google/terms . The free API route
+is not automatically authorized for commercial work or model training.

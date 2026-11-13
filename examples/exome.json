@@ -1,0 +1,13 @@
+{
+  "fasta": "/references/GRCh38.fa",
+  "fasta_fai": "/references/GRCh38.fa.fai",
+  "intervals": "/references/autosomal_capture_targets.bed",
+  "igenomes_ignore": true,
+  "wes": true,
+  "aligner": "bwa-mem2",
+  "tools": "haplotypecaller,deepvariant",
+  "dbsnp": "/references/dbsnp.vcf.gz",
+  "dbsnp_tbi": "/references/dbsnp.vcf.gz.tbi",
+  "known_indels": "/references/known_indels.vcf.gz",
+  "known_indels_tbi": "/references/known_indels.vcf.gz.tbi"
+}

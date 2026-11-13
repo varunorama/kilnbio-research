@@ -1,0 +1,19 @@
+{
+  "fasta": "/references/GRCh38.fa",
+  "fasta_fai": "/references/GRCh38.fa.fai",
+  "intervals": "/references/autosomal_capture_targets.bed",
+  "igenomes_ignore": true,
+  "wes": true,
+  "aligner": "bwa-mem2",
+  "tools": "mutect2",
+  "dbsnp": "/references/dbsnp.vcf.gz",
+  "dbsnp_tbi": "/references/dbsnp.vcf.gz.tbi",
+  "known_indels": "/references/known_indels.vcf.gz",
+  "known_indels_tbi": "/references/known_indels.vcf.gz.tbi",
+  "pon": "/references/assay_matched_pon.vcf.gz",
+  "pon_tbi": "/references/assay_matched_pon.vcf.gz.tbi",
+  "germline_resource": "/references/af_only_gnomad.vcf.gz",
+  "germline_resource_tbi": "/references/af_only_gnomad.vcf.gz.tbi",
+  "contamination_resource": "/references/common_snps.vcf.gz",
+  "contamination_resource_tbi": "/references/common_snps.vcf.gz.tbi"
+}

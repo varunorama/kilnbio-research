@@ -1,0 +1,2 @@
+# Optional scientific prediction client; not part of the default installation.
+alphagenome==2.0.0

@@ -1,0 +1,2 @@
+patient,sex,status,sample,lane,fastq_1,fastq_2
+DONOR1,XX,1,BLOOD1,L1,/data/BLOOD1_R1.fastq.gz,/data/BLOOD1_R2.fastq.gz

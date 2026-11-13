@@ -8,6 +8,12 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 **Targeted sequencing.** Use a Twist Human Methylome, Twist Exome 2.0, or custom target BED to measure depth and identify which variants or measured CpGs lie inside the design. See the [capture-panel guide](docs/CAPTURE_PANELS.md).
 
+**Unreleased platform extensions (research.4-dev).** The source checkout adds [Olink and shared-contrast integration](docs/MULTIOMIC_AND_OLINK.md) and [public-method exome/CH interfaces](docs/EXOME_AND_CH.md). These additions are not in the research.3 ZIP or its manuscript results. Cite the exact commit when evaluating them. Existing release archives remain unchanged.
+
+**New to multi-omics analysis?** Start with a supported recipe, sample sheets and a small example. KilnBio supplies reusable processing, statistics and cross-assay checks; study design and unusual data still need scientific judgment. [Who can use it and where to start](docs/ACCESSIBLE_ANALYSIS.md).
+
+**Optional scientific predictions.** [AlphaGenome 2 variant annotations](docs/ALPHAGENOME.md) are an explicit, separate API step, off by default. The pipeline does not invoke general-purpose LLMs. These model predictions are not measured assays or independent biological validation.
+
 ## Follow your data through KilnBio
 
 [![KilnBio workflow from sequencing reads or existing measurements through specimen and feature matching to method comparison, target selection and model evaluation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
@@ -47,7 +53,9 @@ Input sources: [TCGA bladder study](https://pubmed.ncbi.nlm.nih.gov/28988769/), 
 | Bulk RNA, ATAC, ChIP, WGBS/RRBS and 10x gene-expression FASTQs | Validate sample sheets and launch pinned nf-core workflows with explicit references, containers and run provenance. RNA includes an RSEM preset and a separate featureCounts route for aligned reads. |
 | Counts, methylated/total cytosine counts, peaks or protein abundance matrices | Fit supported differential models; compare gene calls from DESeq2, edgeR and limma-voom on the same count input; compare methods on log2 protein abundance; inspect feature eligibility, sign and rank agreement. |
 | Single-cell count matrices, Oxford Nanopore modification data, biomodal reports or methylation arrays | Run route-specific QC, pseudobulk analysis, modification-count import or compatible biomarkers. Chemistry, model features, required weights and input format are explicit; routes are not interchangeable. |
-| Called genomic variants plus molecular assays | Extract panel events from VCF and associate them with specimen- or donor-linked traits; this route starts from calls, not DNA FASTQ. |
+| Exome FASTQ with an autosomal capture BED, or already-called genomic variants | Launch pinned Sarek and link reviewed variants to molecular traits. The small caller smoke is not full WES accuracy or low-VAF CH validation. |
+| Olink NPX and other assay matrices | Preserve delivered normalization, fit matched-donor limma/voom contrasts and test directional evidence across assays with partial conjunction and BY adjustment. |
+| Blood somatic candidates or existing CH classifications | Screen curated driver alleles or import provider states with quality/callability audits. This is distinct from ChIP-seq and does not issue a clinical CHIP diagnosis. |
 | Multiple assays or predictions from the same cohort | Audit specimen joins and sample loss; compare matched assay sets or predictions; evaluate frozen candidate directions against held-out evidence. Agreement alone is not independent replication. |
 
 ### Get started

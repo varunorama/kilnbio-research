@@ -1,11 +1,18 @@
-KilnBio 0.2.0-research.2 research release (Linux/WSL2)
+KilnBio 0.2 development workbench (Linux/WSL2)
 
 PREPROCESSING ADAPTERS (pinned nf-core; explicitly recorded in provenance)
-  kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq} samples.csv params.json RUN_DIR
+  kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq|exome|ch-somatic} samples.csv params.json RUN_DIR
           [--dry-run] [--resume] [--profile docker|apptainer|singularity]
           [--cpus N] [--memory-gb N]
 
 DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
+  kilnbio alphagenome config.json OUTPUT [--execute] [--resume] [--allow-cell-upload]
+    Optional scientific model: offline plan by default; --execute contacts AlphaGenome.
+  kilnbio olink-import export.csv --samples samples.tsv --out NEW_OUTPUT
+  kilnbio multiomic-layers config.json NEW_OUTPUT
+  kilnbio multiomic-meta manifest.tsv --min-layers 2 --out NEW_OUTPUT
+  kilnbio ch-screen --samples blood.tsv --variants annotated.vcf.gz --drivers drivers.tsv --assembly GRCh38 --out NEW_OUTPUT
+  kilnbio ch-import --calls provider.csv --variants mutations.csv --samples private_linkage.tsv --out NEW_OUTPUT
   kilnbio capture-panel --targets targets.bed --sizes genome.fa.fai --assembly GRCh38 --name PANEL --out NEW_OUTPUT [--bam sorted.bam --data-assembly GRCh38]
   kilnbio genomic-panel germline.vcf.gz panel.tsv sample_map.tsv --assembly GRCh38 --out calls.tsv
   kilnbio genomic-associate calls.tsv EVENT assay_samples.tsv traits.tsv {specimen|donor} NEW_OUTPUT

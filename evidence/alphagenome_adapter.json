@@ -1,0 +1,14 @@
+{
+  "reviewed": "2026-11-12",
+  "sdk_version": "2.0.0",
+  "upstream_commit": "f7b58d65f1dca93f9050086908b505a3304945fb",
+  "upstream_release": "https://github.com/google-deepmind/alphagenome/releases/tag/v2.0.0",
+  "live_api_tested": false,
+  "biological_accuracy_tested": false,
+  "scope": "Offline planning and pinned SDK contract tests only; runtime transport is mocked",
+  "sources": [
+    "https://www.alphagenomedocs.com/getting_started.html",
+    "https://www.alphagenomedocs.com/colabs/v2/conditioning_on_single_cell_data.html",
+    "https://github.com/google-deepmind/alphagenome/blob/v2.0.0/README.md#terms"
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "retrieved_utc": "2026-11-13T00:51:19.353842+00:00",
+  "transport": "Actual MCP stdio -> KilnBio PubMed adapter -> NCBI EFetch",
+  "scope": "Bibliographic verification and indexed notices; not certification of methods or novelty",
+  "records": [
+    {
+      "pmid": "38666213",
+      "doi": "10.1093/nargab/lqae031",
+      "pmcid": "PMC11044436",
+      "title": "Scalable and efficient DNA sequencing analysis on different compute infrastructures aiding variant discovery.",
+      "journal": "NAR genomics and bioinformatics",
+      "year": "2024",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2024",
+          "month": "04",
+          "day": "25"
+        }
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Hanssen F",
+        "Garcia MU",
+        "Folkersen L",
+        "Pedersen AS",
+        "Lescai F",
+        "Jodoin S",
+        "Miller E",
+        "Seybold M",
+        "Wacker O",
+        "Smith N",
+        "Gabernet G",
+        "Nahnsen S"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38666213/",
+      "role": "Sarek preprocessing, not independent exome accuracy"
+    },
+    {
+      "pmid": "39251642",
+      "doi": "10.1038/s41467-024-52302-9",
+      "pmcid": "PMC11385577",
+      "title": "Long-term longitudinal analysis of 4,187 participants reveals insights into determinants of clonal hematopoiesis.",
+      "journal": "Nature communications",
+      "year": "2024",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2024",
+          "month": "09",
+          "day": "09"
+        }
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "related_notices": [
+        {
+          "type": "UpdateOf",
+          "pmid": "37732181",
+          "citation": "medRxiv. 2023 Sep 07:2023.09.05.23295093. doi: 10.1101/2023.09.05.23295093."
+        }
+      ],
+      "safety_flags": [],
+      "authors": [
+        "Uddin MM",
+        "Saadatagah S",
+        "Niroula A",
+        "Yu B",
+        "Hornsby WE",
+        "Ganesh S",
+        "Lannery K",
+        "Schuermans A",
+        "Honigberg MC",
+        "Bick AG",
+        "Libby P",
+        "Ebert BL",
+        "Ballantyne CM",
+        "Natarajan P"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39251642/",
+      "role": "Public CH screening methods; subset implemented, not all rescue rules"
+    },
+    {
+      "pmid": "39631069",
+      "doi": "10.1182/bloodadvances.2024014467",
+      "pmcid": "PMC11787483",
+      "title": "Single-cell multiomics reveal divergent effects of DNMT3A- and TET2-mutant clonal hematopoiesis in inflammatory response.",
+      "journal": "Blood advances",
+      "year": "2025",
+      "article_dates": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Mohammed Ismail W",
+        "Fernandez JA",
+        "Binder M",
+        "Lasho TL",
+        "Kim M",
+        "Geyer SM",
+        "Mazzone A",
+        "Finke CM",
+        "Mangaonkar AA",
+        "Lee JH",
+        "Wang L",
+        "Kim KH",
+        "Simon VA",
+        "Rakhshan Rohakthar F",
+        "Munankarmy A",
+        "Byeon SK",
+        "Schwager SM",
+        "Harrington JJ",
+        "Snyder MR",
+        "Robertson KD",
+        "Pandey A",
+        "Wieben ED",
+        "Chia N",
+        "Gaspar-Maia A",
+        "Patnaik MM"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39631069/",
+      "role": "Candidate public CH/Olink/multi-omic demonstration, not a KilnBio result"
+    },
+    {
+      "pmid": "18261164",
+      "doi": "10.1111/j.1541-0420.2007.00984.x",
+      "pmcid": null,
+      "title": "Screening for partial conjunction hypotheses.",
+      "journal": "Biometrics",
+      "year": "2008",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2008",
+          "month": "02",
+          "day": "06"
+        }
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Benjamini Y",
+        "Heller R"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18261164/",
+      "role": "Partial-conjunction hypothesis framework"
+    },
+    {
+      "pmid": "33012899",
+      "doi": "10.1080/01621459.2018.1554485",
+      "pmcid": "PMC7531765",
+      "title": "Cauchy combination test: a powerful test with analytic p-value calculation under arbitrary dependency structures.",
+      "journal": "Journal of the American Statistical Association",
+      "year": "2020",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2019",
+          "month": "04",
+          "day": "25"
+        }
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Liu Y",
+        "Xie J"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33012899/",
+      "role": "Exploratory ACAT global-null combination"
+    },
+    {
+      "pmid": "25605792",
+      "doi": "10.1093/nar/gkv007",
+      "pmcid": "PMC4402510",
+      "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
+      "journal": "Nucleic acids research",
+      "year": "2015",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2015",
+          "month": "01",
+          "day": "20"
+        }
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Ritchie ME",
+        "Phipson B",
+        "Wu D",
+        "Hu Y",
+        "Law CW",
+        "Shi W",
+        "Smyth GK"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25605792/",
+      "role": "limma differential modeling"
+    },
+    {
+      "pmid": "24485249",
+      "doi": "10.1186/gb-2014-15-2-r29",
+      "pmcid": "PMC4053721",
+      "title": "voom: Precision weights unlock linear model analysis tools for RNA-seq read counts.",
+      "journal": "Genome biology",
+      "year": "2014",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2014",
+          "month": "02",
+          "day": "03"
+        }
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Law CW",
+        "Chen Y",
+        "Shi W",
+        "Smyth GK"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24485249/",
+      "role": "voom RNA count modeling"
+    },
+    {
+      "pmid": "30858580",
+      "doi": "10.1038/s41587-019-0054-x",
+      "pmcid": "PMC6699627",
+      "title": "Best practices for benchmarking germline small-variant calls in human genomes.",
+      "journal": "Nature biotechnology",
+      "year": "2019",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2019",
+          "month": "03",
+          "day": "11"
+        }
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "related_notices": [
+        {
+          "type": "ErratumIn",
+          "pmid": "30899106",
+          "citation": "Nat Biotechnol. 2019 May;37(5):567. doi: 10.1038/s41587-019-0108-0."
+        }
+      ],
+      "safety_flags": [],
+      "authors": [
+        "Krusche P",
+        "Trigg L",
+        "Boutros PC",
+        "Mason CE",
+        "De La Vega FM",
+        "Moore BL",
+        "Gonzalez-Porta M",
+        "Eberle MA",
+        "Tezak Z",
+        "Lababidi S",
+        "Truty R",
+        "Asimenos G",
+        "Funke B",
+        "Fleharty M",
+        "Chapman BA",
+        "Salit M",
+        "Zook JM",
+        " "
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30858580/",
+      "role": "GA4GH variant benchmarking design"
+    }
+  ]
+}

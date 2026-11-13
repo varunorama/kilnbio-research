@@ -1,0 +1,2 @@
+patient,sex,status,sample,lane,fastq_1,fastq_2
+HG002,XY,0,HG002,L1,/data/HG002_R1.fastq.gz,/data/HG002_R2.fastq.gz

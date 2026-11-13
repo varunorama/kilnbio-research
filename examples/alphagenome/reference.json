@@ -1,0 +1,9 @@
+{
+  "variants": "variants.csv",
+  "assembly": "GRCh38",
+  "condition": "UBERON:0000178_CL:0001054",
+  "scorers": ["RNA_SEQ", "ATAC"],
+  "model_version": "ALL_FOLDS",
+  "sequence_length": 1048576,
+  "max_variants": 100
+}

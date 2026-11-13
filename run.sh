@@ -5,6 +5,12 @@ trap 'printf "ERROR: launcher failed at line %s\n" "$LINENO" >&2' ERR
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # Direct scientific modules share the installed entry point. They do not call nf-core.
 case "${1:-}" in
+  alphagenome) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/alphagenome_query.py" "$@" ;;
+  olink-import) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/olink_import.py" "$@" ;;
+  multiomic-meta) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/multiomic_meta.py" "$@" ;;
+  multiomic-layers) shift; exec "${KILNBIO_RSCRIPT:-Rscript}" --vanilla "$ROOT/downstream/multiomic_layers.R" "$@" ;;
+  ch-screen) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/clonal_hematopoiesis.py" screen "$@" ;;
+  ch-import) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/clonal_hematopoiesis.py" import "$@" ;;
   capture-panel) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/capture_panel.py" "$@" ;;
   genomic-panel) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/genomic_panel.py" "$@" ;;
   genomic-associate) shift; exec "${KILNBIO_RSCRIPT:-Rscript}" --vanilla "$ROOT/downstream/genomic_associate.R" "$@" ;;
@@ -30,7 +36,7 @@ case "${1:-}" in
   help|--help|-h) cat "$ROOT/CLI.txt"; exit 0 ;;
 esac
 if [[ $# -lt 4 ]]; then
-  echo "Usage: kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq} samples.csv params.json RUN_DIR [--dry-run] [--resume] [--profile docker|apptainer|singularity] [--cpus N] [--memory-gb N] (source: bash run.sh ...)" >&2
+  echo "Usage: kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq|exome|ch-somatic} samples.csv params.json RUN_DIR [--dry-run] [--resume] [--profile docker|apptainer|singularity] [--cpus N] [--memory-gb N] (source: bash run.sh ...)" >&2
   exit 2
 fi
 ASSAY=$1; SAMPLES=$2; PARAMS=$3; RUN=$4; shift 4

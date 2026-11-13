@@ -7,9 +7,12 @@ import argparse, csv, hashlib, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-REFERENCE_FILES = ('fasta','gtf','gff','blacklist','transcript_fasta','barcode_whitelist','additional_fasta')
-REFERENCE_INDEXES = ('star_index','rsem_index','salmon_index','bowtie2_index','bismark_index')
-WORKFLOWS = {'wgbs':'methylseq','rrbs':'methylseq','atacseq':'atacseq','chipseq':'chipseq','rnaseq':'rnaseq','scrnaseq':'scrnaseq'}
+REFERENCE_FILES = ('fasta','gtf','gff','blacklist','transcript_fasta','barcode_whitelist','additional_fasta',
+                   'fasta_fai','intervals','dbsnp','dbsnp_tbi','known_indels','known_indels_tbi',
+                   'pon','pon_tbi','germline_resource','germline_resource_tbi',
+                   'contamination_resource','contamination_resource_tbi')
+REFERENCE_INDEXES = ('star_index','rsem_index','salmon_index','bowtie2_index','bismark_index','vep_cache')
+WORKFLOWS = {'wgbs':'methylseq','rrbs':'methylseq','atacseq':'atacseq','chipseq':'chipseq','rnaseq':'rnaseq','scrnaseq':'scrnaseq','exome':'sarek','ch-somatic':'sarek'}
 HEADERS = {
     'wgbs':['sample','fastq_1','fastq_2','genome'],
     'rrbs':['sample','fastq_1','fastq_2','genome'],
@@ -63,6 +66,9 @@ def index_inventory(path):
     return inventory
 
 def validate_samples(assay, sheet, params):
+    if assay in ('exome','ch-somatic'):
+        from downstream.exome_prepare import validate_samples as validate_exome
+        return validate_exome(assay, sheet, params, local_file)
     with sheet.open(encoding='utf-8-sig',newline='') as f:
         reader=csv.DictReader(f); header=reader.fieldnames
         require(header is not None and len(header)==len(set(header)), 'Missing or duplicate CSV headers')
@@ -158,7 +164,11 @@ def prepare(args):
         require(params.get('gtf') and params.get('barcode_whitelist'),'Explicit matched GTF and chemistry barcode whitelist required')
         require(params.get('star_feature') in ('Gene','GeneFull','Gene Velocyto'),'Declare Gene, GeneFull or Gene Velocyto')
         require(params.get('skip_cellbender') is True,'Initial 10x preset requires skip_cellbender:true; ambient correction needs a separately reviewed branch')
-    params.setdefault('save_align_intermeds',True)
+    if pipeline == 'sarek':
+        from downstream.exome_prepare import validate_params
+        validate_params(args.assay, params)
+    else:
+        params.setdefault('save_align_intermeds',True)
     params.setdefault('save_reference',True)
     header,rows=validate_samples(args.assay,sheet,params)
     out=run/'provenance'
@@ -166,7 +176,8 @@ def prepare(args):
     input_files={r[k] for r in rows for k in ('fastq_1','fastq_2') if r[k]}
     input_files.update(params[k] for k in REFERENCE_FILES if params.get(k))
     stats={v:dict(bytes=Path(v).stat().st_size,mtime_ns=Path(v).stat().st_mtime_ns) for v in sorted(input_files)}
-    code_hash=hashlib.sha256(Path(__file__).read_bytes()+(ROOT/'run.sh').read_bytes()).hexdigest()
+    adapter_code=(ROOT/'downstream/exome_prepare.py').read_bytes() if pipeline=='sarek' else b''
+    code_hash=hashlib.sha256(Path(__file__).read_bytes()+(ROOT/'run.sh').read_bytes()+adapter_code).hexdigest()
     identity=dict(assay=args.assay,workflow=pipeline,release=version['version'],engine_required='25.10.4',toolkit_sha256=code_hash,params=params,rows=rows,profile=args.profile,cpus=args.cpus,memory_gb=args.memory_gb,input_file_stats=stats)
     identity['reference_index_contents']={k:index_inventory(params[k]) for k in REFERENCE_INDEXES if params.get(k)}
     fingerprint=hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest()

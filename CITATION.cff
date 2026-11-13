@@ -1,12 +1,11 @@
 cff-version: 1.2.0
-message: "Please cite this version of KilnBio and the upstream methods you used."
+message: "This is an unreleased development snapshot. Cite its commit and the upstream methods; use archived tags for published recipes."
 title: "KilnBio: research release for multi-omics processing and assay comparison"
 type: software
 authors:
   - family-names: "Dwaraka"
     given-names: "Varun B."
     orcid: "https://orcid.org/0000-0001-9033-3092"
-version: "0.2.0-research.3"
-date-released: 2026-11-02
+version: "0.2.0-research.4-dev"
 repository-code: "https://github.com/varunorama/kilnbio-research"
 license-url: "https://github.com/varunorama/kilnbio-research/blob/v0.2.0-research.3/LICENSE"
