@@ -1,0 +1,7 @@
+{
+  "input_vcf": "variants.normalized.vcf.gz",
+  "assembly": "GRCh38",
+  "fasta": "references/GRCh38.fa",
+  "cache_dir": "references/vep_cache",
+  "forks": 2
+}

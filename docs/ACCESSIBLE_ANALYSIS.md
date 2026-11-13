@@ -1,5 +1,7 @@
 # Start with a recipe, expand when needed
 
+Research use only; not validated for clinical diagnosis or patient management. See [intended use](RESEARCH_USE.md) and the [cross-omic integration path](INTEGRATING_OMICS.md).
+
 KilnBio's purpose is to let a researcher run a documented analysis without writing
 their own aligner orchestration, statistical scripts or cross-assay matching code.
 More supported methods should expand the available questions, not make every user

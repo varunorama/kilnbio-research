@@ -1,0 +1,303 @@
+{
+  "retrieved_utc": "2026-11-13T02:01:33.319936+00:00",
+  "transport": "Actual MCP stdio -> KilnBio PubMed adapter -> NCBI EFetch",
+  "scope": "Bibliographic verification and indexed notices; not certification of methods or novelty",
+  "records": [
+    {
+      "pmid": "27268795",
+      "doi": "10.1186/s13059-016-0974-4",
+      "pmcid": "PMC4893825",
+      "title": "The Ensembl Variant Effect Predictor.",
+      "journal": "Genome biology",
+      "year": "2016",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2016",
+          "month": "06",
+          "day": "06"
+        }
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "McLaren W",
+        "Gil L",
+        "Hunt SE",
+        "Riat HS",
+        "Ritchie GR",
+        "Thormann A",
+        "Flicek P",
+        "Cunningham F"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27268795/",
+      "role": "VEP consequence annotation"
+    },
+    {
+      "pmid": "37733863",
+      "doi": "10.1126/science.adg7492",
+      "pmcid": null,
+      "title": "Accurate proteome-wide missense variant effect prediction with AlphaMissense.",
+      "journal": "Science (New York, N.Y.)",
+      "year": "2023",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2023",
+          "month": "09",
+          "day": "22"
+        }
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [
+        {
+          "type": "CommentIn",
+          "pmid": "38647510",
+          "citation": "Kidney Int. 2024 Aug;106(2):175-178. doi: 10.1016/j.kint.2024.02.022."
+        }
+      ],
+      "safety_flags": [],
+      "authors": [
+        "Cheng J",
+        "Novati G",
+        "Pan J",
+        "Bycroft C",
+        "Žemgulytė A",
+        "Applebaum T",
+        "Pritzel A",
+        "Wong LH",
+        "Zielinski M",
+        "Sargeant T",
+        "Schneider RG",
+        "Senior AW",
+        "Jumper J",
+        "Hassabis D",
+        "Kohli P",
+        "Avsec Ž"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37733863/",
+      "role": "AlphaMissense published predictions"
+    },
+    {
+      "pmid": "34265844",
+      "doi": "10.1038/s41586-021-03819-2",
+      "pmcid": "PMC8371605",
+      "title": "Highly accurate protein structure prediction with AlphaFold.",
+      "journal": "Nature",
+      "year": "2021",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2021",
+          "month": "07",
+          "day": "15"
+        }
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "related_notices": [
+        {
+          "type": "CommentIn",
+          "pmid": "34426694",
+          "citation": "Nature. 2021 Aug;596(7873):487-488. doi: 10.1038/d41586-021-02265-4."
+        },
+        {
+          "type": "CommentIn",
+          "pmid": "36644294",
+          "citation": "Fac Rev. 2022 Dec 14;11:38. doi: 10.12703/r-01-0000020."
+        }
+      ],
+      "safety_flags": [],
+      "authors": [
+        "Jumper J",
+        "Evans R",
+        "Pritzel A",
+        "Green T",
+        "Figurnov M",
+        "Ronneberger O",
+        "Tunyasuvunakool K",
+        "Bates R",
+        "Žídek A",
+        "Potapenko A",
+        "Bridgland A",
+        "Meyer C",
+        "Kohl SAA",
+        "Ballard AJ",
+        "Cowie A",
+        "Romera-Paredes B",
+        "Nikolov S",
+        "Jain R",
+        "Adler J",
+        "Back T",
+        "Petersen S",
+        "Reiman D",
+        "Clancy E",
+        "Zielinski M",
+        "Steinegger M",
+        "Pacholska M",
+        "Berghammer T",
+        "Bodenstein S",
+        "Silver D",
+        "Vinyals O",
+        "Senior AW",
+        "Kavukcuoglu K",
+        "Kohli P",
+        "Hassabis D"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34265844/",
+      "role": "AlphaFold structure prediction"
+    },
+    {
+      "pmid": "29165669",
+      "doi": "10.1093/nar/gkx1153",
+      "pmcid": "PMC5753237",
+      "title": "ClinVar: improving access to variant interpretations and supporting evidence.",
+      "journal": "Nucleic acids research",
+      "year": "2018",
+      "article_dates": [],
+      "publication_types": [
+        "Journal Article",
+        "Research Support, N.I.H., Intramural"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Landrum MJ",
+        "Lee JM",
+        "Benson M",
+        "Brown GR",
+        "Chao C",
+        "Chitipiralla S",
+        "Gu B",
+        "Hart J",
+        "Hoffman D",
+        "Jang W",
+        "Karapetyan K",
+        "Katz K",
+        "Liu C",
+        "Maddipatla Z",
+        "Malheiro A",
+        "McDaniel K",
+        "Ovetsky M",
+        "Riley G",
+        "Zhou G",
+        "Holmes JB",
+        "Kattman BL",
+        "Maglott DR"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29165669/",
+      "role": "ClinVar source assertions"
+    },
+    {
+      "pmid": "41273079",
+      "doi": "10.1093/nar/gkaf1226",
+      "pmcid": "PMC12807749",
+      "title": "AlphaFold Protein Structure Database 2025: a redesigned interface and updated structural coverage.",
+      "journal": "Nucleic acids research",
+      "year": "2026",
+      "article_dates": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [],
+      "safety_flags": [],
+      "authors": [
+        "Bertoni D",
+        "Tsenkov M",
+        "Magana P",
+        "Nair S",
+        "Pidruchna I",
+        "Querino Lima Afonso M",
+        "Midlik A",
+        "Paramval U",
+        "Lawal D",
+        "Tanweer A",
+        "Last M",
+        "Patel R",
+        "Laydon A",
+        "Lasecki D",
+        "Dietrich N",
+        "Tomlinson H",
+        "Žídek A",
+        "Green T",
+        "Kovalevskiy O",
+        "Lau A",
+        "Kandathil S",
+        "Bordin N",
+        "Sillitoe I",
+        "Mirdita M",
+        "Jones D",
+        "Orengo C",
+        "Steinegger M",
+        "Fleming JR",
+        "Velankar S"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41273079/"
+    },
+    {
+      "pmid": "41606153",
+      "doi": "10.1038/s41586-025-10014-0",
+      "pmcid": "PMC12851941",
+      "title": "Advancing regulatory variant effect prediction with AlphaGenome.",
+      "journal": "Nature",
+      "year": "2026",
+      "article_dates": [
+        {
+          "type": "Electronic",
+          "year": "2026",
+          "month": "01",
+          "day": "28"
+        }
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "related_notices": [
+        {
+          "type": "CommentIn",
+          "pmid": "42088426",
+          "citation": "Int J Biol Sci. 2026 Mar 30;22(8):4144-4147. doi: 10.7150/ijbs.133555."
+        }
+      ],
+      "safety_flags": [],
+      "authors": [
+        "Avsec Ž",
+        "Latysheva N",
+        "Cheng J",
+        "Novati G",
+        "Taylor KR",
+        "Ward T",
+        "Bycroft C",
+        "Nicolaisen L",
+        "Arvaniti E",
+        "Pan J",
+        "Thomas R",
+        "Dutordoir V",
+        "Perino M",
+        "De S",
+        "Karollus A",
+        "Gayoso A",
+        "Sargeant T",
+        "Mottram A",
+        "Wong LH",
+        "Drotár P",
+        "Kosiorek A",
+        "Senior A",
+        "Tanburn R",
+        "Applebaum T",
+        "Basu S",
+        "Hassabis D",
+        "Kohli P"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41606153/"
+    }
+  ]
+}

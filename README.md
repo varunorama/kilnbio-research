@@ -2,6 +2,10 @@
 
 <img src="docs/brand/kilnbio-icon.png" alt="KilnBio kiln" width="100">
 
+**Research use only.** KilnBio supports molecular research and hypothesis generation. It has not been validated for clinical diagnosis, patient screening, treatment selection or patient management, and is not intended for diagnostic procedures. [Intended use and interpretation](docs/RESEARCH_USE.md).
+
+**The goal is integration across omics.** Connect genomic variation, methylation, chromatin, RNA and proteins through matched biological units and explicit feature maps. Preserve each assay's units, missingness and uncertainty; use their combined evidence to prioritize research questions and follow-up experiments. [Build biological context across assays](docs/INTEGRATING_OMICS.md).
+
 KilnBio helps researchers process multiple assays and measure whether an assay or analysis choice earns its place in a study. For example, if adding proteomics changes the targets you would follow up, KilnBio lets you separate the effect of adding the measurement from the effect of excluding donors who lack it. It records which specimens can be paired, which targets remain measurable and which directions agree in an independent cohort.
 
 **Release:** [v0.2.0-research.3](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.3). This is a versioned distribution for approved **noncommercial research**. Read [permitted uses and access](ACCESS.md) and the [license](LICENSE). For commercial or industry-sponsored projects, contact Varun B. Dwaraka before use.
@@ -10,15 +14,19 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 **Unreleased platform extensions (research.4-dev).** The source checkout adds [Olink and shared-contrast integration](docs/MULTIOMIC_AND_OLINK.md) and [public-method exome/CH interfaces](docs/EXOME_AND_CH.md). These additions are not in the research.3 ZIP or its manuscript results. Cite the exact commit when evaluating them. Existing release archives remain unchanged.
 
+**One command for a configured study.** `kilnbio study study.json NEW_RUN` connects declared processing, analysis and integration stages in dependency order. A supplied RNA–Olink–methylation teaching recipe needs no new analysis code; other studies retain explicit mappings and model choices. [Run a study, preview it or resume](docs/STUDY_RUNNER.md).
+
 **New to multi-omics analysis?** Start with a supported recipe, sample sheets and a small example. KilnBio supplies reusable processing, statistics and cross-assay checks; study design and unusual data still need scientific judgment. [Who can use it and where to start](docs/ACCESSIBLE_ANALYSIS.md).
 
 **Optional scientific predictions.** [AlphaGenome 2 variant annotations](docs/ALPHAGENOME.md) are an explicit, separate API step, off by default. The pipeline does not invoke general-purpose LLMs. These model predictions are not measured assays or independent biological validation.
+
+**Variant and protein context.** Optional [VEP, ClinVar, AlphaMissense and AlphaFold Database interfaces](docs/VARIANT_ANNOTATIONS.md) connect called alleles to consequences, submitted assertions, published scores and structural context. These remain separate from measured multi-omic effects. AlphaFold lookup does not run new structure inference.
 
 ## Follow your data through KilnBio
 
 [![KilnBio workflow from sequencing reads or existing measurements through specimen and feature matching to method comparison, target selection and model evaluation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
 
-Start with your assay in the top row. The middle row shows which specimens or features you can compare. The bottom row shows what each analysis returns, from agreement between differential expression methods to the list of targets you would follow up.
+Start with reads or existing measurements. KilnBio processes each assay, matches biological units and links features before fitting a shared research contrast. The diagram separates measured evidence from optional annotations and shows the downstream comparisons and validation steps. Support and validation vary by route; see the linked guides.
 
 **Choose the version for your analysis.**
 

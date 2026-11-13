@@ -1,5 +1,7 @@
 # Running a research release
 
+Research use only; not validated for clinical diagnosis or patient management. See [intended use](RESEARCH_USE.md), [configured study orchestration](STUDY_RUNNER.md) and the [cross-omic integration path](INTEGRATING_OMICS.md).
+
 Keep the unpacked release separate from inputs, reference data, scratch space and new results. Record the release tag in your analysis. Use the ZIP and SHA-256 from the same delivery; compare the digest with the one in the maintainer's approval or a separate trusted channel.
 
 ### Choose an environment

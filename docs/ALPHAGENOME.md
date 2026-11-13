@@ -1,5 +1,7 @@
 # Optional AlphaGenome annotations
 
+Research use only; not validated for clinical diagnosis or patient management. See [intended use](RESEARCH_USE.md) and the [cross-omic integration path](INTEGRATING_OMICS.md).
+
 AlphaGenome is a scientific DNA-sequence prediction model, not a general-purpose
 LLM. This optional command adds predicted regulatory effects to an explicitly
 selected variant list. Ordinary KilnBio preprocessing and statistics do not use it.
@@ -100,7 +102,13 @@ count validation, metadata removal, completion accounting and resume integrity.
 A credentialed public-variant run and biological accuracy benchmark remain separate
 validation steps. No live API success is claimed without a successful receipt.
 
-For coding variants, established VEP consequence annotation is the first layer.
-AlphaMissense or AlphaFold Database annotations could be future additions with
-their own evidence and licenses; protein structure confidence alone does not
-establish a variant's pathogenicity. Neither is implemented by this command.
+For coding variants, the separate [variant annotation interfaces](VARIANT_ANNOTATIONS.md)
+support VEP consequences, ClinVar assertions, AlphaMissense scores and AlphaFold
+Database metadata. They retain their own evidence types and licenses; protein
+structure confidence alone does not establish a variant's pathogenicity. These
+are separate commands, not outputs of an AlphaGenome query.
+
+The original AlphaGenome model is described by [Avsec et al., Nature 2026](https://doi.org/10.1038/s41586-025-10014-0)
+([PubMed](https://pubmed.ncbi.nlm.nih.gov/41606153/)). That paper is background for
+regulatory prediction; it does not validate this adapter or the newer version 2
+API. Version 2 request behavior is documented by the pinned provider SDK above.

@@ -1,5 +1,7 @@
 # Public-method exome processing and clonal hematopoiesis
 
+Research use only; not validated for clinical diagnosis or patient management. See [intended use](RESEARCH_USE.md) and the [cross-omic integration path](INTEGRATING_OMICS.md).
+
 KilnBio now provides a pinned nf-core/sarek adapter for paired-end human
 autosomal capture sequencing, alongside separate downstream CH interfaces.
 These are research routes. CH means **clonal hematopoiesis**, not ChIP-seq.

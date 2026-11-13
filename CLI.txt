@@ -1,11 +1,21 @@
 KilnBio 0.2 development workbench (Linux/WSL2)
 
+STUDY ORCHESTRATION
+  kilnbio study study.json NEW_RUN [--dry-run] [--resume]
+    Runs declared KilnBio stages in dependency order; logs, output checks and resumable state.
+
 PREPROCESSING ADAPTERS (pinned nf-core; explicitly recorded in provenance)
   kilnbio {wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq|exome|ch-somatic} samples.csv params.json RUN_DIR
           [--dry-run] [--resume] [--profile docker|apptainer|singularity]
           [--cpus N] [--memory-gb N]
 
 DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
+  kilnbio variant-annotations config.json NEW_OUTPUT
+    Offline allele-exact ClinVar, AlphaMissense and VEP CSQ imports.
+  kilnbio alphafold proteins.tsv NEW_OUTPUT [--execute | --cache RESPONSE_DIR]
+    AlphaFold Database structure lookup; offline plan by default, no new structure inference.
+  kilnbio vep-annotate config.json NEW_OUTPUT [--execute]
+    Explicit local VEP 116.3/cache 116; offline plan by default.
   kilnbio alphagenome config.json OUTPUT [--execute] [--resume] [--allow-cell-upload]
     Optional scientific model: offline plan by default; --execute contacts AlphaGenome.
   kilnbio olink-import export.csv --samples samples.tsv --out NEW_OUTPUT
