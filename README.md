@@ -8,7 +8,7 @@
 
 KilnBio helps researchers process multiple assays and measure whether an assay or analysis choice earns its place in a study. For example, if adding proteomics changes the targets you would follow up, KilnBio lets you separate the effect of adding the measurement from the effect of excluding donors who lack it. It records which specimens can be paired, which targets remain measurable and which directions agree in an independent cohort.
 
-**Release:** [v0.2.0-research.3](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.3). This is a versioned distribution for approved **noncommercial research**. Read [permitted uses and access](ACCESS.md) and the [license](LICENSE). For commercial or industry-sponsored projects, contact Varun B. Dwaraka before use.
+**Release:** [v0.2.0-research.3](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.3). The tagged source and release ZIPs are publicly viewable. Running or adapting KilnBio requires written approval for the specific **noncommercial research** project. Read [permitted uses and access](ACCESS.md) and the [license](LICENSE). For commercial or industry-sponsored projects, contact Varun B. Dwaraka before use.
 
 **Targeted sequencing.** Use a Twist Human Methylome, Twist Exome 2.0, or custom target BED to measure depth and identify which variants or measured CpGs lie inside the design. See the [capture-panel guide](docs/CAPTURE_PANELS.md).
 
@@ -39,9 +39,9 @@ To reproduce an analysis, use the README inside its named ZIP. You can run the b
 
 ### Researcher handoff: which bladder cancer targets change when you add protein?
 
-Start here if you received this release for the independent run. You need only the ZIP, its checksum, this README, public internet access, Python 3.10+ and R 4.6.x (tested: Python 3.12 and R 4.6.2). No GitHub account is needed for a ZIP supplied by the maintainer. The analysis starts from deposited TCGA RNA abundance, reverse-phase protein arrays (RPPA) and somatic mutation calls, not FASTQs or mass spectrometry. Allow 1 GB of free disk space. No Python packages, Docker, Nextflow or full KilnBio installation are needed for this example.
+Start here to reproduce the bladder analysis using [the research.2 release](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.2). You need only the ZIP, its checksum, this README, public internet access, Python 3.10+ and R 4.6.x (tested: Python 3.12 and R 4.6.2). The public release downloads work without a GitHub account. The analysis starts from deposited TCGA RNA abundance, reverse-phase protein arrays (RPPA) and somatic mutation calls, not FASTQs or mass spectrometry. Allow 1 GB of free disk space. No Python packages, Docker, Nextflow or full KilnBio installation are needed for this example.
 
-1. Start your clock. In the download directory check the named ZIP against its companion checksum: on Linux/WSL run `sha256sum -c kilnbio-research-0.2.0-research.3.zip.sha256`; on Windows compare `(Get-FileHash kilnbio-research-0.2.0-research.2.zip).Hash` with the hexadecimal value in the checksum file. Extract the ZIP and open a terminal in the extracted directory **containing this README**. Select a writable directory for the files generated below. The examples write them beside the extracted release.
+1. Start your clock. In the download directory check the named ZIP against its companion checksum: on Linux/WSL run `sha256sum -c kilnbio-research-0.2.0-research.2.zip.sha256`; on Windows compare `(Get-FileHash kilnbio-research-0.2.0-research.2.zip).Hash` with the hexadecimal value in the checksum file. Extract the ZIP and open a terminal in the extracted directory **containing this README**. Select a writable directory for the files generated below. The examples write them beside the extracted release.
 2. Make sure `python` (or `python3`) and `Rscript` are on PATH. On Linux and macOS, building the pinned R packages from source also requires the C and Fortran build tools for your R installation (Linux: make, gcc and gfortran with R development headers). Windows uses prebuilt R packages. Run these two commands from the release root, unchanged on Windows, macOS or Linux:
 
 ```
@@ -68,7 +68,7 @@ Input sources: [TCGA bladder study](https://pubmed.ncbi.nlm.nih.gov/28988769/), 
 
 ### Get started
 
-1. Obtain approval and the ZIP plus matching checksum from the maintainer.
+1. Obtain project approval and download the named ZIP and its matching checksum from the linked release.
 2. In Linux or WSL2, verify the file with `sha256sum -c kilnbio-research-0.2.0-research.3.zip.sha256`, then unzip it.
 3. From the extracted directory, run:
 
