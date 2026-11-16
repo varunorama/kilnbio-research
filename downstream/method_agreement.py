@@ -26,23 +26,33 @@ def val(s):
     v=float(s)
     if not math.isfinite(v):raise ValueError("Expected finite value, blank or NA")
     return v
+def read_table(stream):
+    reader = csv.DictReader(stream, delimiter="\t")
+    fields = reader.fieldnames or []
+    if len(set(fields)) != len(fields):
+        raise ValueError("Duplicate input header")
+    rows = list(reader)
+    if not rows or any(None in row or None in row.values() for row in rows):
+        raise ValueError("Empty or ragged input")
+    return fields, rows
+
 def read(path):
-    with path.open(encoding="utf-8-sig",newline="") as h:
-        d=csv.DictReader(h,delimiter="\t"); fields=d.fieldnames or []
-        if len(set(fields))!=len(fields):raise ValueError("Duplicate input header")
-        r=list(d)
-        if not r or any(None in v or None in v.values() for v in r):raise ValueError("Empty or ragged input")
-        return fields,r
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return read_table(handle)
+
 def run(matrix,manifest,alpha):
+    return compare_tables(read(matrix), read(manifest), alpha)
+
+def compare_tables(matrix, manifest, alpha):
     if not 0<alpha<1:raise ValueError("alpha must be between zero and one")
-    fields,methods=read(manifest)
+    fields,methods=manifest
     if set(fields)!={"method",*CONTEXT}:raise ValueError("Invalid method manifest columns")
     names=[r["method"] for r in methods]
     if len(names)<2 or len(set(names))!=len(names) or any(not n.strip() or n.strip()!=n or "," in n for n in names):raise ValueError("Specify at least two distinct method names")
     for k in CONTEXT:
         entries={r[k] for r in methods}
         if len(entries)!=1 or not next(iter(entries)).strip():raise ValueError("Incompatible or missing method metadata: "+k)
-    fields,rows=read(matrix)
+    fields,rows=matrix
     if not {"feature",*[n+s for n in names for s in ("_effect","_q")]}<=set(fields):raise ValueError("Incomplete method columns")
     ids=[r["feature"] for r in rows]
     if len(set(ids))!=len(ids) or any(not i.strip() or i.strip()!=i for i in ids):raise ValueError("Require one row per feature in the declared family")
