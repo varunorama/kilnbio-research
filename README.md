@@ -24,6 +24,8 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 ## Follow your data through KilnBio
 
+**Use KilnBio with an assistant.** The source checkout includes an optional MCP server for Codex or ChatGPT and a skill for Claude Code or Claude.ai. Look up the assay commands, count donors retained when requiring two assays, or compare calls across methods using KilnBio's existing analysis code. [Setup, examples and downloadable Claude skill](docs/ASSISTANT_INTEGRATIONS.md).
+
 [![KilnBio workflow from sequencing reads or existing measurements through specimen and feature matching to method comparison, target selection and model evaluation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
 
 Start with reads or existing measurements. KilnBio processes each assay, matches biological units and links features before fitting a shared research contrast. The diagram separates measured evidence from optional annotations and shows the downstream comparisons and validation steps. Support and validation vary by route; see the linked guides.

@@ -30,6 +30,7 @@
 *.rds
 *.RData
 *.zip
+!/assistants/kilnbio-skill.zip
 *.tar
 *.tar.gz
 __pycache__/
