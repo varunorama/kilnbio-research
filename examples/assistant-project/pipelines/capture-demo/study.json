@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "research_use": true,
+  "inputs": ["sizes.tsv", "targets.bed", "features.bed"],
+  "steps": [{
+    "id": "panel",
+    "command": "capture-panel",
+    "args": [
+      "--name", "synthetic-capture", "--assembly", "synthetic", "--data-assembly", "synthetic",
+      "--sizes", "{{study}}/sizes.tsv", "--targets", "{{study}}/targets.bed",
+      "--measurements", "{{study}}/features.bed", "--out", "{{run}}/panel"
+    ],
+    "depends_on": [],
+    "outputs": ["panel/summary.json", "panel/features.tsv", "panel/targets.bed"]
+  }]
+}

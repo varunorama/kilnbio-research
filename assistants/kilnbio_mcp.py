@@ -89,7 +89,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--transport", choices=("stdio", "streamable-http"), default="stdio")
     parser.add_argument("--port", type=int, default=8000, help="Loopback HTTP port")
+    parser.add_argument("--project", type=Path, help="Enable study execution for this operator-configured project")
     args = parser.parse_args()
+    if args.project:
+        if sys.platform == "win32":
+            parser.error("Start an execution-enabled server inside Linux/WSL or macOS with Bash.")
+        from pipeline_jobs import register
+        register(server, args.project)
     if args.transport == "stdio":
         server.run(transport="stdio")
     else:

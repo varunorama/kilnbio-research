@@ -10,6 +10,8 @@ This runner executes stages sequentially to bound resource use. Existing Nextflo
 
 ## A beginner can run a supplied recipe
 
+An approved team can also install this same study in an [assistant-enabled project](ASSISTANT_SETUP.md#picking-up-new-pipelines). A researcher can then launch it by name and retrieve the stage receipt from ChatGPT, Claude, Codex or another MCP client.
+
 Install the [direct-analysis dependencies](MULTIOMIC_AND_OLINK.md#install-the-direct-analysis-dependencies), including NumPy/pandas/SciPy and R limma/edgeR/jsonlite. In the source checkout:
 
 ```bash

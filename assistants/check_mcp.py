@@ -11,10 +11,12 @@ from mcp.client.stdio import StdioServerParameters
 async def check(target):
     async with Client(target) as client:
         tools = (await client.list_tools()).tools
-        assert {tool.name for tool in tools} == {
+        core = {
             "list_guides", "read_guide", "assay_reach", "compare_methods"
         }
-        assert all(tool.annotations.read_only_hint for tool in tools)
+        names = {tool.name for tool in tools}
+        assert names in (core, core | {"list_pipelines", "run_pipeline", "pipeline_status"})
+        assert all(tool.annotations.read_only_hint == (tool.name != "run_pipeline") for tool in tools)
         catalog = await client.call_tool("list_guides", {})
         assert "study" in catalog.structured_content["guides"]
         guide = await client.call_tool("read_guide", {"guide": "study"})
