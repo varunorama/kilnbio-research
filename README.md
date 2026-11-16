@@ -18,6 +18,8 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 **New to multi-omics analysis?** Start with a supported recipe, sample sheets and a small example. KilnBio supplies reusable processing, statistics and cross-assay checks; study design and unusual data still need scientific judgment. [Who can use it and where to start](docs/ACCESSIBLE_ANALYSIS.md).
 
+**Use KilnBio with ChatGPT or Claude.** Upload the [Claude.ai skill](https://raw.githubusercontent.com/varunorama/kilnbio-research/af09b698972de1114a75a41c6ac499d96863a069/assistants/kilnbio-skill.zip) for help choosing a workflow. To run a KilnBio calculation in chat, connect your approved team's server. The assistant integration is a source preview. [ChatGPT setup](docs/ASSISTANT_SETUP.md#chatgpt) · [Claude.ai setup](docs/ASSISTANT_SETUP.md#claudeai) · [Claude Code and Codex setup](docs/ASSISTANT_SETUP.md#claude-code-and-codex).
+
 **Optional scientific predictions.** [AlphaGenome 2 variant annotations](docs/ALPHAGENOME.md) are an explicit, separate API step, off by default. The pipeline does not invoke general-purpose LLMs. These model predictions are not measured assays or independent biological validation.
 
 **Variant and protein context.** Optional [VEP, ClinVar, AlphaMissense and AlphaFold Database interfaces](docs/VARIANT_ANNOTATIONS.md) connect called alleles to consequences, submitted assertions, published scores and structural context. These remain separate from measured multi-omic effects. AlphaFold lookup does not run new structure inference.
