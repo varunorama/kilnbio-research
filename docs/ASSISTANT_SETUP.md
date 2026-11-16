@@ -81,6 +81,16 @@ In Claude Science, open **Settings → Connectors → Add connector**. Choose **
 
 ## Claude.ai
 
+### Run KilnBio from Claude Free
+
+As of November 16, 2026, Anthropic allows one custom remote MCP connector on Claude Free. An approved researcher can use that slot for KilnBio in ordinary Claude chat. Claude Science is a separate workbench with its own plan requirements. [Anthropic connector availability](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) · [Claude Science eligibility](https://support.claude.com/en/articles/16563838-get-started-with-claude-science)
+
+1. Ask your project operator for the authenticated HTTPS `/mcp` URL of a server configured for your approved study. The execution host supplies the CPU, software, data and storage. [Host setup](#run-the-server-for-your-project) · [KilnBio research access](../ACCESS.md)
+2. Add the URL using the [Claude.ai connector instructions](#connect-claudeai-to-the-tools), sign in to the project, and enable KilnBio for the conversation. Your Claude plan's usage limits still apply.
+3. Ask *“Use KilnBio to list the pipelines I can run.”* If your operator installed the synthetic example, follow the [first-run prompt](#install-and-run-a-pipeline). A completed `pipeline_status` receipt identifies the files the pipeline produced on the host.
+
+The optional Claude skill provides workflow guidance. Pipeline execution uses the connected server. Plan availability is documented by Anthropic; the KilnBio execution tests used MCP clients, with signed-in Claude Free verification pending.
+
 ### Upload the skill for workflow guidance
 
 1. Download the [KilnBio skill ZIP](https://raw.githubusercontent.com/varunorama/kilnbio-research/main/assistants/kilnbio-skill.zip). Keep it zipped. This small archive contains the KilnBio skill instructions and license.
