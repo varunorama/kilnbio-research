@@ -9,6 +9,8 @@ Choose the route that matches what you want to do.
 | Have ChatGPT or Claude.ai look up the installed guides, count eligible donors, or compare methods | A running KilnBio MCP server that my account can reach. [Connect ChatGPT](#chatgpt) or [connect Claude.ai](#connect-claudeai-to-the-tools). |
 | Use the skill or tools from a terminal | A local checkout. [Set up Claude Code or Codex](#claude-code-and-codex). |
 | Use my existing editor or agent | Run the same server locally from [Google Antigravity](#google-antigravity), [Cursor or VS Code with GitHub Copilot](#cursor-vs-code-and-other-mcp-clients). |
+| Run on my lab's existing cloud VM | Connect a local MCP client over [SSH to AWS, Google Cloud or a lab Linux host](#use-your-labs-existing-compute). |
+| Use KilnBio inside a scientific workbench | Configure a [custom connector in Claude Science](#claude-science). |
 
 The [MCP server](../assistants/kilnbio_mcp.py) and [skill](../.claude/skills/kilnbio/SKILL.md) ship in the public repository's default branch. The earlier research.3 manuscript archives predate the integration. Anyone can inspect the source and download it. Obtain written approval for your specific noncommercial research project before using or adapting KilnBio. Limit a deployment to approved users. [Access and permission requests](../ACCESS.md) · [License](../LICENSE)
 
@@ -47,6 +49,28 @@ For an existing scientific environment, configure the server process with the sa
 Look for a `run_pipeline` call followed by `pipeline_status` returning `complete`. In the project, open `runs/first-panel/study/panel/summary.json`. The example's two overlapping target intervals cover **80 distinct bases**. Of **three** synthetic features, **one** lies fully inside. The receipt includes SHA-256 hashes for the summary, feature table and target BED. The assistant receives stage and artifact information; the measurements and full logs stay on the execution host.
 
 To exercise the adapter independently of any assistant account, run `.venv/bin/python assistants/check_pipeline.py` on the execution host. The test runs the example, installs and launches a second two-stage manifest while connected, checks duplicate submissions and a missing input, and verifies the receipt over both stdio and loopback HTTP. It uses temporary synthetic projects.
+
+## Use your lab's existing compute
+
+An approved project can use its own Linux host and storage. The assistant subscription supplies the interface. The selected machine runs the KilnBio processes and stores their results. This setup uses an existing machine and leaves billing, approved inputs, storage permissions and compute limits with its owner.
+
+1. **On the VM**, the operator installs the checkout, Python 3.12, Bash, workflow dependencies and project manifests as in the local setup. From the checkout, run `python3.12 assistants/install_client.py config --project /absolute/path/to/project` to prepare the adapter environment. Record the checkout and project paths. Input data must be accessible to the VM. For example, the operator can stage approved data from S3 or Cloud Storage using the VM's existing, scoped cloud identity.
+2. **On the client**, configure an OpenSSH host alias such as `kilnbio-lab` and verify the host key through the lab's usual login procedure. Check that `ssh -T -o BatchMode=yes -o StrictHostKeyChecking=yes kilnbio-lab true` succeeds without prompting. EC2 researchers can use their existing Linux SSH access. Google Compute Engine users can use an OpenSSH configuration for an internal VM via Identity-Aware Proxy. [AWS EC2 SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html) · [Google Compute Engine SSH with IAP](https://docs.cloud.google.com/compute/docs/connect/ssh-using-iap)
+3. **Register the connection** using the checkout on a configuration machine. Substitute the VM's paths:
+
+```sh
+python assistants/install_client.py codex --name kilnbio-lab --ssh kilnbio-lab --remote-checkout /srv/kilnbio --project /srv/projects/approved-study
+```
+
+Choose `claude` for Claude Code, `antigravity` for Antigravity, or `config` to print the command and its argument list. A lab operator can give researchers those settings so each can enter them directly in a local-command client without a local KilnBio clone. Use the path to OpenSSH on the researcher's own machine. SSH performs authentication using that user's normal credentials. The client launches KilnBio on the VM and exchanges tool requests and receipts over the SSH connection. Files are read from and written to the VM. The lab can replace SSH access with a project-authenticated HTTPS gateway for [web-client access](#run-the-server-for-your-project).
+
+This route uses an existing VM. A cloud account or storage bucket alone does not supply a running KilnBio worker. AWS Batch and Google Cloud Batch would require separate scheduler integration. The SSH transport was tested using a real local OpenSSH client and server with synthetic data. Live provider-specific IAM and network settings must be checked on the lab's host.
+
+## Claude Science
+
+Claude Science can provide the workbench for a KilnBio study. KilnBio supplies the versioned study manifest, assay and statistical code, and execution receipt. The same study can be run directly with the command line.
+
+In Claude Science, open **Settings → Connectors → Add connector**. Choose **Local command** for a local or SSH-backed server and name it `kilnbio`. Copy the `command` and individual `args` produced by the installer's `config` mode into the corresponding fields. On Windows, use the full path to the executable, such as `C:/Windows/System32/wsl.exe`. Local commands run inside Claude Science's sandbox; the project must be accessible and permitted to write its run directory, and an SSH connector needs network access to the VM. Alternatively, choose **Remote** and enter your authorized project's HTTPS MCP URL. Managed organizations can control custom connector availability. Verify with the [synthetic capture study](#install-and-run-a-pipeline). These steps follow Anthropic's documentation; a signed-in Claude Science test is still pending. [Claude Science custom connectors](https://claude.com/docs/claude-science/custom-connectors)
 
 ## ChatGPT
 

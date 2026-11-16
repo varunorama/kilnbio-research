@@ -2,8 +2,9 @@
 import argparse
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -15,6 +16,23 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def prepare(args):
+    if args.ssh:
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", args.ssh):
+            raise ValueError("--ssh expects a host alias from your OpenSSH configuration")
+        if not args.remote_checkout or not args.project:
+            raise ValueError("--ssh requires --remote-checkout and --project on the remote host")
+        remote = PurePosixPath(args.remote_checkout)
+        if not remote.is_absolute() or not PurePosixPath(args.project).is_absolute():
+            raise ValueError("Use absolute Linux paths for the remote checkout and project")
+        ssh = shutil.which("ssh")
+        if not ssh:
+            raise ValueError("Install OpenSSH on the client first")
+        command = shlex.join([str(remote / ".venv/bin/python"), str(remote / "assistants/kilnbio_mcp.py"),
+                              "--project", args.project])
+        return {"command": ssh, "args": ["-T", "-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=yes",
+                                          args.ssh, command]}
+    if args.remote_checkout:
+        raise ValueError("--remote-checkout requires --ssh")
     if args.wsl:
         if os.name != "nt":
             raise ValueError("--wsl is for a Windows client connecting to a Linux execution host")
@@ -74,7 +92,10 @@ def main():
     project.add_argument("--demo", action="store_true", help="Set up the supplied synthetic capture study")
     project.add_argument("--project", help="Approved project directory on the execution host")
     parser.add_argument("--name", default="kilnbio", help="Server registration name")
-    parser.add_argument("--wsl", metavar="DISTRO", help="Use this installed WSL distro from a Windows client")
+    host = parser.add_mutually_exclusive_group()
+    host.add_argument("--wsl", metavar="DISTRO", help="Use this installed WSL distro from a Windows client")
+    host.add_argument("--ssh", metavar="ALIAS", help="Use the lab's existing Linux VM via its OpenSSH host alias")
+    parser.add_argument("--remote-checkout", help="Absolute path to the prepared KilnBio checkout on that VM")
     parser.add_argument("--linux-python", default="python3.12", help="Python executable inside the WSL distro")
     args = parser.parse_args()
     if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", args.name):
