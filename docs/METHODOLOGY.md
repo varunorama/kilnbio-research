@@ -151,7 +151,7 @@ $$
 r_{gC}-r_{gA}=(r_{gB}-r_{gA})+(r_{gC}-r_{gB}).
 $$
 
-This identity organizes the comparison and does not identify causal effects of selection or measurement. For a transition a to b, entering genes are Sᵦ(k) \ Sₐ(k), exiting genes are Sₐ(k) \ Sᵦ(k), and direction changes among retained genes are recorded separately. Counts of replacements need not add across transitions because a gene can leave and re-enter. The common feature family prevents a changed gene denominator from being mistaken for a changed ranking rule.
+This identity organizes the comparison and does not identify causal effects of selection or measurement. For a transition a to b, entering genes are $S_b$(k) \ Sₐ(k), exiting genes are Sₐ(k) \ $S_b$(k), and direction changes among retained genes are recorded separately. Counts of replacements need not add across transitions because a gene can leave and re-enter. The common feature family prevents a changed gene denominator from being mistaken for a changed ranking rule.
 
 The rank_assays function exposes signed and unsigned modes with the denominators and tie rules specified here and in the GTEx section. Ranking places assay statistics with different measurement units on a common ordinal scale, while equal weighting makes the contribution of each supplied assay explicit. It sacrifices effect-size calibration and cannot correct an invalid assay model. The compare_nominations function applies the same budget to successive rankings and returns entries, exits and per-gene rank changes; users supply which transition represents specimen restriction or added evidence.
 
@@ -187,7 +187,7 @@ The existing R functions adjust_assay and project_control_adjustment provide fit
 
 ### Assay availability and prediction policy
 
-Write bᵢ and aᵢ for eligibility of donor i for the baseline and additional assay. With baseline prediction fᵦ and two-assay prediction fᵦₐ, the frozen policy is
+Write bᵢ and aᵢ for eligibility of donor i for the baseline and additional assay. With baseline prediction $f_b$ and two-assay prediction $f_{ba}$, the frozen policy is
 
 Equation 8:
 
@@ -213,7 +213,7 @@ The assay-audit pair operation implements this eligibility rule. Requiring a uni
 
 ### Agreement among analysis methods
 
-For a feature g, let M be the number of prespecified methods and Nᵍ⁺ and Nᵍ⁻ the numbers making positive and negative calls, respectively, at their within-method adjusted threshold. The reported agreement score is
+For a feature g, let M be the number of prespecified methods and $N_g^+$ and $N_g^-$ the numbers making positive and negative calls, respectively, at their within-method adjusted threshold. The reported agreement score is
 
 Equation 10:
 
