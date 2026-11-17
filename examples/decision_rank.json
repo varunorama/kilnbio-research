@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "method": "rank_assays",
+  "arguments": {
+    "features": ["GENE_A", "GENE_B", "GENE_C", "GENE_D"],
+    "statistics": {"RNA": [4, -3, 2, 1], "protein": [3, 4, 1, -2]},
+    "k": 2,
+    "mode": "signed"
+  }
+}

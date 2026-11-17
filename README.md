@@ -10,6 +10,8 @@ KilnBio helps researchers process multiple assays and measure whether an assay o
 
 **Release:** [v0.2.0-research.3](https://github.com/varunorama/kilnbio-research/releases/tag/v0.2.0-research.3). The tagged source and release ZIPs are publicly viewable. Running or adapting KilnBio requires written approval for the specific **noncommercial research** project. Read [permitted uses and access](ACCESS.md) and the [license](LICENSE). For commercial or industry-sponsored projects, contact Varun B. Dwaraka before use.
 
+**Methods and assumptions.** The [methodology guide](docs/METHODOLOGY.md) explains the equations, theory, inputs and interpretation for each reusable decision function. Run `kilnbio decision-methods catalog` to choose an operation, or use the Python API and [declared study example](examples/decision_study.json). These development interfaces preserve the archived recipes and their results.
+
 **Targeted sequencing.** Use a Twist Human Methylome, Twist Exome 2.0, or custom target BED to measure depth and identify which variants or measured CpGs lie inside the design. See the [capture-panel guide](docs/CAPTURE_PANELS.md).
 
 **Unreleased platform extensions (research.4-dev).** The source checkout adds [Olink and shared-contrast integration](docs/MULTIOMIC_AND_OLINK.md) and [public-method exome/CH interfaces](docs/EXOME_AND_CH.md). These additions are not in the research.3 ZIP or its manuscript results. Cite the exact commit when evaluating them. Existing release archives remain unchanged.

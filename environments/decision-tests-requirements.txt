@@ -1,0 +1,3 @@
+# Test-only oracle in addition to the runtime's NumPy/SciPy requirements.
+-r multiomic-requirements.txt
+statsmodels>=0.14,<1
