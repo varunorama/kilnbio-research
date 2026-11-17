@@ -24,6 +24,14 @@ After running this recipe, give Claude, Codex or Antigravity access to the relev
 
 If you also have an independently written analysis, compare eligible gene sets before comparing the top hits. The bladder recipe records how each antibody label mapped to a gene in `antibody_map.tsv`. Its `receipt.json` identifies the software version and input revision and records hashes of the output files. Those records let another analyst check the explanation even if they use a different assistant or run KilnBio from the command line.
 
+**Which claims can I check?** A positive direction and a high protein rank can support a statement that a target ranked highly in a particular contrast. To say how much protein abundance changed, ask for an effect estimate in the assay’s units. A useful follow-up prompt is “Show the cohort, comparator and source row for each claim. Which of my questions would need a measurement the study did not collect?”
+
+**Try the same approach with chromatin and methylation.** A lab with 25 experimental slots can ask whether adding methylation changes which enhancer–gene pairs it would test and how many of those pairs were confirmed in a held-out screen. After running the K562 recipe, give your assistant the aggregate output files named below. [K562 recipe and execution instructions](../recipes/README.md)
+
+> Use `coverage.tsv` to report how many external pairs meet the common coverage rule. In `results.tsv`, compare `chromatin_coverage` with `chromatin_coverage_methylation` on that same set. Report average precision and the number of confirmed links in the top 25 for each. From `followup_slots.tsv`, identify which pairs entered or left. Would our choice of experiments change even if the number of confirmed links stayed the same?
+
+**What the assistant comparison showed.** In a pilot on three public examples, Claude Free, Codex and Antigravity each interpreted the same standard outputs with and without KilnBio’s audit summaries. All three recovered the measured numbers and left unmeasured quantities unanswered in both conditions. Some written interpretations still needed a scope or effect-size check. The demonstrated use is that a researcher can trace a claim to the rows that support it. A general reduction in assistant errors remains an open question. The pilot evaluated interpretation of completed analyses; pipeline execution is covered by the synthetic example below.
+
 ## Install and run a pipeline
 
 **Local clients.** Install Git, Python 3.12 with venv/pip, and your chosen client. Codex and Claude Code require their CLI on PATH. From a terminal, clone this repository and enter the checkout:
