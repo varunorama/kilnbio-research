@@ -105,7 +105,7 @@ The numbering below matches the expanded manuscript. Each procedure retains its 
 
 ### Validation at a fixed follow-up budget
 
-For a frozen list Sₐ(k) of k nominations from strategy a, let dᵍ be the nominated direction, Δᵍ the validation effect and qᵍ its adjusted P value in the declared validation family. Define an endpoint-specific confirmation indicator and validation yield as
+For a frozen list Sₐ(k) of k nominations from strategy a, let $d_g$ be the nominated direction, $\Delta_g$ the validation effect and $q_g$ its adjusted P value in the declared validation family. Define an endpoint-specific confirmation indicator and validation yield as
 
 Equation 1:
 
@@ -133,7 +133,7 @@ The reusable element_methylation function implements the covered-dyad summary. U
 
 ### Signed ranks and specimen-selection comparisons
 
-For the bladder recipe, A denotes RNA in all eligible tumors, B denotes RNA in matched tumors, and P denotes protein in those same matched tumors. All scores use the intersection U of genes eligible in A, B and P, with G = |U|. For gene g and arm a, the moderated statistic tᵍₐ is converted to an ascending average rank of its absolute value; the sign is then restored. The combined arm C is
+For the bladder recipe, A denotes RNA in all eligible tumors, B denotes RNA in matched tumors, and P denotes protein in those same matched tumors. All scores use the intersection U of genes eligible in A, B and P, with G = |U|. For gene g and arm a, the moderated statistic $t_{ga}$ is converted to an ascending average rank of its absolute value; the sign is then restored. The combined arm C is
 
 Equation 3:
 
@@ -143,7 +143,7 @@ $$
 
 Each arm orders genes by decreasing absolute score and uses gene identifiers to break exact score ties. The first 15 genes form its nomination set. The sign of the combined score supplies its direction; discordant assay signs can cancel. These scores are descriptive priorities, not P values, pooled effect estimates or probabilities of validation. The denominator G + 1 is the implemented bladder convention; it does not affect ordering within the shared family.
 
-The A-to-B comparison measures the observed change after restricting the patient set; B-to-C measures the observed change after adding protein on that fixed set. If rᵍₐ is the final rank, their rank differences satisfy
+The A-to-B comparison measures the observed change after restricting the patient set; B-to-C measures the observed change after adding protein on that fixed set. If $r_{ga}$ is the final rank, their rank differences satisfy
 
 Equation 4:
 
@@ -227,7 +227,7 @@ The method-agreement command exposes this calculation through the agreement func
 
 ### Promoter summaries and matched GTEx validation
 
-The GTEx ranking differs from the signed bladder rule. For assay a in a source tissue, it uses the unsigned percentile uᵍₐ of the absolute age statistic within the shared eligible gene family:
+The GTEx ranking differs from the signed bladder rule. For assay a in a source tissue, it uses the unsigned percentile $u_{ga}$ of the absolute age statistic within the shared eligible gene family:
 
 Equation 11:
 
@@ -241,7 +241,7 @@ The donor_partition function assigns the first 16 hexadecimal digits of SHA256(s
 
 The promoter_summary function implements a fixed feature-to-gene map on the beta or M-value scale, with mean, median and optional omission of a named probe. Missing required probes or values produce an untestable gene–sample summary rather than changing the mapped set. Mean summaries represent the average measured promoter signal; medians assess sensitivity to an extreme probe. Neither summary implies that all promoter CpGs have equivalent regulatory effects.
 
-The fit_hc3 function estimates an explicitly supplied linear contrast in continuous measurements. For gene g, design X, residuals eᵢᵍ, leverages hᵢ and A = (XᵀX)⁻¹, its covariance estimate is
+The fit_hc3 function estimates an explicitly supplied linear contrast in continuous measurements. For gene g, design X, residuals $e_{ig}$, leverages hᵢ and A = (XᵀX)⁻¹, its covariance estimate is
 
 Equation 12:
 
@@ -249,9 +249,9 @@ $$
 \widehat V_g=A X^{T}\operatorname{diag}\left\{\frac{e_{ig}^{2}}{(1-h_i)^2}\right\}X A.
 $$
 
-A contrast c has estimated variance cᵀV̂ᵍc, and the implementation uses a t reference with n − rank(X) residual degrees of freedom. The HC3 leverage correction addresses heteroskedastic residual variance (MacKinnon and White 1985). It does not remove unmeasured confounding, accommodate dependent donor rows, or make ordinary least squares appropriate for untransformed counts. The function requires a full-rank design, no unit-leverage observation and adequate residual degrees of freedom; zero standard-error contrasts are flagged untestable.
+A contrast c has estimated variance cᵀ$\widehat V_g$c, and the implementation uses a t reference with n − rank(X) residual degrees of freedom. The HC3 leverage correction addresses heteroskedastic residual variance (MacKinnon and White 1985). It does not remove unmeasured confounding, accommodate dependent donor rows, or make ordinary least squares appropriate for untransformed counts. The function requires a full-rank design, no unit-leverage observation and adequate residual degrees of freedom; zero standard-error contrasts are flagged untestable.
 
-For frozen discovery direction dᵍₐ and validation t statistic with residual degrees of freedom ν, directional validation uses the upper-tail probability below. The joint test requires support in both assay-specific directions:
+For frozen discovery direction $d_{ga}$ and validation t statistic with residual degrees of freedom ν, directional validation uses the upper-tail probability below. The joint test requires support in both assay-specific directions:
 
 Equation 13:
 
@@ -275,7 +275,7 @@ The directional_conjunction function evaluates the frozen directions across the 
 
 ### Directional evidence across assay layers
 
-For a feature f mapped to gene g in layer l, let pᶠˡ be a valid two-sided P value from a symmetric test and eᶠˡ its effect multiplied by the prespecified layer orientation. The positive directional tail is pᶠˡ/2 when eᶠˡ ≥ 0 and 1 − pᶠˡ/2 otherwise; the negative tail reverses the inequality. A zero effect is accepted only with P = 1, giving both tails 0.5. If Kᵍˡ features map to the gene in that layer, directional feature aggregation is
+For a feature f mapped to gene g in layer l, let $p_{fl}$ be a valid two-sided P value from a symmetric test and $e_{fl}$ its effect multiplied by the prespecified layer orientation. The positive directional tail is $p_{fl}$/2 when $e_{fl}$ ≥ 0 and 1 − $p_{fl}$/2 otherwise; the negative tail reverses the inequality. A zero effect is accepted only with P = 1, giving both tails 0.5. If $K_{gl}$ features map to the gene in that layer, directional feature aggregation is
 
 Equation 15:
 
@@ -283,7 +283,7 @@ $$
 P_{gl}^{d}=\min\left(1,K_{gl}\min_{f\mapsto g}p_{fl}^{d}\right),\qquad d\in\{+,-\}.
 $$
 
-Every mapped feature must have a finite effect and P value for that gene–layer result to be testable. An incomplete mapped feature set is not silently reduced. For a gene with mᵍ testable layers and a required minimum r ≥ 2, let Pᵍ₍ᵣ₎ᵈ be the rth smallest directional layer P value. The implemented Bonferroni partial-conjunction test and correction for choosing either direction are
+Every mapped feature must have a finite effect and P value for that gene–layer result to be testable. An incomplete mapped feature set is not silently reduced. For a gene with $m_g$ testable layers and a required minimum r ≥ 2, let $P_{g,(r)}^d$ be the rth smallest directional layer P value. The implemented Bonferroni partial-conjunction test and correction for choosing either direction are
 
 Equation 16:
 
