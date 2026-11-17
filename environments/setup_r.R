@@ -2,7 +2,7 @@
 # Reviewed baseline: R 4.6.2 / Bioconductor 3.23. No global library changes.
 args<-commandArgs(TRUE);if(length(args)!=1)stop('Supply a private library directory')
 lib<-args[1];dir.create(lib,recursive=TRUE,showWarnings=FALSE);.libPaths(c(lib,.libPaths()))
-options(repos=c(CRAN='https://cloud.r-project.org'),timeout=1200)
+options(repos=c(CRAN='https://cloud.r-project.org'),timeout=1200,Ncpus=2L)
 if(!requireNamespace('BiocManager',quietly=TRUE))install.packages('BiocManager',lib=lib)
 if(as.character(getRversion())!='4.6.2')stop('Baseline is R 4.6.2; evaluate other R releases explicitly')
 BiocManager::install(version='3.23',ask=FALSE,update=FALSE,lib=lib)

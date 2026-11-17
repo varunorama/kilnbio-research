@@ -31,6 +31,7 @@ print(asset['browser_download_url'],r['tag_name'],sep='\t')
 PY
 IFS=$'\t' read -r URL VERSION < "$DEST/downloads/nextflow.tsv"
 curl --fail --location --retry 2 --connect-timeout 20 --max-time 300 "$URL" -o "$DEST/bin/nextflow"
+printf '%s  %s\n' '60db869a7618783e3ee60183a2b0c6c50ffc67221eabec60800b904991786aaa' "$DEST/bin/nextflow" | sha256sum -c -
 chmod +x "$DEST/bin/nextflow"
 sha256sum "$DEST/bin/nextflow" > "$DEST/downloads/nextflow.sha256"
 printf 'export JAVA_HOME=%q\nexport NXF_HOME=%q\nexport PATH=%q:"$PATH"\n' \

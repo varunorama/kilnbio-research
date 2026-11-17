@@ -1,5 +1,6 @@
 """Install the optional KilnBio MCP adapter and register an approved project."""
 import argparse
+import importlib.util
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -51,6 +52,12 @@ def prepare(args):
         shutil.copytree(ROOT / "examples/assistant-project/pipelines", project / "pipelines")
     if not (project / "pipelines").is_dir():
         raise ValueError("The project needs a pipelines directory. Use --demo for a synthetic example.")
+    managed = os.environ.get("KILNBIO_MANAGED_LAUNCHER")
+    if managed:
+        if not Path(managed).is_file() or importlib.util.find_spec("mcp") is None:
+            raise ValueError("Install the assistant profile along with your analysis profiles before registering a client.")
+        # Keep R, Python and sequencing dependencies available when the client reconnects.
+        return {"command": managed, "args": ["assistant-serve", "--project", str(project)]}
     python = ROOT / ".venv/bin/python"
     if not python.is_file():
         venv.EnvBuilder(with_pip=True).create(python.parents[1])

@@ -54,3 +54,7 @@ new directory. Nothing automatically deletes raw data. See docs/USER_GUIDE.md.
 KILNBIO_PYTHON selects an analysis environment; KILNBIO_RSCRIPT and
 KILNBIO_R_LIBRARY select R and its private library. Containers are used by the
 preprocessing adapters. The featurecounts command also supports pinned Docker.
+
+Automatic setup: bash setup.sh [--profile core|bladder|analysis|singlecell|sequencing|assistant|all] [--plan|--check]
+Public example: kilnbio bladder-example --cache INPUT_CACHE --out NEW_OUTPUT [--offline]
+Assistant registration: kilnbio assistant-install {codex|claude|antigravity|config} --demo

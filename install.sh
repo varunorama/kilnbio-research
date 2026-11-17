@@ -13,6 +13,7 @@ root=pathlib.Path(sys.argv[1]).resolve();prefix=pathlib.Path(sys.argv[2]).expand
 dest=prefix/'releases'/version
 if dest==root or root in dest.parents: raise SystemExit('Install outside the source directory')
 allowed=['VERSION', 'LICENSE', 'CITATION.cff', 'CLI.txt', 'README.md', 'README.txt', 'THIRD_PARTY_NOTICES.txt', 'ACCESS.md', 'versions.json', 'run.sh', 'prepare.py', 'install.sh', 'setup_linux_runtime.sh', 'docs', 'upstream_licenses', 'upstream_citations', 'schemas', 'examples', 'environments', 'workflows', 'downstream', 'longread', 'modifications', 'singlecell', 'aging', 'tests', 'benchmarks', 'check_methylation_calls.py', 'check_sequencing_outputs.py', 'recipes', 'ci', 'evidence', 'assistants', '.claude/skills/kilnbio']
+allowed.append('setup.sh')
 for name in allowed:
     src=root/name
     if not src.exists(): continue

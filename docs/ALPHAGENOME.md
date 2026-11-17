@@ -94,8 +94,8 @@ The SDK is Apache-2.0, but the hosted service and outputs have separate
 [README](https://github.com/google-deepmind/alphagenome/blob/v2.0.0/README.md#terms)
 describes its free API as noncommercial and restricts model-training use, with
 specific exceptions and a separate commercial route. KilnBio's own license does
-not override those terms. These outputs are not automatically exported for the
-foundation venture or used as training labels.
+not override those terms. Any reuse of predictions for model training must
+follow the provider's applicable permissions.
 
 Offline validation covers coordinates, explicit execution, SDK signatures,
 count validation, metadata removal, completion accounting and resume integrity.
