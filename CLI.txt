@@ -10,6 +10,9 @@ PREPROCESSING ADAPTERS (pinned nf-core; explicitly recorded in provenance)
           [--cpus N] [--memory-gb N]
 
 DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
+  kilnbio decision-methods catalog
+  kilnbio decision-methods run method.json --out NEW.json
+    Reusable ranking, validation, promoter and sensitivity functions; see docs/METHODOLOGY.md.
   kilnbio variant-annotations config.json NEW_OUTPUT
     Offline allele-exact ClinVar, AlphaMissense and VEP CSQ imports.
   kilnbio alphafold proteins.tsv NEW_OUTPUT [--execute | --cache RESPONSE_DIR]

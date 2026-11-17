@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "research_use": true,
+  "inputs": ["decision_rank.json"],
+  "steps": [{
+    "id": "rank",
+    "command": "decision-methods",
+    "args": ["run", "{{study}}/decision_rank.json", "--out", "{{run}}/rank/result.json"],
+    "depends_on": [],
+    "outputs": ["rank/result.json"]
+  }]
+}

@@ -16,7 +16,7 @@ COMMANDS = {'rnaseq','scrnaseq','atacseq','chipseq','wgbs','rrbs','exome','ch-so
     'ch-screen','ch-import','capture-panel','genomic-panel','genomic-associate','method-agreement',
     'differential-compare','assay-audit','candidate-evidence','compare-assays','compare-predictions',
     'clock-panel','featurecounts','spikein-factors','de','dm','enrich','scrna','pseudobulk',
-    'import-mods','clocks','assay-clocks','epidiff-coverage','erythroid-stage','graft-readouts','ont'}
+    'import-mods','clocks','assay-clocks','epidiff-coverage','erythroid-stage','graft-readouts','ont','decision-methods'}
 
 
 def stamp():
