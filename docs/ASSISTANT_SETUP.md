@@ -34,7 +34,11 @@ If you also have an independently written analysis, compare eligible gene sets b
 
 ## Install and run a pipeline
 
-**Local clients.** Install Git, Python 3.12 with venv/pip, and your chosen client. Codex and Claude Code require their CLI on PATH. From a terminal, clone this repository and enter the checkout:
+**Managed installation on Linux/WSL2.** Follow the [automatic installation guide](INSTALLATION.md) and include `--profile assistant` along with the analysis profiles you need. Register a client installed in that environment with `"$HOME/.local/share/kilnbio/bin/kilnbio" assistant-install codex --demo`; substitute `claude` or `antigravity` for those clients. This uses the installed Python, R and sequencing environment. Repeat registration after upgrading KilnBio.
+
+For a Windows desktop client connecting to that managed WSL installation, run `"$HOME/.local/share/kilnbio/bin/kilnbio" assistant-install config --demo` inside Ubuntu. It prints a versioned `command` and `args`. In the Windows client's local-command MCP settings, use `C:/Windows/System32/wsl.exe` as the command, with arguments `-d`, `Ubuntu`, `--exec`, followed by the exact generated command and each of its arguments. Replace `Ubuntu` with your distro name. This preserves the managed environment when the assistant reconnects. Browser clients use the remote connection described below.
+
+**Manual setup with an existing environment.** Install Git, Python 3.12 with venv/pip, and your chosen client. Codex and Claude Code require their CLI on PATH. From a terminal, clone this repository and enter the checkout:
 
 ```sh
 git clone https://github.com/varunorama/kilnbio-research.git kilnbio-assistant
