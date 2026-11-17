@@ -14,6 +14,16 @@ Choose the route that matches what you want to do.
 
 The [MCP server](../assistants/kilnbio_mcp.py) and [skill](../.claude/skills/kilnbio/SKILL.md) ship in the public repository's default branch. The earlier research.3 manuscript archives predate the integration. Anyone can inspect the source and download it. Obtain written approval for your specific noncommercial research project before using or adapting KilnBio. Limit a deployment to approved users. [Access and permission requests](../ACCESS.md) · [License](../LICENSE)
 
+## Check an assistant's interpretation against a run
+
+For an RNA and protein study, a useful question is whether adding protein changes the targets you would follow up. The public bladder recipe makes two comparisons. First it ranks RNA using all eligible patients and again using only those with a protein measurement. Then it adds protein while keeping those patients fixed. Each comparison changes one part of the analysis, so you can trace why a target entered or left the shortlist. [Versioned bladder recipe and methods](https://github.com/varunorama/kilnbio-research/blob/v0.2.0-research.2/recipes/bladder/PROTOCOL.md)
+
+After running this recipe, give Claude, Codex or Antigravity access to the relevant aggregate outputs, or attach them from the run directory.
+
+> From `report.json`, give the patient counts for all eligible RNA samples and for the matched subset. How many genes were eligible? Check that number against the eligible rows in `eligibility.tsv`. Using `changes.tsv` and `rankings.tsv`, pick a target that moved and explain which comparison changed its nomination. Name the file behind each number. If the counts disagree, show both. Label any proposed biological mechanism as a hypothesis.
+
+If you also have an independently written analysis, compare eligible gene sets before comparing the top hits. The bladder recipe records how each antibody label mapped to a gene in `antibody_map.tsv`. Its `receipt.json` identifies the software version and input revision and records hashes of the output files. Those records let another analyst check the explanation even if they use a different assistant or run KilnBio from the command line.
+
 ## Install and run a pipeline
 
 **Local clients.** Install Git, Python 3.12 with venv/pip, and your chosen client. Codex and Claude Code require their CLI on PATH. From a terminal, clone this repository and enter the checkout:
