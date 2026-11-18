@@ -97,7 +97,7 @@ Managed registration uses the same versioned environment as the command line, in
 
 ## Other systems and existing environments
 
-Automatic environment provisioning is currently limited to Linux x86-64/WSL2. On macOS, use the existing Bash installer with a suitable Python installation and install route dependencies in your preferred environment:
+Automatic environment provisioning is currently limited to Linux x86-64/WSL2. For macOS Terminal, follow the [Mac installation and verification guide](MACOS.md), which covers Python setup, the decision functions, optional R tools and sequencing limitations. That manual route has not yet been verified on a native Mac. The underlying Bash installation command is:
 
 ```bash
 bash install.sh "$HOME/.local/share/kilnbio" no-runtime

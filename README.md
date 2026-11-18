@@ -79,6 +79,8 @@ Each route has its own required inputs and validation scope. Use the [command in
 
 The [methodology guide](docs/METHODOLOGY.md) explains the equations, assumptions, inputs and interpretation of the reusable decision functions. Run `kilnbio decision-methods catalog` to choose an operation, or use the Python API and [declared study example](examples/decision_study.json). Install the `analysis` profile for these NumPy/SciPy methods. These development interfaces preserve the archived recipes and their results.
 
+Mac users can follow the [macOS Terminal guide](docs/MACOS.md) for the manual Python setup and synthetic checks. Automatic environment setup currently supports Linux x86-64/WSL2; native Mac verification remains outstanding.
+
 For a configured study, `kilnbio study study.json NEW_RUN` runs declared stages in dependency order. Preview the study before executing it, and resume completed work using the recorded outputs. [Study configuration and examples](docs/STUDY_RUNNER.md)
 
 [![KilnBio workflow from reads or existing measurements through processing, specimen and feature matching, analysis and biological validation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
