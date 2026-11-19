@@ -114,3 +114,12 @@ Use `environments/setup_r.R` for the R baseline and the requirements files for t
 - **An optional command reports missing tools or weights.** Consult its route guide. The managed profiles list their coverage above.
 
 The package manager is a checksum-verified Micromamba binary. Dependency downloads use conda-forge, Bioconda, CRAN, Bioconductor and the referenced Python package indexes. [Micromamba documentation](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html)
+
+## Automatic plotting dependencies
+
+Every profile includes NumPy, pandas and Matplotlib for offline analysis reports.
+This adds plotting to the core profile; direct manual installations should also
+install `environments/report-requirements.txt`. Analysis-specific R, single-cell
+and sequencing dependencies still come from their respective profiles. Reports
+run automatically through `kilnbio`, including study/assistant execution.
+[View examples](gallery/README.md).

@@ -1,0 +1,4 @@
+chrom	start	end	width
+chr1	100	400	300
+chr1	1000	1400	400
+chr2	500	1200	700

@@ -1,0 +1,7 @@
+metric	value
+assembly	synthetic
+target_rows	3
+target_union_bases	1400
+alignment_depth.mean_depth	31.2
+alignment_depth.fraction_at_min_depth	0.91
+alignment_depth.min_depth	20

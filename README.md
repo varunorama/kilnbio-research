@@ -85,25 +85,44 @@ For a configured study, `kilnbio study study.json NEW_RUN` runs declared stages 
 
 [![KilnBio workflow from reads or existing measurements through processing, specimen and feature matching, analysis and biological validation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
 
-## Figures and pathway interpretation
+## See the figures KilnBio generates
 
-Figures are generated automatically when you run `multiomic-meta`, `enrich` or
-`pathway-compare`. Open `report.html` in the output folder; PDF, SVG, PNG and
-the plotted data are saved alongside it. No plotting notebook or AI call is needed.
+Run an analysis through `kilnbio` and its figures are generated automatically.
+Open `visualization/report.html` under that analysis output. A command that
+writes one result file creates `RESULT_FILE.visualization/report.html` next to it.
+The integrated-evidence and enrichment commands write `report.html` directly in
+their output folder. Reports include PDF, SVG, PNG and the plotted values as TSV.
 
-* **Across genes and assays:** evidence heatmaps, joint rankings, direction
-  agreement, missing measurements and leave-one-assay-out rank sensitivity.
-* **Within pathways:** enrichment rankings, leading-edge genes and running
-  enrichment curves from fgsea.
-* **Across pathways and assays:** shared versus assay-specific support,
-  measurement coverage and pathway overlap. Use valid assay-specific tests and
-  measured backgrounds; methylation and chromatin need appropriate mappings.
+**Browse the [complete visualization gallery](docs/gallery/README.md)** for an
+example of each KilnBio report panel, its command and its interpretation.
+These examples use **fictional data**, separate from manuscript results.
 
-Install with `bash setup.sh --profile analysis`. Follow the
-[report and pathway walkthrough](docs/VISUALIZATIONS.md), or browse the
-[literature-backed visualization inventory](docs/VISUALIZATION_REVIEW.md) for
-each assay and its implementation status. **16S microbiome sequencing is not
-currently implemented**; its proposed analyses are documented separately in that review.
+| Assay QC and differential analysis | Integration, eligibility and validation |
+|---|---|
+| [![Synthetic assay visualization examples](docs/gallery/assays-overview.png)](docs/gallery/README.md) | [![Synthetic integration visualization examples](docs/gallery/integration-overview.png)](docs/gallery/README.md) |
+
+[![Synthetic capture, genomic-state, protein-position and clock-coverage examples](docs/gallery/platforms-overview.png)](docs/gallery/README.md)
+
+| Integrated gene evidence | Shared pathway evidence |
+|---|---|
+| [![Synthetic gene-by-assay evidence](docs/gallery/multiomic-meta__evidence_heatmap.png)](docs/gallery/README.md#multiomic-meta) | [![Synthetic pathway-by-assay evidence](docs/gallery/pathway-compare__pathway_evidence.png)](docs/gallery/README.md#pathway-compare) |
+
+The gallery covers expression and methylation results, method agreement, Olink,
+single-cell QC and embeddings, modification counts, genomic annotations,
+capture coverage, biomarker scores, held-out predictions, and joint gene/pathway
+evidence. FASTQ routes retain their native FastQC/MultiQC reports and link them
+from the automatic report. Figures requiring a measured input or a fitted model
+appear when that input exists; the report records why a panel is unavailable.
+
+Install or update with `bash setup.sh` and the profile for your analysis. Basic
+plotting dependencies are now included in every profile. No plotting notebook,
+LLM call, or remote reporting service is needed.
+
+See the [command-by-command report guide](docs/VISUALIZATIONS.md) for required
+inputs and output paths, and the [methods review](docs/VISUALIZATION_REVIEW.md)
+for sources. **16S sequencing is not currently implemented.** Pathway comparison
+uses assay-specific tests and measured backgrounds; it does not treat every
+omics feature as an interchangeable gene measurement.
 
 ## Use KilnBio with an assistant
 

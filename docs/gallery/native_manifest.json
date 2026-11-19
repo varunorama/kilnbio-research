@@ -1,0 +1,20 @@
+[
+  {
+    "name": "de-deseq2-dispersion",
+    "type": "native fitted diagnostic",
+    "data": "synthetic",
+    "source_generator": "tests/integration_auto_reports.py"
+  },
+  {
+    "name": "de-edger-ql-dispersion",
+    "type": "native fitted diagnostic",
+    "data": "synthetic",
+    "source_generator": "tests/integration_auto_reports.py"
+  },
+  {
+    "name": "multiomic-layers-voom",
+    "type": "native fitted diagnostic",
+    "data": "synthetic",
+    "source_generator": "tests/integration_auto_reports.py"
+  }
+]

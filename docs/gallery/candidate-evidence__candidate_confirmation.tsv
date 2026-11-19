@@ -1,0 +1,10 @@
+gene	endpoint	status	display
+SYN001	RNA / synthetic validation	confirmed	1.0
+SYN001	protein / synthetic validation	not_confirmed	0.0
+SYN001	ATAC / synthetic validation	unmeasured	NA
+SYN002	RNA / synthetic validation	not_confirmed	0.0
+SYN002	protein / synthetic validation	unmeasured	NA
+SYN002	ATAC / synthetic validation	confirmed	1.0
+SYN003	RNA / synthetic validation	unmeasured	NA
+SYN003	protein / synthetic validation	confirmed	1.0
+SYN003	ATAC / synthetic validation	not_confirmed	0.0

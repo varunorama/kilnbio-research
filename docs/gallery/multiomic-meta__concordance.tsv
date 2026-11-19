@@ -1,0 +1,4 @@
+pair	both_measured	same	opposite	neutral	not_both
+RNA / protein	4	2	1	1	1
+RNA / methylation	4	3	0	1	1
+protein / methylation	4	2	1	1	1

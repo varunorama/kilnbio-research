@@ -1,0 +1,4 @@
+# Offline automatic reports, shared by every installation profile.
+numpy>=1.24,<3
+pandas>=2,<4
+matplotlib>=3.8,<4

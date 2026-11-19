@@ -1,0 +1,8 @@
+category	records
+DESeq2:0 | edgeR:0 | limma_voom:0	67
+DESeq2:NA | edgeR:NA | limma_voom:NA	7
+DESeq2:0 | edgeR:1 | limma_voom:1	2
+DESeq2:1 | edgeR:1 | limma_voom:1	1
+DESeq2:-1 | edgeR:0 | limma_voom:-1	1
+DESeq2:0 | edgeR:-1 | limma_voom:-1	1
+DESeq2:-1 | edgeR:0 | limma_voom:0	1

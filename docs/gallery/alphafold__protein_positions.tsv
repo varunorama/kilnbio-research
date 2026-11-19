@@ -1,0 +1,4 @@
+uniprot_id	protein_variant	mapping_status	tool_used	mean_plddt	sequence_start	sequence_end	model_sequence_position
+SYN_P1	p.A12V	mapped	database_lookup	90	1	100	12
+SYN_P2	p.G51S	mapped	database_lookup	72	1	150	51
+SYN_P3	p.R86H	mapped	database_lookup	81	1	120	86

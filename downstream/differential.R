@@ -117,6 +117,11 @@ if(cfg$mode=='de') {
   }
   diagnostic$normalization_method <- if(!is.null(external_sf)) 'external_reference' else if(estimated) 'tximport_length_and_library' else if(cfg$engine=='edger') 'TMM' else 'poscounts'
   write_tsv(diagnostic,'sample_diagnostics.tsv')
+  write_tsv(data.frame(feature_id=rownames(logcounts),logcounts,check.names=FALSE),'display_transformed.tsv')
+  write_tsv(samples,'display_samples.tsv')
+  pdf(file.path(out,'results/model_diagnostic.pdf'))
+  if(cfg$engine=='deseq2') DESeq2::plotDispEsts(dds) else edgeR::plotQLDisp(fit)
+  dev.off()
   pdf(file.path(out,'results/QC.pdf'))
   heatmap(cor(logcounts),symm=TRUE,main='Library correlation (normalized transformed counts)')
   plot(density(logcounts[,1]),main='Normalized transformed distributions',xlab='VST (DESeq2) or log CPM (edgeR)')
@@ -144,6 +149,17 @@ if(cfg$mode=='de') {
   write_tsv(data.frame(chr=as.character(GenomicRanges::seqnames(bs)),pos=BiocGenerics::start(bs),included=pass),'locus_filter.tsv')
   if(sum(pass)<20)stop('Fewer than twenty sufficiently covered loci')
   bs<-bs[pass,]
+  # Retain a bounded display matrix; inference continues on every eligible locus.
+  display_bs <- bs[seq_len(min(nrow(bs),100000)),]
+  display_N <- as.matrix(bsseq::getCoverage(display_bs,type='Cov'))
+  display_X <- as.matrix(bsseq::getCoverage(display_bs,type='M'))
+  display_fraction <- display_X / display_N
+  display_fraction[display_N==0] <- NA_real_
+  display_ids <- paste(as.character(GenomicRanges::seqnames(display_bs)),BiocGenerics::start(display_bs),sep=':')
+  write_tsv(data.frame(feature_id=display_ids,display_fraction,check.names=FALSE),'display_fractions.tsv')
+  write_tsv(data.frame(feature_id=display_ids,display_N,check.names=FALSE),'display_depth.tsv')
+  write_tsv(samples,'display_samples.tsv')
+  write_tsv(data.frame(eligible_loci=nrow(bs),displayed_loci=nrow(display_bs),selection='first eligible genomic loci'),'display_scope.tsv')
   if(cfg$engine=='dmrseq') {
     packages<-c(packages,'dmrseq','BiocParallel')
     metadata<-samples

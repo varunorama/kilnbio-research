@@ -8,6 +8,14 @@ review. PubMed/PMC, primary publisher articles, Bioconductor and official tool
 documentation were used. Exact recorded search batches are in
 [the search record](../evidence/visualization_search_2026-11-18.json).
 
+## Implementation update
+
+The November 18 automatic-report expansion is implemented, not a proposed
+extension. See the [command coverage table](VISUALIZATIONS.md) and [synthetic
+gallery](gallery/README.md) for the exact current outputs and prerequisites.
+The research inventory below also contains methods requiring new data/models;
+those remain distinct from reporting on existing supported analyses.
+
 ## How to read this inventory
 
 **Automatic** means the named KilnBio command now writes the figure. **Existing**
@@ -27,9 +35,9 @@ Use the underlying method citation as well as KilnBio's version when publishing.
 |---|---|---|---|
 | Read quality by base, GC and sequence length; adapter content | Are reads suitable for the intended assay? FASTQ QC metrics | FastQC/MultiQC [1] | Upstream |
 | Mapping, duplication, retained reads and library complexity | Which libraries lose useful reads? Alignment metrics; optional complexity model | MultiQC; pinned workflow output docs below | Upstream, configured steps |
-| Sample count/depth distributions and sample correlation heatmap | Which libraries differ in depth or global pattern? Normalized/transformed matrix | `de`, MultiQC | Existing `de` QC.pdf |
-| PCA with biology, donor and batch annotations | Are major axes associated with design or technical factors? Transformed matrix and metadata | `de`; ComplexHeatmap [2] for annotations | Existing PCA; expanded metadata panels are Extension |
-| Missing-measurement heatmap and exclusive coverage patterns | Who/what is excluded when an assay is required? Explicit measurement roster | `multiomic-meta`; UpSet design [3] | Automatic gene coverage patterns; donor display is Extension |
+| Sample count/depth distributions and sample correlation heatmap | Which libraries differ in depth or global pattern? Normalized/transformed matrix | `de`, MultiQC | Automatic `de` report and native QC.pdf |
+| PCA with biology, donor and batch annotations | Are major axes associated with design or technical factors? Transformed matrix and metadata | `de`; ComplexHeatmap [2] for annotations | Automatic annotated PCA from available metadata |
+| Missing-measurement heatmap and exclusive coverage patterns | Who/what is excluded when an assay is required? Explicit measurement roster | `multiomic-meta`; UpSet design [3] | Automatic gene coverage patterns and assay-audit donor availability |
 | Before/after normalization distributions | Did scaling remove gross library differences? Raw and normalized values with method labels | MultiQC; assay-specific models | Existing selected QC; general paired comparison is Extension |
 | Technical replicate scatter, CV and Bland–Altman plots | How reproducible is measurement on the same specimen? Technical replicates | Assay-specific replicate models | Extension; biological replicates are not substitutes |
 | Variance-partition and residual-diagnostic panels | How much variation is associated with donor, batch or covariates? Fitted variance model | Model-derived plots | New analysis; PCA separation alone cannot identify technical noise |
@@ -38,12 +46,12 @@ Use the underlying method citation as well as KilnBio's version when publishing.
 
 | Visualization | Question / required data | Tool or source | KilnBio status |
 |---|---|---|---|
-| Volcano plot | Effect size versus uncertainty; full tested gene set | DESeq2/edgeR/limma outputs | Existing `de` QC.pdf |
-| MA/MD plot | Does differential signal vary with abundance? Mean abundance and model effect | DESeq2/edgeR/limma | Extension |
-| Dispersion/mean-variance and voom trend | Does the count model fit the data? Fitted model object | Assay model diagnostics | Extension |
-| Top-gene heatmap with sample annotations | Which samples drive the signature? Transformed counts, fixed gene choice | ComplexHeatmap [2] | Extension; label row scaling explicitly |
-| Per-gene box/violin plus individual or paired points | Are effects consistent across biological samples? Normalized measurements and donor roster | Standard model-compatible plots | Extension |
-| Method overlap matrix / UpSet and effect-effect scatter | Which results survive DESeq2, edgeR and limma choices? Full comparable result families | UpSet [3]; method-agreement tables | Extension; overlap is not an FDR procedure |
+| Volcano plot | Effect size versus uncertainty; full tested gene set | DESeq2/edgeR/limma outputs | Automatic `de` report and native QC.pdf |
+| MA/MD plot | Does differential signal vary with abundance? Mean abundance and model effect | DESeq2/edgeR/limma | Automatic `de` when mean abundance is present |
+| Dispersion/mean-variance and voom trend | Does the count model fit the data? Fitted model object | Assay model diagnostics | Automatic native DESeq2/edgeR/voom PDF diagnostics |
+| Top-gene heatmap with sample annotations | Which samples drive the signature? Transformed counts, fixed gene choice | ComplexHeatmap [2] | Automatic variable-feature heatmap; selection/scaling explicitly labeled |
+| Per-gene box/violin plus individual or paired points | Are effects consistent across biological samples? Normalized measurements and donor roster | Standard model-compatible plots | Automatic distributions and individual feature values; no paired effect inferred by the plot |
+| Method overlap matrix / UpSet and effect-effect scatter | Which results survive DESeq2, edgeR and limma choices? Full comparable result families | UpSet [3]; method-agreement tables | Automatic call-pattern heatmap/counts and effect scatter; overlap is not an FDR procedure |
 | Splice-junction sashimi and transcript-usage plots | Does regulation affect isoforms rather than total gene abundance? Junction/transcript evidence | Genome browser/Gviz [4] | New analysis for differential splicing; not inferred from gene DE |
 
 ## 3. Methylation arrays, WGBS, RRBS and capture methylation
@@ -51,12 +59,12 @@ Use the underlying method citation as well as KilnBio's version when publishing.
 | Visualization | Question / required data | Tool or source | KilnBio status |
 |---|---|---|---|
 | M-bias/read-position methylation | Does conversion/calling vary along reads? Bismark/MethylDackel output | Pinned methylseq docs | Upstream, caller-dependent |
-| CpG depth and methylation-fraction distributions | How much of the methylome is callable? Modified/total counts | methylKit [5]; processing reports | Upstream summaries; general downstream display is Extension |
+| CpG depth and methylation-fraction distributions | How much of the methylome is callable? Modified/total counts | methylKit [5]; processing reports | Automatic count/fraction/depth report and upstream summaries |
 | Conversion/control and CpG/CHG/CHH QC | Are chemistry and controls behaving appropriately? Assay-specific controls | Pinned methylseq docs | Upstream when supplied; non-CpG signal is not a universal conversion control |
-| CpG/DMR effect versus evidence; Manhattan and QQ plots | Where are differential sites/regions, and how calibrated are tests? Complete tested table | methylKit [5]; DSS/dmrseq outputs | Extension |
-| DMR locus tracks with per-sample fraction and depth | Is the region supported by several covered CpGs and donors? Coordinates/counts/annotation | Gviz [4], pyGenomeTracks [6] | Extension |
+| CpG/DMR effect versus evidence; Manhattan and QQ plots | Where are differential sites/regions, and how calibrated are tests? Complete tested table | methylKit [5]; DSS/dmrseq outputs | Automatic when the fitted table has the required columns |
+| DMR locus tracks with per-sample fraction and depth | Is the region supported by several covered CpGs and donors? Coordinates/counts/annotation | Gviz [4], pyGenomeTracks [6] | Automatic bounded sample fraction/depth locus view; annotations require additional input |
 | Promoter/enhancer/gene-body annotation summaries | Where do DMRs fall relative to a frozen annotation? Genome-matched intervals | Genomic annotation tools | Extension; use an appropriate measured-region background |
-| CpG/DMR-by-sample heatmaps | Is change consistent across samples? M/beta values or covered count estimates | ComplexHeatmap [2] | Extension; avoid equating missing coverage with zero methylation |
+| CpG/DMR-by-sample heatmaps | Is change consistent across samples? M/beta values or covered count estimates | ComplexHeatmap [2] | Automatic fraction/depth matrix report; missing coverage remains missing |
 | Methylation pathway evidence | Which functions are implicated after accounting for measurement bias? Valid upstream tests | GOmeth/GOregion [7] for arrays; reviewed sequencing methods | Automatic comparison/report from imported valid pathway tests; upstream bias-aware adapter remains Extension |
 
 GOmeth/GOregion explicitly address methylation-array probe/gene biases and
@@ -71,9 +79,9 @@ unqualified overrepresentation analysis is not the default recommendation.
 | Fragment lengths / nucleosomal periodicity | Does ATAC library structure look plausible? Paired-end fragments | Pinned atacseq docs | Upstream |
 | TSS enrichment and signal heatmap/metaprofile | Is accessible or bound signal concentrated at relevant regions? BigWig/BAM plus fixed regions | deepTools [8], ChIPseeker [9] | Upstream configured QC; reusable arbitrary-region report is Extension |
 | FRiP, enrichment, complexity and replicate QC | Which libraries support peak analysis? Assay-specific metrics | MultiQC [1]; pinned ATAC/ChIP workflows | Upstream, enabled steps |
-| Peak width, annotation and TSS-distance distributions | Do narrow/broad calls suit the assay and mark? BED/narrowPeak/broadPeak | ChIPseeker [9] | Extension |
+| Peak width, annotation and TSS-distance distributions | Do narrow/broad calls suit the assay and mark? BED/narrowPeak/broadPeak | ChIPseeker [9] | Automatic BED width/contig/interval geometry when BED outputs are available; annotation and TSS distance require a supplied annotation |
 | Replicate/caller overlaps and concordance | How sensitive is the peak set to callers? Harmonized genomic intervals | Intervene [10], UpSet [3] | Existing comparison tables; automatic plots are Extension |
-| Differential accessibility/binding volcano, MA and sample heatmaps | Which regions change under the specified design? Consensus count matrix and fit | `de`; upstream workflow | Existing volcano/PCA where count-based DE is used; additional views are Extension |
+| Differential accessibility/binding volcano, MA and sample heatmaps | Which regions change under the specified design? Consensus count matrix and fit | `de`; upstream workflow | Automatic differential report: volcano, MA, QQ, PCA and sample/feature heatmaps |
 | Stacked locus tracks across ATAC, ChIP, methylation and RNA | Do measurements support the same regulatory hypothesis? Same genome build and declared scaling | pyGenomeTracks [6], Gviz [4] | Extension |
 | Motif enrichment and motif activity heatmaps | Are TF motifs enriched or varying? Sequences or motif-deviation model | Signac [11] and reviewed motif tools | New analysis; accessible motif is not proof of TF binding |
 | Footprints and enhancer–gene links | Where is protection or regulatory association supported? Bias-corrected cuts / link evidence | Signac [11]; dedicated models | New analysis; distance alone is not a validated enhancer–gene link |
@@ -83,9 +91,9 @@ unqualified overrepresentation analysis is not the default recommendation.
 
 | Visualization | Question / required data | Tool or source | KilnBio status |
 |---|---|---|---|
-| NPX distributions, plate/control effects, detection rates | Are Olink measurements comparable and measurable? Delivered NPX/QC/LOD metadata | OlinkAnalyze official docs [13] | Existing import/audit tables; plots are Extension |
+| NPX distributions, plate/control effects, detection rates | Are Olink measurements comparable and measurable? Delivered NPX/QC/LOD metadata | OlinkAnalyze official docs [13] | Automatic NPX matrix QC, detection/QC flags and metadata-association views |
 | Protein/peptide missingness and CV plots | Does identification or quantification vary by sample/batch? Quantification and QC metadata | MSstats [14] | Extension; raw MS processing is not implied |
-| Protein volcano, sample PCA and abundance heatmaps | Which proteins change? Fitted abundance model and matrix | limma/MSstats [14] | General pathway/evidence reports Automatic; protein-specific QC adapter Extension |
+| Protein volcano, sample PCA and abundance heatmaps | Which proteins change? Fitted abundance model and matrix | limma/MSstats [14] | Automatic per-layer differential/matrix QC and pathway/evidence reports |
 | RNA–protein effect scatter and discordance panels | Is transcription reflected in protein change? Matched eligible features and compatible contrasts | Paired result tables | Automatic directional concordance; effect-size scatter Extension |
 | Peptide-to-protein or phosphosite-to-protein views | Which measurements support the protein result? Peptide/site mapping and parent abundance | MSstats family; reviewed PTM workflows | New analysis / Extension |
 | Chromatograms, mass-error and peak-identification views | Is the measured molecule correctly identified? Raw MS and feature identification data | MetaboAnalyst 6.0 [15] | New analysis; not part of current KilnBio raw-processing support |
@@ -95,10 +103,10 @@ unqualified overrepresentation analysis is not the default recommendation.
 
 | Visualization | Question / required data | Tool or source | KilnBio status |
 |---|---|---|---|
-| UMI/gene/mitochondrial QC violin and scatter | Which cells pass prespecified QC? Cell metrics | Scanpy [17] | Existing QC tables; additional QC plots Extension |
-| UMAP colored by cluster and sample | What structure is visible? Fitted neighborhood graph/embedding | Scanpy [17] | Existing `scrna` automatic UMAP |
-| Marker dotplots, stacked violin and cell-by-gene heatmaps | What supports cell annotation? Expression, marker model and cell labels | Scanpy [17], ComplexHeatmap [2] | Extension |
-| Donor-by-cell-type composition and pseudobulk contrasts | Is a difference compositional or within cell type? Donor IDs and cell labels | Existing pseudobulk route | Extension figures; cells cannot replace independent donors |
+| UMI/gene/mitochondrial QC violin and scatter | Which cells pass prespecified QC? Cell metrics | Scanpy [17] | Automatic QC distributions and complexity scatter |
+| UMAP colored by cluster and sample | What structure is visible? Fitted neighborhood graph/embedding | Scanpy [17] | Automatic recorded UMAP by cluster, sample and QC metrics |
+| Marker dotplots, stacked violin and cell-by-gene heatmaps | What supports cell annotation? Expression, marker model and cell labels | Scanpy [17], ComplexHeatmap [2] | Automatic descriptive expression/detection dotplot; tested markers/trajectory models remain separate |
+| Donor-by-cell-type composition and pseudobulk contrasts | Is a difference compositional or within cell type? Donor IDs and cell labels | Existing pseudobulk route | Automatic per-cell-type pseudobulk QC and cell composition; cells cannot replace independent donors |
 | Paired RNA/ATAC embeddings and coverage tracks | How do modalities align at cell or population level? Truly paired/mapped modalities | Signac [11], MOFA+ [18] | New analysis beyond current 10x RNA route |
 | Trajectories and RNA velocity streamlines | Is a temporal/dynamical hypothesis supported? Fitted trajectory; spliced/unspliced data for velocity | scVelo [19] | New analysis; an attractive UMAP is not evidence of lineage |
 | Ligand–receptor dotplots and communication networks | Which cell populations have compatible signaling evidence? Appropriate expression/spatial model | LIANA+ (2024) [20] | New analysis; inferred communication remains a model output |
@@ -108,15 +116,15 @@ unqualified overrepresentation analysis is not the default recommendation.
 
 | Visualization | Question / required data | Tool or source | KilnBio status |
 |---|---|---|---|
-| Capture coverage and callable-target summaries | Which targets could the experiment evaluate? Coverage/BED/callability | Existing capture/exome QC interfaces | Existing tables; coverage dashboards Extension |
-| VAF/depth/quality distributions | Which variants have convincing read evidence? Variant calls and supporting metrics | maftools [22] / caller QC | Extension; low VAF alone does not establish CH |
-| Oncoprint, mutation burden and co-occurrence maps | What is the cohort mutation landscape? Somatic MAF plus callable denominator | maftools [22] | Extension; germline and somatic interpretations differ |
-| Protein-position lollipop and domain tracks | Where do variants affect protein sequence? Transcript-specific annotations | maftools [22] | Extension |
+| Capture coverage and callable-target summaries | Which targets could the experiment evaluate? Coverage/BED/callability | Existing capture/exome QC interfaces | Automatic capture geometry, feature status and recorded coverage metrics |
+| VAF/depth/quality distributions | Which variants have convincing read evidence? Variant calls and supporting metrics | maftools [22] / caller QC | Automatic VAF/depth/alternate-count report; low VAF alone does not establish CH |
+| Oncoprint, mutation burden and co-occurrence maps | What is the cohort mutation landscape? Somatic MAF plus callable denominator | maftools [22] | Automatic reviewed genomic-state oncoprint; mutation burden/co-occurrence require suitable callable denominators and models |
+| Protein-position lollipop and domain tracks | Where do variants affect protein sequence? Transcript-specific annotations | maftools [22] | Automatic mapped positions/model spans from AlphaFold lookup; domains require separate annotations |
 | CNV segments, structural-variant arcs and read evidence | Which genomic alterations are supported? Suitable caller output and alignments | Genome browser/Gviz [4] | New analysis for unsupported callers; annotation is not variant calling |
 | Variant–RNA–chromatin–protein evidence panels | What functional context surrounds an alteration? Reviewed links and harmonized coordinates | Gviz [4], pyGenomeTracks [6], pathway reports | Extension locus view; shared pathway evidence Automatic |
 | Nanopore length/quality/yield plots | Are long reads suitable? FASTQ/BAM/run metadata | NanoPack [23] | Extension visualization adapter |
-| 5mC/5hmC fraction/depth and haplotype tracks | Which modification is measured, and with what support? Chemistry-aware count/BAM tags | Existing modification import; locus tools | Extension; do not label joint modC as resolved 5mC/5hmC |
-| Biomodal chemistry/control and genomic coverage views | Do duet +modC/evoC outputs support the requested quantity? Provider outputs and chemistry labels | Existing import/QC schemas | Extension figures; different chemistries remain distinct |
+| 5mC/5hmC fraction/depth and haplotype tracks | Which modification is measured, and with what support? Chemistry-aware count/BAM tags | Existing modification import; locus tools | Automatic channel-specific fraction/depth and locus views; haplotype inference requires extra analysis |
+| Biomodal chemistry/control and genomic coverage views | Do duet +modC/evoC outputs support the requested quantity? Provider outputs and chemistry labels | Existing import/QC schemas | Automatic canonical count/QC report; different chemistries remain distinct |
 
 ## 8. Integrated evidence and validation
 
@@ -126,10 +134,10 @@ unqualified overrepresentation analysis is not the default recommendation.
 | Joint ranking with measured-layer count | Which candidates have adjusted joint evidence? Partial conjunction + BY | `multiomic-meta` [24,25] | Automatic |
 | Pairwise concordance and coverage patterns | How much evidence is shared versus absent? Complete declared family | `multiomic-meta`; set principles [3] | Automatic |
 | Leave-one-assay-out rank sensitivity | Which rankings depend on an assay? Fixed r and common testable family | `multiomic-meta` | Automatic when estimable |
-| Matched-versus-available cohort and eligibility diagrams | Is an apparent gain caused by changing patients/features? Explicit rosters | Existing assay-audit/compare-assays | Existing tables; general automatic diagram Extension |
+| Matched-versus-available cohort and eligibility diagrams | Is an apparent gain caused by changing patients/features? Explicit rosters | Existing assay-audit/compare-assays | Automatic availability/eligibility and recorded policy-comparison views |
 | Shared and assay-specific latent factor loadings/variance | What structure is shared or modality-specific? Fitted joint model | MOFA+ [18], mixOmics [26] | New analysis; no causal technical/biological decomposition from a plot |
 | Selection stability across resampling or methods | Which targets are reproducible? Proper repeated fitting | Model-specific resampling | Extension; correlated callers are not independent votes |
-| Held-out yield curves and uncertainty intervals | Does integration improve follow-up performance? Independent prespecified endpoints | Existing glioma/Quartet recipe plots | Existing recipe; general report adapter Extension |
+| Held-out yield curves and uncertainty intervals | Does integration improve follow-up performance? Independent prespecified endpoints | Existing glioma/Quartet recipe plots | Existing recipes plus automatic supplied comparison intervals and prediction/residual plots |
 | ROC/precision–recall, calibration and error by subgroup | Does a biomarker predict reliably on new subjects? Held-out predictions and labels | Model-validation diagnostics | New analysis/Extension; train/test leakage invalidates the interpretation |
 | Forest and funnel plots for study meta-analysis | Are compatible effects consistent across cohorts? Effect estimates, SEs and a study-level model | Conventional fixed/random-effects analysis | New analysis; not the current `multiomic-meta` test |
 
@@ -137,10 +145,10 @@ unqualified overrepresentation analysis is not the default recommendation.
 
 | Visualization | Question / required data | Tool or source | KilnBio status |
 |---|---|---|---|
-| Model-feature coverage and missing-input heatmap | Can this assay score the requested clock? Model CpGs/features and measured roster | Existing clock/coverage interfaces | Existing tables; automatic figures Extension |
-| Predicted versus chronological age with identity line | Is a clock calibrated in this population? Scores and known ages | Model validation | Extension; report tissue/range and held-out error |
+| Model-feature coverage and missing-input heatmap | Can this assay score the requested clock? Model CpGs/features and measured roster | Existing clock/coverage interfaces | Automatic score/feature-coverage and missingness reports |
+| Predicted versus chronological age with identity line | Is a clock calibrated in this population? Scores and known ages | Model validation | Automatic clock-panel for age-valued models and supplied age metadata; study independence remains explicit |
 | Age-acceleration residuals and covariate plots | Which differences remain after the declared adjustment? Explicit fitted model | Model validation | New analysis / Extension |
-| Clock-to-clock agreement and subgroup errors | Are clocks measuring consistent quantities? Compatible scores and cohorts | Comparative validation | Extension; units differ for pace versus age |
+| Clock-to-clock agreement and subgroup errors | Are clocks measuring consistent quantities? Compatible scores and cohorts | Comparative validation | Automatic score correlation; subgroup validation requires appropriate held-out records |
 | Paired reprogramming trajectories | Does a score change within donors over treatment/time? Repeated specimens and model | Existing EpiDiff/lineage interfaces | Extension; score changes do not by themselves establish rejuvenation |
 
 ## 10. 16S and microbiome: a separate future route

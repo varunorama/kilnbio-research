@@ -3,6 +3,7 @@ import base64
 import hashlib
 import html
 import json
+import shutil
 from pathlib import Path
 
 import matplotlib
@@ -31,6 +32,7 @@ class Report:
         (self.out/'figures').mkdir()
         (self.out/'plotted_data').mkdir()
         self.title, self.notes, self.panels = title, notes, []
+        self.links = []
         self.pdf = PdfPages(self.out/'visualizations.pdf', metadata={
             'Title': title, 'CreationDate': None, 'ModDate': None})
 
@@ -54,6 +56,8 @@ class Report:
                 '<style>body{font:16px system-ui,sans-serif;max-width:1150px;margin:2rem auto;padding:0 1rem;color:#182b3a;background:#fafbfc}section{background:white;padding:1.3rem;margin:1rem 0;border:1px solid #dce2e7;border-radius:8px}img{max-width:100%;height:auto}p{line-height:1.55}a{color:#2166ac}h1,h2{line-height:1.2}</style>',
                 '<title>'+html.escape(self.title)+'</title><h1>'+html.escape(self.title)+'</h1>']
         body.extend('<p>'+html.escape(n)+'</p>' for n in self.notes)
+        for label,target in self.links:
+            body.append('<p><a href="'+html.escape(target,quote=True)+'">'+html.escape(label)+'</a></p>')
         body.append('<p><a href="visualizations.pdf">All figures (PDF)</a> | <a href="visualization.json">Report provenance</a></p>')
         for name, caption in self.panels:
             encoded = base64.b64encode((self.out/'figures'/f'{name}.png').read_bytes()).decode('ascii')
@@ -180,4 +184,10 @@ def enrichment_report(out, cfg):
     ax.set_title('Leading-edge membership: top 35 shared genes')
     long=pd.DataFrame([dict(pathway=n,gene=g,leading_edge=1) for n,s in edge.items() for g in sorted(s)],columns=['pathway','gene','leading_edge'])
     report.add('leading_edge',fig,'Blue indicates leading-edge membership; white is absence from that leading edge, not a negative gene effect. The TSV includes all leading-edge genes in the displayed pathways.',long)
+    report.links.append(('Native fgsea curves (vector PDF)','enrichment-curves.pdf'))
+    for path in sorted(out.glob('enrichment_curve_*.png')):
+        fig,ax=plt.subplots(figsize=(9,6),layout='constrained');ax.imshow(plt.imread(path));ax.axis('off')
+        report.add(path.stem,fig,'Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves.',pd.read_csv(path.with_suffix('.tsv'),sep='\t'))
+        shutil.copyfile(path,out/'figures'/path.name)
+        shutil.copyfile(path.with_suffix('.svg'),out/'figures'/path.with_suffix('.svg').name)
     report.finish(dict(top_n=25,leading_edge_max_genes=35,alpha=cfg['fdr'],gmt=Path(cfg['gmt']).name))

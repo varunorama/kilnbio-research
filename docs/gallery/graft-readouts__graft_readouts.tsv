@@ -1,0 +1,4 @@
+predictor	median_outcome	enrolled_recipients	measured_recipients
+0.2	20	4	3
+0.5	30	5	5
+0.8	35	4	4

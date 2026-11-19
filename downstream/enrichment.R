@@ -13,7 +13,12 @@ grDevices::pdf(file.path(out,'enrichment-curves.pdf'),width=9,height=6)
 curve_rows<-head(order(result$padj,result$pathway,na.last=NA),6)
 if(!length(curve_rows)){plot.new();text(.5,.5,'No finite adjusted pathway p-values for enrichment curves')}
 for(i in curve_rows) {
-  print(fgsea::plotEnrichment(sets[[result$pathway[i]]],ranks)+ggplot2::labs(title=result$pathway[i]))
+  curve <- fgsea::plotEnrichment(sets[[result$pathway[i]]],ranks)+ggplot2::labs(title=result$pathway[i])
+  print(curve)
+  stem <- paste0('enrichment_curve_',i)
+  ggplot2::ggsave(file.path(out,paste0(stem,'.png')),curve,width=9,height=6,dpi=160)
+  ggplot2::ggsave(file.path(out,paste0(stem,'.svg')),curve,width=9,height=6,device=grDevices::svg)
+  write.table(data.frame(gene=names(ranks),rank=seq_along(ranks),statistic=as.numeric(ranks),in_set=names(ranks)%in%sets[[result$pathway[i]]]),file.path(out,paste0(stem,'.tsv')),sep='\t',row.names=FALSE,quote=FALSE)
 }
 grDevices::dev.off()
 result$leadingEdge<-vapply(result$leadingEdge,paste,collapse=';',character(1))

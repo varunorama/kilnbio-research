@@ -1,0 +1,5 @@
+metric	value
+samples	8
+assays	80
+scale	NPX log2
+data	synthetic renderer fixture

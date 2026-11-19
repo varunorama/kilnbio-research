@@ -1,0 +1,13 @@
+gene	removed	p_full	p_without	rank_full_common	rank_without_common	rank_gain_with_assay
+SYN1	RNA	0.0004	0.00030000000000000003	1.0	1.0	0.0
+SYN2	RNA	0.002	1.0	2.0	3.5	1.5
+SYN3	RNA	1.0	1.0	4.0	3.5	-0.5
+SYN5	RNA	0.4	0.2	3.0	2.0	-1.0
+SYN1	protein	0.0004	0.00030000000000000003	1.0	1.0	0.0
+SYN2	protein	0.002	0.001	2.0	2.0	0.0
+SYN3	protein	1.0	1.0	4.0	4.0	0.0
+SYN5	protein	0.4	0.2	3.0	3.0	0.0
+SYN1	methylation	0.0004	0.0002	1.0	1.0	0.0
+SYN2	methylation	0.002	1.0	2.0	3.5	1.5
+SYN3	methylation	1.0	1.0	4.0	3.5	-0.5
+SYN5	methylation	0.4	0.2	3.0	2.0	-1.0

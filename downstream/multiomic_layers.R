@@ -69,7 +69,9 @@ run_layers <- function(config_path, out) {
       keep <- edgeR::filterByExpr(y,design=design)
       if (sum(keep)<2) stop("Too few expressed count features")
       y <- edgeR::calcNormFactors(y[keep,,keep.lib.sizes=FALSE])
-      v <- limma::voom(y,design,plot=FALSE)
+      pdf(file.path(stage,paste0(layer$name,"_voom.pdf")))
+      v <- limma::voom(y,design,plot=TRUE)
+      dev.off()
       fit <- limma::eBayes(limma::lmFit(v,design))
     } else {
       if (!scale %in% c("beta","mvalue","log2")) stop("Supported scales: counts, beta, mvalue, log2")
@@ -85,6 +87,10 @@ run_layers <- function(config_path, out) {
     result$effect[keep] <- fit$coefficients[,coef]
     result$p[keep] <- pmax(fit$p.value[,coef],1e-300)
     write(result,paste0(layer$name,".tsv"))
+    display <- if(scale=="counts") v$E else raw[keep,,drop=FALSE]
+    write(data.frame(feature=rownames(display),display,check.names=FALSE),paste0(layer$name,"_display.tsv"))
+    display_meta <- cbind(data.frame(sample=sp$specimen),design_data)
+    write(display_meta,paste0(layer$name,"_samples.tsv"))
     fmap <- layer$feature_map
     if (!identical(fmap,"identity")) {
       map <- read(fmap)

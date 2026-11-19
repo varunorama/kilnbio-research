@@ -25,6 +25,7 @@ PROFILES = {
     "assistant": [],
 }
 REQUIREMENTS = {
+    "core": "environments/report-requirements.txt",
     "analysis": "environments/multiomic-requirements.txt",
     "singlecell": "environments/analysis-requirements.txt",
     "assistant": "assistants/requirements.txt",

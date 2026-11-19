@@ -3,6 +3,14 @@
 set -Eeuo pipefail
 trap 'printf "ERROR: launcher failed at line %s\n" "$LINENO" >&2' ERR
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+# Reports are part of a successful command, including commands started by study/MCP.
+# Do not wrap study itself: each child command must generate its own report.
+if [[ ${KILNBIO_REPORT_WRAPPED:-} != "${1:-}" ]]; then
+  case "${1:-}" in
+    variant-annotations|alphafold|vep-annotate|alphagenome|multiomic-layers|genomic-associate|differential-compare|compare-assays|featurecounts|spikein-factors|de|dm|scrna|pseudobulk|import-mods|ont|wgbs|rrbs|atacseq|chipseq|rnaseq|scrnaseq|exome|ch-somatic|olink-import|ch-screen|ch-import|capture-panel|genomic-panel|method-agreement|assay-audit|candidate-evidence|compare-predictions|clock-panel|clocks|assay-clocks|epidiff-coverage|erythroid-stage|graft-readouts|bladder-example|decision-methods)
+      exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/auto_reports.py" "$@" ;;
+  esac
+fi
 # Direct scientific modules share the installed entry point. They do not call nf-core.
 case "${1:-}" in
   decision-methods) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/decision_methods.py" "$@" ;;

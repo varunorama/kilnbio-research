@@ -1,0 +1,12 @@
+metric	value
+donors	8
+patterns.both	5
+patterns.base_only	2
+patterns.add_only	1
+patterns.neither	0
+base_reach	7
+combined_reach	5
+both_scored.n	5
+both_scored.base_mae	2
+both_scored.policy_mae	1.5
+both_scored.gain	0.5

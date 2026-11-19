@@ -1,32 +1,91 @@
 # Automatic analysis reports
 
-KilnBio writes figures as part of `multiomic-meta`, `enrich` and `pathway-compare`.
-No separate plotting command, notebook or assistant is required. Reports run
-locally and make no LLM calls or external network requests.
+The `kilnbio` launcher generates reports after successful analyses, including
+commands launched by `study` or the assistant connector. Every installation
+profile includes NumPy, pandas and Matplotlib. Install the analysis-specific
+dependencies using the relevant setup profile. Existing installed bundles must
+be updated from this checkout; archived releases retain their original behavior.
 
-Install the analysis dependencies with `bash setup.sh --profile analysis`.
-Rerun setup from the updated checkout to install this version; an older installed
-bundle will retain its original behavior. Existing runs and archived releases
-are not rewritten.
+## Browse examples
+
+The [gallery](gallery/README.md) shows labeled, synthetic examples of the report
+panels with downloadable plotted values. Recreate the fixtures and their full
+HTML/PDF reports in the singlecell environment (which includes analysis dependencies):
+
+```bash
+python examples/visualizations/make_gallery.py NEW_GALLERY --with-enrichment
+```
+
+These plotting fixtures are separate from end-to-end validation. The validation
+record reports which real model fits and command boundaries were exercised.
 
 ## What is generated automatically
 
-| Command | Figures | What to open |
+| Commands | Required measured outputs | Automatic figures |
 |---|---|---|
-| `multiomic-meta` | Gene-by-assay directional evidence; joint ranking; pairwise concordance counts; measurement patterns; leave-one-assay-out rank sensitivity | `NEW_OUTPUT/report.html` |
-| `enrich` | Pathway NES ranking; leading-edge gene membership; up to six fgsea running enrichment curves | `NEW_OUTPUT/report.html` and `enrichment-curves.pdf` |
-| `pathway-compare` | Pathway-by-assay evidence; measured pathway coverage; shared versus assay-specific contributing genes; pathway overlap network | `NEW_OUTPUT/report.html` |
+| `de` (RNA, ATAC or ChIP counts) | Fitted DESeq2/edgeR tables and transformed matrix | Volcano, MA/MD, p-value QQ, annotated PCA, sample correlation, distributions, missingness, variable-feature heatmap and individual values; native dispersion/QL diagnostic PDF |
+| `dm` | DSS/dmrseq results, retained modification fractions and depths | Evidence and genomic-location plots when columns exist, QQ, sample QC/heatmap, depth distributions, per-sample locus fraction/depth; no locus tests fabricated from region-only results |
+| `multiomic-layers` | Each fitted count/log2/beta/M-value layer | Per-layer evidence and matrix QC; voom mean-variance PDF for count layers |
+| `differential-compare`, `method-agreement` | Comparable method effect/q columns | Directional call heatmap, exclusive call-pattern counts, effect-effect scatter; differential comparison also has input-matrix QC and eligibility counts |
+| `olink-import` | NPX, sample metadata, measurement QC | NPX distributions/PCA/correlation/heatmap, missingness, QC/detection flags and metadata-association diagnostics |
+| `scrna` | Cell QC and fitted AnnData embedding | Cell counts/genes/mitochondrial distributions, complexity scatter, UMAP by cluster/sample/QC, cluster composition, descriptive expression/detection dotplot |
+| `pseudobulk` | Reviewed cell types and donor-level count matrices | Per-cell-type matrix QC, PCA, correlation, variable-feature heatmap; excluded group cell counts |
+| `featurecounts` | Count matrix | Count-library display QC, PCA, correlation and feature views |
+| `import-mods`, `ont` | Canonical counts or completed modkit output | Modification-channel fraction/depth distributions and locus views, with chemistry and coordinate scope |
+| `capture-panel` | Target BED; optional features and alignment-depth summary | Target widths/contigs/intervals, on-target feature status, coverage metrics with original units |
+| `genomic-panel`, `genomic-associate` | Reviewed variant states; fitted association results | State distribution/oncoprint, linked assay states and association evidence |
+| `ch-screen`, `ch-import` | Variant and sample audit tables | VAF/depth/alternate-count distributions, gene/candidate/review counts and declared sample states |
+| `variant-annotations`, `vep-annotate` | Completed annotation tables/VCF | Annotation match/missingness counts; VEP transcript consequence, impact and biotype distributions |
+| `alphafold`, `alphagenome` | Completed lookup/prediction outputs | Mapping/confidence/protein-position views or provider score distributions; reporting itself makes no API calls |
+| `clocks score`, `assay-clocks score`, `clock-panel`, `erythroid-stage` | Completed scores and coverage; optional age metadata | Separate score distributions, score correlations, feature coverage, chronological-age comparison only for explicitly age-valued models; recorded stage validation predictions |
+| `compare-assays`, `compare-predictions` | Held-out predictions and recorded intervals | Observed/predicted scatter, residuals and supplied comparison uncertainty |
+| `assay-audit`, `candidate-evidence`, `epidiff-coverage` | Completed audit/confirmation records | Donor availability and policy comparisons, candidate confirmation heatmap, recorded denominators/coverage metrics |
+| `spikein-factors`, `graft-readouts` | Reference counts or lot-level measurements | Reference/target exposure and factor distributions; lot-level predictor, outcome and recipient denominators |
+| `bladder-example` | Completed recipe rankings and transitions | Candidate rank changes, shortlist changes and recipe denominators |
+| `decision-methods` | Completed method JSON | Recorded method metrics; array-specific views depend on the returned data (see report availability) |
+| `multiomic-meta` | Complete directional gene-layer evidence | Evidence heatmap, joint ranking, concordance, measured patterns and fixed-r leave-one-assay-out rank sensitivity |
+| `enrich` | Complete signed ranking and frozen GMT | NES ranking, leading-edge membership and native fgsea enrichment curves |
+| `pathway-compare` | Complete valid pathway tests and assay backgrounds | Pathway-by-assay evidence, measurement coverage, shared/assay-specific contributing genes and pathway overlap network |
+| `rnaseq`, `scrnaseq`, `atacseq`, `chipseq`, `wgbs`, `rrbs`, `exome`, `ch-somatic` | Completed pinned workflow | Index and links to its actual FastQC/MultiQC/other native QC reports; enabled upstream steps determine the detailed panels |
 
-Each report also includes a multipage `visualizations.pdf`, individual SVG and
-PNG files in `figures/`, data in `plotted_data/`, and `visualization.json` with
-captions, display choices, software versions, source hash and artifact hashes.
-The HTML embeds its images and works offline. Keep the output folder together
-to retain its downloadable TSV/PDF/SVG links. Nothing is uploaded by the report.
+Management commands, downloads, catalog listing and dry runs do not fabricate
+biological reports. An optional model's planning command is also not execution.
+Native upstream reports remain authoritative for FASTQ/alignment/caller QC.
 
-Existing `de` output includes `results/QC.pdf`; `scrna` includes its exploratory
-UMAP. FASTQ workflows have their upstream QC reports. The [visualization
-review](VISUALIZATION_REVIEW.md) distinguishes those outputs from additional
-visualizations that require future adapters or fitted models.
+## Output locations and reproducibility
+
+For a directory-producing analysis, open `OUTPUT/visualization/report.html`.
+For a file-producing analysis, open `RESULT_FILE.visualization/report.html`.
+`multiomic-meta`, `enrich` and `pathway-compare` keep `OUTPUT/report.html`.
+Each report has a multipage `visualizations.pdf`, individual PNG/SVG files,
+plotted TSVs and a `visualization.json` receipt with captions, software/source
+identities and artifact hashes. Native model PDFs are linked from the report.
+Keep the whole folder together for the downloads and relative links to work.
+
+Reports run offline. They do not change test statistics, significance thresholds,
+normalization, nominations or model selection. Study receipts automatically hash
+the new report assets. A changed figure invalidates verified resume. A failed
+report returns a failed command and preserves analysis outputs and a failure
+receipt. Resumed upstream runs create a numbered report instead of overwriting
+an earlier one. The launcher prints the new report path.
+
+## Display limits and interpretation
+
+Large-table views read at most 100,000 rows, recorded in the receipt; they are
+bounded views, not whole-genome summaries. Matrices use up to 300 sample columns,
+60 for the correlation/boxplot display, 2,000 complete variable features for PCA,
+and 30 for the feature heatmap. Single-cell embeddings/dotplots display up to
+10,000 retained cells. Methylation inference retains all eligible loci while
+the exported display matrix contains the first 100,000 eligible loci. The scope
+table records both counts. No random sampling or missing-value imputation is
+hidden in these views. Report captions identify display-only transformations.
+
+Variable features are selected for visualization, not reported as statistically
+validated markers. Method overlap is descriptive; it is not a replacement for
+FDR control. Scores in years, pace and risk retain separate units. Annotation
+absence is not evidence of a benign allele. A CH candidate remains a research
+candidate. Trajectories, velocity, spatial inference, CNV/SV calling, raw mass
+spectrometry and 16S require analyses that these reporting changes do not add.
 
 ## A complete synthetic example
 

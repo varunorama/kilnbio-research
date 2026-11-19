@@ -151,6 +151,13 @@ def execute(config, output, dry_run=False, resume=False):
             attempt=int(record.get('attempt',0))+1
             log=out/'logs'/(ident+f'.{attempt}.log')
             argv=['bash',str(ROOT/'run.sh'),step['command'],*step['args']]
+            from auto_reports import output_for, SUPPORTED
+            if step['command'] in SUPPORTED:
+                target=output_for(step['command'],step['args'])
+                if target is not None and any(target==(out/n).resolve() for n in step['outputs']):
+                    # File-producing commands need their step directory; directory-producing
+                    # analyses deliberately require a new destination and create it themselves.
+                    target.parent.mkdir(parents=True,exist_ok=True)
             print('Running '+ident+' ('+step['command']+'); log: '+str(log),flush=True)
             record={'status':'running','attempt':attempt,'started_utc':stamp(),'argv':argv,'log':str(log.relative_to(out))}
             state['steps'][ident]=record;state['status']='running';save(oldfile,state)
@@ -164,6 +171,18 @@ def execute(config, output, dry_run=False, resume=False):
                 if not path.is_file() or out not in path.resolve().parents:
                     raise ValueError('Missing or external output: '+name)
                 outputs[name]=digest(path)
+            # Include automatic report assets even when the user's step lists only tables.
+            reports=set((out/ident).glob('visualization*/visualization.json'))
+            for name in step['outputs']:
+                path=out/name
+                reports.update(path.parent.glob('visualization*/visualization.json'))
+                reports.update(path.parent.glob(path.name+'.visualization*/visualization.json'))
+            for receipt in sorted(reports):
+                if out not in receipt.resolve().parents:raise ValueError('External report receipt')
+                for asset in receipt.parent.rglob('*'):
+                    if asset.is_file():
+                        if out not in asset.resolve().parents:raise ValueError('External report asset')
+                        outputs[str(asset.relative_to(out))]=digest(asset)
             record.update(status='complete',finished_utc=stamp(),outputs_sha256=outputs)
             save(oldfile,state)
             print('Completed '+ident,flush=True)
