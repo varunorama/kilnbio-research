@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from analysis_visualizations import Builder, methods, loci, predictions, record_table, intervals, numbers
 from visual_reports import canvas, matrix, empty, BLUE, ORANGE, MISSING
+from plot_design import PALETTE
 
 
 def option(args,flag,default=None):
@@ -93,12 +94,12 @@ def singlecell(b,root):
                 else:
                     cats=s.astype(str)
                     for i,name in enumerate(sorted(cats.unique())):
-                        k=(cats==name).to_numpy();ax.scatter(xy[k,0],xy[k,1],s=3,label=name,color=plt.get_cmap('tab20')(i%20))
+                        k=(cats==name).to_numpy();ax.scatter(xy[k,0],xy[k,1],s=8,label=f'{name} (n={int(k.sum()):,})',color=PALETTE[i%len(PALETTE)],alpha=.7,edgecolors='none')
                     if cats.nunique()<=20:ax.legend(fontsize=7,markerscale=3)
                 ax.set_xlabel('UMAP 1');ax.set_ylabel('UMAP 2');ax.set_title('Recorded UMAP / '+c)
                 b.add('umap_'+c,fig,'Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types.',pd.DataFrame({'cell':obs.index,'UMAP1':xy[:,0],'UMAP2':xy[:,1],c:s.to_numpy()}))
         if {'sample','leiden'}<=set(obs):
-            ct=pd.crosstab(obs['sample'],obs['leiden'],normalize='index');fig,ax=canvas(len(ct),10);ct.plot.bar(stacked=True,ax=ax,colormap='tab20');ax.set_ylabel('Cell fraction');ax.set_title('Cluster composition by sample')
+            ct=pd.crosstab(obs['sample'],obs['leiden'],normalize='index');fig,ax=canvas(len(ct),10);ct.plot.bar(stacked=True,ax=ax,color=[PALETTE[i%len(PALETTE)] for i in range(len(ct.columns))]);ax.set_ylabel('Cell fraction');ax.set_title('Cluster composition by sample');ax.legend(title='Recorded cluster',loc='upper left',bbox_to_anchor=(1.02,1))
             b.add('cell_composition',fig,'Descriptive fractions among the first 10,000 retained cells. Donors, not individual cells, are the replication unit for comparative inference.',ct.reset_index())
         if 'leiden' in obs and ad.n_vars:
             # Use declared HVGs if available; do not label these as tested marker genes.
@@ -109,8 +110,15 @@ def singlecell(b,root):
             for group in sorted(obs.leiden.astype(str).unique()):
                 take=(obs.leiden.astype(str)==group).to_numpy()
                 for j,gene in enumerate(ad.var_names[ix]):rows.append(dict(cluster=group,gene=str(gene),mean_log_expression=float(np.mean(xx[take,j])),fraction_nonzero=float(np.mean(xx[take,j]>0))))
-            t=pd.DataFrame(rows);gs=list(t.gene.drop_duplicates());cs=list(t.cluster.drop_duplicates());fig,ax=canvas(len(gs),12)
-            im=ax.scatter(t.cluster.map({x:i for i,x in enumerate(cs)}),t.gene.map({x:i for i,x in enumerate(gs)}),s=120*t.fraction_nonzero,c=t.mean_log_expression,cmap='viridis');fig.colorbar(im,ax=ax,label='Mean log-normalized expression');ax.set_xticks(range(len(cs)),cs);ax.set_yticks(range(len(gs)),gs);ax.set_xlabel('Recorded Leiden cluster');ax.set_title('Expression and detection across clusters')
+            t=pd.DataFrame(rows);gs=list(t.gene.drop_duplicates());cs=list(t.cluster.drop_duplicates());fig,ax=canvas(len(gs),max(7.5,min(14,4+len(cs)*.55)))
+            for j in range(len(gs)):
+                if j%2==0:ax.axhspan(j-.5,j+.5,color='#F3F6FA',zorder=0)
+            im=ax.scatter(t.cluster.map({x:i for i,x in enumerate(cs)}),t.gene.map({x:i for i,x in enumerate(gs)}),s=180*t.fraction_nonzero,c=t.mean_log_expression,cmap='viridis',edgecolors='white',linewidths=.6,zorder=3)
+            fig.colorbar(im,ax=ax,label='Mean log-normalized expression',shrink=.65,pad=.04)
+            cn=obs.leiden.astype(str).value_counts();ax.set_xticks(range(len(cs)),[f'{c}\nn={cn[c]:,}' for c in cs]);ax.set_yticks(range(len(gs)),gs)
+            ax.set_xlim(-.6,len(cs)-.4);ax.set_ylim(len(gs)-.5,-.5);ax.set_xlabel('Recorded Leiden cluster');ax.set_title('Expression and detection by cluster')
+            handles=[ax.scatter([],[],s=180*k,color='#637587',edgecolors='white',label=f'{k:.0%}') for k in [.25,.5,.75,1]]
+            ax.legend(handles=handles,title='Cells with a nonzero measurement',ncol=4,loc='upper center',bbox_to_anchor=(.5,-.13),columnspacing=1.4)
             b.add('cell_expression_dotplot',fig,'Dot area is the nonzero fraction; color is mean stored log-normalized expression. First 20 declared variable genes (or genes if flags absent). This is descriptive, not a differential marker test.',t)
     finally:ad.file.close()
 

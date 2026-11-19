@@ -97,6 +97,11 @@ their output folder. Reports include PDF, SVG, PNG and the plotted values as TSV
 example of each KilnBio report panel, its command and its interpretation.
 These examples use **fictional data**, separate from manuscript results.
 
+Each example explains **why it matters** and **how to read it**. Reports use
+consistent spacing, readable legends, explicit missing-data marks, and linked
+evidence/coverage panels. Technical details stay available beneath each figure;
+PNG, vector SVG, PDF and plotted values are available for export.
+
 | Assay QC and differential analysis | Integration, eligibility and validation |
 |---|---|
 | [![Synthetic assay visualization examples](docs/gallery/assays-overview.png)](docs/gallery/README.md) | [![Synthetic integration visualization examples](docs/gallery/integration-overview.png)](docs/gallery/README.md) |

@@ -1,4 +1,7 @@
 pair	both_measured	same	opposite	neutral	not_both
-RNA / protein	4	2	1	1	1
-RNA / methylation	4	3	0	1	1
-protein / methylation	4	2	1	1	1
+RNA / protein	17	12	4	1	7
+RNA / ATAC	17	16	0	1	7
+RNA / methylation	18	14	3	1	6
+protein / ATAC	17	13	3	1	7
+protein / methylation	18	17	0	1	6
+ATAC / methylation	18	15	2	1	6

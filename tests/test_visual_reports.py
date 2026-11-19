@@ -20,6 +20,16 @@ from study import plan
 
 
 class VisualizationTests(unittest.TestCase):
+    def test_matrix_annotations_preserve_scale_label(self):
+        import matplotlib.pyplot as plt
+        from visual_reports import matrix
+        fig,ax=plt.subplots()
+        try:
+            matrix(fig,ax,np.array([[1,.876],[.876,1]]),['A','B'],['A','B'],'Pearson correlation',1)
+            self.assertEqual(fig.axes[-1].get_ylabel(),'Pearson correlation')
+            self.assertIn('0.88',[t.get_text() for t in ax.texts])
+        finally:plt.close(fig)
+
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.p=Path(self.tmp.name)
     def tearDown(self):self.tmp.cleanup()

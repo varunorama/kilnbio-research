@@ -7,833 +7,1190 @@
       "name": "all_features_volcano",
       "image": "de__all_features_volcano.png",
       "data": "de__all_features_volcano.tsv",
-      "caption": "Orange marks supplied adjusted p <= 0.05 for display; the analysis discovery threshold and result table remain authoritative. Effects keep their original units. No adjusted values are inferred when absent."
+      "caption": "Blue/orange mark negative/nonnegative effects with supplied adjusted p <= 0.05; gray includes other points and unavailable q. The marginal histogram shows the plotted effect distribution. At most three qualifying features per direction are labeled by raw p then identifier. No horizontal FDR line is inferred on the raw-p axis. The analysis discovery threshold and result table remain authoritative.",
+      "title": "Effect size and statistical evidence",
+      "why": "A small p-value and a large biological effect answer different questions. Seeing both helps avoid selecting candidates on only one criterion.",
+      "read": "Horizontal position is the reported effect; height is raw-p evidence. Colored points meet the stated adjusted-p display threshold. Labels identify a small set for inspection, not a new selection rule."
     },
     {
       "command": "de",
       "name": "all_features_ma",
       "image": "de__all_features_ma.png",
       "data": "de__all_features_ma.tsv",
-      "caption": "MA/MD-style descriptive diagnostic; original model values are not altered."
+      "caption": "MA/MD-style descriptive diagnostic; original model values are not altered.",
+      "title": "Abundance and effect size",
+      "why": "Low-abundance features often have different precision from well-measured features.",
+      "read": "Check whether the largest effects concentrate among weakly measured features before choosing them for follow-up."
     },
     {
       "command": "de",
       "name": "all_features_qq",
       "image": "de__all_features_qq.png",
       "data": "de__all_features_qq.tsv",
-      "caption": "A diagnostic comparison with uniform p-values. Alternatives, dependence, discretization and confounding can all affect this plot; it is not a calibration proof."
+      "caption": "A diagnostic comparison with uniform p-values. Alternatives, dependence, discretization and confounding can all affect this plot; it is not a calibration proof.",
+      "title": "P-value distribution check",
+      "why": "Unexpected p-value behavior can reveal a mismatch between the model and the data, as well as real associations.",
+      "read": "Compare points with the reference line. Departures deserve investigation alongside design and QC; this chart alone cannot identify their cause."
     },
     {
       "command": "de",
       "name": "display_transformed_missingness",
       "image": "de__display_transformed_missingness.png",
       "data": "de__display_transformed_missingness.tsv",
-      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements."
+      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "de",
       "name": "display_transformed_distributions",
       "image": "de__display_transformed_distributions.png",
       "data": "de__display_transformed_distributions.tsv",
-      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data."
+      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data.",
+      "title": "Display transformed distributions",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "de",
       "name": "display_transformed_pca",
       "image": "de__display_transformed_pca.png",
       "data": "de__display_transformed_pca.tsv",
-      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect."
+      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "de",
       "name": "display_transformed_correlation",
       "image": "de__display_transformed_correlation.png",
       "data": "de__display_transformed_correlation.tsv",
-      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation."
+      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "de",
       "name": "display_transformed_feature_heatmap",
       "image": "de__display_transformed_feature_heatmap.png",
       "data": "de__display_transformed_feature_heatmap.tsv",
-      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements."
+      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "de",
       "name": "display_transformed_feature_values",
       "image": "de__display_transformed_feature_values.png",
       "data": "de__display_transformed_feature_values.tsv",
-      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model."
+      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "de",
       "name": "library_diagnostics",
       "image": "de__library_diagnostics.png",
       "data": "de__library_diagnostics.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Library diagnostics",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "dm",
       "name": "all_loci_volcano",
       "image": "dm__all_loci_volcano.png",
       "data": "dm__all_loci_volcano.tsv",
-      "caption": "Orange marks supplied adjusted p <= 0.05 for display; the analysis discovery threshold and result table remain authoritative. Effects keep their original units. No adjusted values are inferred when absent."
+      "caption": "Blue/orange mark negative/nonnegative effects with supplied adjusted p <= 0.05; gray includes other points and unavailable q. The marginal histogram shows the plotted effect distribution. At most three qualifying features per direction are labeled by raw p then identifier. No horizontal FDR line is inferred on the raw-p axis. The analysis discovery threshold and result table remain authoritative.",
+      "title": "Effect size and statistical evidence",
+      "why": "A small p-value and a large biological effect answer different questions. Seeing both helps avoid selecting candidates on only one criterion.",
+      "read": "Horizontal position is the reported effect; height is raw-p evidence. Colored points meet the stated adjusted-p display threshold. Labels identify a small set for inspection, not a new selection rule."
     },
     {
       "command": "dm",
       "name": "all_loci_qq",
       "image": "dm__all_loci_qq.png",
       "data": "dm__all_loci_qq.tsv",
-      "caption": "A diagnostic comparison with uniform p-values. Alternatives, dependence, discretization and confounding can all affect this plot; it is not a calibration proof."
+      "caption": "A diagnostic comparison with uniform p-values. Alternatives, dependence, discretization and confounding can all affect this plot; it is not a calibration proof.",
+      "title": "P-value distribution check",
+      "why": "Unexpected p-value behavior can reveal a mismatch between the model and the data, as well as real associations.",
+      "read": "Compare points with the reference line. Departures deserve investigation alongside design and QC; this chart alone cannot identify their cause."
     },
     {
       "command": "dm",
       "name": "all_loci_manhattan",
       "image": "dm__all_loci_manhattan.png",
       "data": "dm__all_loci_manhattan.tsv",
-      "caption": "Contigs are concatenated lexically with fixed display gaps. Coordinates use the source table convention; missing sites are not plotted. No genome-wide threshold is inferred."
+      "caption": "Observed contig spans are concatenated lexically with gaps equal to 3.5% of their summed spans (minimum one coordinate unit); unobserved contig prefixes are trimmed for display. Coordinates in the TSV retain the source convention. This is not a full-genome coverage map. No genome-wide threshold is inferred.",
+      "title": "Where the evidence occurs",
+      "why": "Genomic context helps distinguish an isolated observation from a regional pattern and connects results to measurable loci.",
+      "read": "Inspect coordinates and local coverage together. Gaps mean no displayed measurement; they do not establish absence of an effect."
     },
     {
       "command": "dm",
       "name": "display_fractions_missingness",
       "image": "dm__display_fractions_missingness.png",
       "data": "dm__display_fractions_missingness.tsv",
-      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements."
+      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "dm",
       "name": "display_fractions_distributions",
       "image": "dm__display_fractions_distributions.png",
       "data": "dm__display_fractions_distributions.tsv",
-      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data."
+      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data.",
+      "title": "Display fractions distributions",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "dm",
       "name": "display_fractions_pca",
       "image": "dm__display_fractions_pca.png",
       "data": "dm__display_fractions_pca.tsv",
-      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect."
+      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "dm",
       "name": "display_fractions_correlation",
       "image": "dm__display_fractions_correlation.png",
       "data": "dm__display_fractions_correlation.tsv",
-      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation."
+      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "dm",
       "name": "display_fractions_feature_heatmap",
       "image": "dm__display_fractions_feature_heatmap.png",
       "data": "dm__display_fractions_feature_heatmap.tsv",
-      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements."
+      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "dm",
       "name": "display_fractions_feature_values",
       "image": "dm__display_fractions_feature_values.png",
       "data": "dm__display_fractions_feature_values.tsv",
-      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model."
+      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "dm",
       "name": "methylation_depth",
       "image": "dm__methylation_depth.png",
       "data": "dm__methylation_depth.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Methylation depth",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "dm",
       "name": "methylation_sample_locus",
       "image": "dm__methylation_sample_locus.png",
       "data": "dm__methylation_sample_locus.tsv",
-      "caption": "First 2 kb of retained covered loci and first 12 samples. Lines connect measured positions for display; they are not interpolation, smoothing or a DMR call. Missing values remain gaps."
+      "caption": "First 2 kb of retained covered loci and first 12 samples. Lines connect measured positions for display; they are not interpolation, smoothing or a DMR call. Missing values remain gaps.",
+      "title": "Where the evidence occurs",
+      "why": "Genomic context helps distinguish an isolated observation from a regional pattern and connects results to measurable loci.",
+      "read": "Inspect coordinates and local coverage together. Gaps mean no displayed measurement; they do not establish absence of an effect."
     },
     {
       "command": "differential-compare",
       "name": "method_calls",
       "image": "differential-compare__method_calls.png",
       "data": "differential-compare__method_calls.tsv",
-      "caption": "Signed calls from supplied adjusted values. Gray denotes untestable; zero denotes no call. Agreement is descriptive, not an additional FDR procedure."
+      "caption": "Signed calls from supplied adjusted values. Gray denotes untestable; zero denotes no call. Agreement is descriptive, not an additional FDR procedure.",
+      "title": "Sensitivity to analysis method",
+      "why": "Different methods can produce different candidate lists from the same measurements.",
+      "read": "Look for stable directions and calls, then inspect disagreements. Method agreement is a robustness description, not an extra significance test."
     },
     {
       "command": "differential-compare",
       "name": "method_intersections",
       "image": "differential-compare__method_intersections.png",
       "data": "differential-compare__method_intersections.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Each row is an exclusive combination of signed calls at the declared adjusted-p threshold. Zero is no call, hatched gray is untestable; up to 25 most frequent patterns are shown. The TSV contains all combinations. This is descriptive robustness, not a new FDR procedure.",
+      "title": "Sensitivity to analysis method",
+      "why": "Different methods can produce different candidate lists from the same measurements.",
+      "read": "Look for stable directions and calls, then inspect disagreements. Method agreement is a robustness description, not an extra significance test."
     },
     {
       "command": "differential-compare",
       "name": "method_effects",
       "image": "differential-compare__method_effects.png",
       "data": "differential-compare__method_effects.tsv",
-      "caption": "First six method pairs; values retain each method's effect definition. Shared direction or ranking is not proof that estimands or numerical scales are identical."
+      "caption": "First six method pairs; values retain each method's effect definition. Shared direction or ranking is not proof that estimands or numerical scales are identical.",
+      "title": "Sensitivity to analysis method",
+      "why": "Different methods can produce different candidate lists from the same measurements.",
+      "read": "Look for stable directions and calls, then inspect disagreements. Method agreement is a robustness description, not an extra significance test."
     },
     {
       "command": "differential-compare",
       "name": "input_missingness",
       "image": "differential-compare__input_missingness.png",
       "data": "differential-compare__input_missingness.tsv",
-      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements."
+      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "differential-compare",
       "name": "input_distributions",
       "image": "differential-compare__input_distributions.png",
       "data": "differential-compare__input_distributions.tsv",
-      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data."
+      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data.",
+      "title": "Input distributions",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "differential-compare",
       "name": "input_pca",
       "image": "differential-compare__input_pca.png",
       "data": "differential-compare__input_pca.tsv",
-      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect."
+      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "differential-compare",
       "name": "input_correlation",
       "image": "differential-compare__input_correlation.png",
       "data": "differential-compare__input_correlation.tsv",
-      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation."
+      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "differential-compare",
       "name": "input_feature_heatmap",
       "image": "differential-compare__input_feature_heatmap.png",
       "data": "differential-compare__input_feature_heatmap.tsv",
-      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements."
+      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "differential-compare",
       "name": "input_feature_values",
       "image": "differential-compare__input_feature_values.png",
       "data": "differential-compare__input_feature_values.tsv",
-      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model."
+      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "differential-compare",
       "name": "feature_eligibility",
       "image": "differential-compare__feature_eligibility.png",
       "data": "differential-compare__feature_eligibility.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "olink-import",
       "name": "NPX_missingness",
       "image": "olink-import__NPX_missingness.png",
       "data": "olink-import__NPX_missingness.tsv",
-      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements."
+      "caption": "Fraction of missing values among the feature rows read. Zero values remain observed measurements.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "olink-import",
       "name": "NPX_distributions",
       "image": "olink-import__NPX_distributions.png",
       "data": "olink-import__NPX_distributions.tsv",
-      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data."
+      "caption": "First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data.",
+      "title": "Npx distributions",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "olink-import",
       "name": "NPX_pca",
       "image": "olink-import__NPX_pca.png",
       "data": "olink-import__NPX_pca.tsv",
-      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect."
+      "caption": "Unscaled PCA on at most 2,000 variable, complete features among the rows read. Missing features are omitted from PCA; samples are not imputed. Separation is descriptive, not proof of a biological or batch effect.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "olink-import",
       "name": "NPX_correlation",
       "image": "olink-import__NPX_correlation.png",
       "data": "olink-import__NPX_correlation.tsv",
-      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation."
+      "caption": "Pearson correlation on complete variable features in the displayed matrix. Constant columns have undefined correlation.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "olink-import",
       "name": "NPX_feature_heatmap",
       "image": "olink-import__NPX_feature_heatmap.png",
       "data": "olink-import__NPX_feature_heatmap.tsv",
-      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements."
+      "caption": "Thirty highest-variance complete features among rows read; within-feature z scores are only for display and are never used as new assay measurements.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "olink-import",
       "name": "NPX_feature_values",
       "image": "olink-import__NPX_feature_values.png",
       "data": "olink-import__NPX_feature_values.tsv",
-      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model."
+      "caption": "Individual measurements for four variable features, selected for visualization rather than significance. Points represent samples; repeated donor measurements require a paired statistical model.",
+      "title": "Patterns in measured features",
+      "why": "Individual measurements reveal variation that is hidden by a summary statistic.",
+      "read": "Inspect variation within groups as well as between them. Display-selected features and row-standardized colors do not introduce new statistical tests."
     },
     {
       "command": "olink-import",
       "name": "measurement_SampleQC",
       "image": "olink-import__measurement_SampleQC.png",
       "data": "olink-import__measurement_SampleQC.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Measurement sampleqc",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "olink-import",
       "name": "measurement_AssayQC",
       "image": "olink-import__measurement_AssayQC.png",
       "data": "olink-import__measurement_AssayQC.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Measurement assayqc",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "olink-import",
       "name": "measurement_above_LOD",
       "image": "olink-import__measurement_above_LOD.png",
       "data": "olink-import__measurement_above_LOD.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Measurement above lod",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "olink-import",
       "name": "metadata_association",
       "image": "olink-import__metadata_association.png",
       "data": "olink-import__metadata_association.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Relationship between study variables",
+      "why": "When condition and technical variables overlap, their effects can be difficult or impossible to separate statistically.",
+      "read": "Inspect the recorded association between metadata variables before fitting a model. This is a design diagnostic; it does not remove confounding."
     },
     {
       "command": "olink-import",
       "name": "olink_receipt",
       "image": "olink-import__olink_receipt.png",
       "data": "olink-import__olink_receipt.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "Analysis scope and recorded quantities",
+      "why": "Reliable interpretation depends on knowing what ran and which denominators and units were recorded.",
+      "read": "Use these recorded quantities to trace the analysis. Values with different units remain separate rather than sharing an arbitrary numeric scale."
     },
     {
       "command": "import-mods",
       "name": "methylation_counts",
       "image": "import-mods__methylation_counts.png",
       "data": "import-mods__methylation_counts.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Methylation counts",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "import-mods",
       "name": "methylation_contigs",
       "image": "import-mods__methylation_contigs.png",
       "data": "import-mods__methylation_contigs.tsv",
-      "caption": "Counts apply to rows read, not whole-genome coverage when the input exceeds the report limit. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts apply to rows read, not whole-genome coverage when the input exceeds the report limit. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Methylation contigs",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "import-mods",
       "name": "methylation_locus",
       "image": "import-mods__methylation_locus.png",
       "data": "import-mods__methylation_locus.tsv",
-      "caption": "Display interval chr1:1000-3000; absent sites remain gaps. The fraction uses actual X/N and does not resolve modification channels beyond the declared chemistry."
+      "caption": "Display interval chr1:1000-3000; absent sites remain gaps. The fraction uses actual X/N and does not resolve modification channels beyond the declared chemistry.",
+      "title": "Where the evidence occurs",
+      "why": "Genomic context helps distinguish an isolated observation from a regional pattern and connects results to measurable loci.",
+      "read": "Inspect coordinates and local coverage together. Gaps mean no displayed measurement; they do not establish absence of an effect."
     },
     {
       "command": "import-mods",
       "name": "chemistry_and_scope",
       "image": "import-mods__chemistry_and_scope.png",
       "data": "import-mods__chemistry_and_scope.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "Analysis scope and recorded quantities",
+      "why": "Reliable interpretation depends on knowing what ran and which denominators and units were recorded.",
+      "read": "Use these recorded quantities to trace the analysis. Values with different units remain separate rather than sharing an arbitrary numeric scale."
     },
     {
       "command": "capture-panel",
       "name": "panel_width",
       "image": "capture-panel__panel_width.png",
       "data": "capture-panel__panel_width.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Panel width",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "capture-panel",
       "name": "panel_contigs",
       "image": "capture-panel__panel_contigs.png",
       "data": "capture-panel__panel_contigs.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Panel contigs",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "capture-panel",
       "name": "panel_intervals",
       "image": "capture-panel__panel_intervals.png",
       "data": "capture-panel__panel_intervals.tsv",
-      "caption": "Each row is a separate interval; coordinates on different contigs are not a shared genomic location. This is interval geometry, not evidence of enhancer\u2013gene linkage."
+      "caption": "Each row is a separate interval; coordinates on different contigs are not a shared genomic location. This is interval geometry, not evidence of enhancer\u2013gene linkage.",
+      "title": "Where the evidence occurs",
+      "why": "Genomic context helps distinguish an isolated observation from a regional pattern and connects results to measurable loci.",
+      "read": "Inspect coordinates and local coverage together. Gaps mean no displayed measurement; they do not establish absence of an effect."
     },
     {
       "command": "capture-panel",
       "name": "features_fully_on_target",
       "image": "capture-panel__features_fully_on_target.png",
       "data": "capture-panel__features_fully_on_target.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Features fully on target",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "capture-panel",
       "name": "panel_coverage",
       "image": "capture-panel__panel_coverage.png",
       "data": "capture-panel__panel_coverage.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "genomic-panel",
       "name": "genomic_states",
       "image": "genomic-panel__genomic_states.png",
       "data": "genomic-panel__genomic_states.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "genomic-panel",
       "name": "genomic_oncoprint",
       "image": "genomic-panel__genomic_oncoprint.png",
       "data": "genomic-panel__genomic_oncoprint.tsv",
-      "caption": "States come from reviewed calls. Missing or unknown entries are never converted to reference; this view does not infer clinical CH status."
+      "caption": "States come from reviewed calls. Missing or unknown entries are never converted to reference; this view does not infer clinical CH status.",
+      "title": "Genomic states and candidate evidence",
+      "why": "Variant-level evidence helps connect inherited or acquired genomic differences to other molecular measurements.",
+      "read": "Check observed state, allele fraction, depth and review flags. Unknown calls stay distinct from reference calls, and research candidates still require appropriate confirmation."
     },
     {
       "command": "ch-screen",
       "name": "CH_states",
       "image": "ch-screen__CH_states.png",
       "data": "ch-screen__CH_states.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Genomic states and candidate evidence",
+      "why": "Variant-level evidence helps connect inherited or acquired genomic differences to other molecular measurements.",
+      "read": "Check observed state, allele fraction, depth and review flags. Unknown calls stay distinct from reference calls, and research candidates still require appropriate confirmation."
     },
     {
       "command": "ch-screen",
       "name": "variants_alleles",
       "image": "ch-screen__variants_alleles.png",
       "data": "ch-screen__variants_alleles.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Genomic states and candidate evidence",
+      "why": "Variant-level evidence helps connect inherited or acquired genomic differences to other molecular measurements.",
+      "read": "Check observed state, allele fraction, depth and review flags. Unknown calls stay distinct from reference calls, and research candidates still require appropriate confirmation."
     },
     {
       "command": "ch-screen",
       "name": "variants_gene",
       "image": "ch-screen__variants_gene.png",
       "data": "ch-screen__variants_gene.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Variants gene",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "ch-screen",
       "name": "variants_candidate",
       "image": "ch-screen__variants_candidate.png",
       "data": "ch-screen__variants_candidate.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Variants candidate",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "ch-screen",
       "name": "variants_reasons",
       "image": "ch-screen__variants_reasons.png",
       "data": "ch-screen__variants_reasons.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Variants reasons",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "variant-annotations",
       "name": "annotation_clinvar_status",
       "image": "variant-annotations__annotation_clinvar_status.png",
       "data": "variant-annotations__annotation_clinvar_status.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "variant-annotations",
       "name": "annotation_alphamissense_status",
       "image": "variant-annotations__annotation_alphamissense_status.png",
       "data": "variant-annotations__annotation_alphamissense_status.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "variant-annotations",
       "name": "annotation_vep_status",
       "image": "variant-annotations__annotation_vep_status.png",
       "data": "variant-annotations__annotation_vep_status.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphafold",
       "name": "structure_mapping_status",
       "image": "alphafold__structure_mapping_status.png",
       "data": "alphafold__structure_mapping_status.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphafold",
       "name": "structure_tool_used",
       "image": "alphafold__structure_tool_used.png",
       "data": "alphafold__structure_tool_used.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphafold",
       "name": "structure_confidence",
       "image": "alphafold__structure_confidence.png",
       "data": "alphafold__structure_confidence.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphafold",
       "name": "protein_positions",
       "image": "alphafold__protein_positions.png",
       "data": "alphafold__protein_positions.tsv",
-      "caption": "Model span and mapped position from the lookup receipt, not a rendered protein structure or a pathogenicity prediction."
+      "caption": "Model span and mapped position from the lookup receipt, not a rendered protein structure or a pathogenicity prediction.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphagenome",
       "name": "prediction_output_type",
       "image": "alphagenome__prediction_output_type.png",
       "data": "alphagenome__prediction_output_type.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphagenome",
       "name": "prediction_variant_id",
       "image": "alphagenome__prediction_variant_id.png",
       "data": "alphagenome__prediction_variant_id.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Prediction variant id",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "alphagenome",
       "name": "regulatory_predictions_1",
       "image": "alphagenome__regulatory_predictions_1.png",
       "data": "alphagenome__regulatory_predictions_1.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphagenome",
       "name": "regulatory_predictions_2",
       "image": "alphagenome__regulatory_predictions_2.png",
       "data": "alphagenome__regulatory_predictions_2.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "alphagenome",
       "name": "prediction_receipt",
       "image": "alphagenome__prediction_receipt.png",
       "data": "alphagenome__prediction_receipt.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "Analysis scope and recorded quantities",
+      "why": "Reliable interpretation depends on knowing what ran and which denominators and units were recorded.",
+      "read": "Use these recorded quantities to trace the analysis. Values with different units remain separate rather than sharing an arbitrary numeric scale."
     },
     {
       "command": "clock-panel",
       "name": "score_synthetic_age_years",
       "image": "clock-panel__score_synthetic_age_years.png",
       "data": "clock-panel__score_synthetic_age_years.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Biomarker outputs and coverage",
+      "why": "Different biomarkers measure different constructs and may require different input features.",
+      "read": "Check model units and input coverage before comparing scores. Age, pace and other scores should not be interpreted on a common numeric scale."
     },
     {
       "command": "clock-panel",
       "name": "score_synthetic_pace",
       "image": "clock-panel__score_synthetic_pace.png",
       "data": "clock-panel__score_synthetic_pace.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Biomarker outputs and coverage",
+      "why": "Different biomarkers measure different constructs and may require different input features.",
+      "read": "Check model units and input coverage before comparing scores. Age, pace and other scores should not be interpreted on a common numeric scale."
     },
     {
       "command": "clock-panel",
       "name": "clock_correlation",
       "image": "clock-panel__clock_correlation.png",
       "data": "clock-panel__clock_correlation.tsv",
-      "caption": "Pairwise complete profiles (minimum three). Scores retain different endpoints; correlation does not make them interchangeable."
+      "caption": "Pairwise complete profiles (minimum three). Scores retain different endpoints; correlation does not make them interchangeable.",
+      "title": "Sample relationships",
+      "why": "Unexpected sample groupings or unusually dissimilar samples can change the interpretation of a downstream comparison.",
+      "read": "Compare patterns with sample condition and batch metadata. Investigate outliers rather than removing them solely because of this plot."
     },
     {
       "command": "clock-panel",
       "name": "coverage",
       "image": "clock-panel__coverage.png",
       "data": "clock-panel__coverage.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "clock-panel",
       "name": "clock_coverage",
       "image": "clock-panel__clock_coverage.png",
       "data": "clock-panel__clock_coverage.tsv",
-      "caption": "Feature presence is distinct from complete profiles and successful scoring. Coverage does not establish transferability to a new tissue or assay."
+      "caption": "Feature presence is distinct from complete profiles and successful scoring. Coverage does not establish transferability to a new tissue or assay.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "compare-assays",
       "name": "heldout_predictions",
       "image": "compare-assays__heldout_predictions.png",
       "data": "compare-assays__heldout_predictions.tsv",
-      "caption": "Supplied held-out or out-of-fold predictions; the report does not train or select a model. The dashed line is identity, not a fitted calibration line."
+      "caption": "Supplied held-out or out-of-fold predictions; the report does not train or select a model. The dashed line is identity, not a fitted calibration line.",
+      "title": "Validation and uncertainty",
+      "why": "A promising training result needs to be assessed against measured outcomes and the uncertainty in the comparison.",
+      "read": "Inspect the reference line or interval, sample denominator and endpoint definition. These panels display the supplied validation outputs."
     },
     {
       "command": "compare-assays",
       "name": "prediction_residuals",
       "image": "compare-assays__prediction_residuals.png",
       "data": "compare-assays__prediction_residuals.tsv",
-      "caption": "Residual pattern by supplied model, without refitting. Units are those of the outcome."
+      "caption": "Residual pattern by supplied model, without refitting. Units are those of the outcome.",
+      "title": "Validation and uncertainty",
+      "why": "A promising training result needs to be assessed against measured outcomes and the uncertainty in the comparison.",
+      "read": "Inspect the reference line or interval, sample denominator and endpoint definition. These panels display the supplied validation outputs."
     },
     {
       "command": "compare-assays",
       "name": "comparison_intervals",
       "image": "compare-assays__comparison_intervals.png",
       "data": "compare-assays__comparison_intervals.tsv",
-      "caption": "Intervals are read from the completed analysis, not recomputed by the visualization. Their inferential scope is the scope of the source analysis."
+      "caption": "Intervals are read from the completed analysis, not recomputed by the visualization. Their inferential scope is the scope of the source analysis.",
+      "title": "Validation and uncertainty",
+      "why": "A promising training result needs to be assessed against measured outcomes and the uncertainty in the comparison.",
+      "read": "Inspect the reference line or interval, sample denominator and endpoint definition. These panels display the supplied validation outputs."
     },
     {
       "command": "spikein-factors",
       "name": "spikein_counts",
       "image": "spikein-factors__spikein_counts.png",
       "data": "spikein-factors__spikein_counts.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "External-reference normalization",
+      "why": "An external reference can help assess global changes that ordinary library-size normalization might obscure.",
+      "read": "Compare target counts, reference counts and recorded factors. Interpretation depends on how the reference material was added to the experiment."
     },
     {
       "command": "spikein-factors",
       "name": "spikein_exposure",
       "image": "spikein-factors__spikein_exposure.png",
       "data": "spikein-factors__spikein_exposure.tsv",
-      "caption": "Recorded target and reference counts. Reference exposure assumptions are specified by the analysis, not inferred from this correlation."
+      "caption": "Recorded target and reference counts. Reference exposure assumptions are specified by the analysis, not inferred from this correlation.",
+      "title": "External-reference normalization",
+      "why": "An external reference can help assess global changes that ordinary library-size normalization might obscure.",
+      "read": "Compare target counts, reference counts and recorded factors. Interpretation depends on how the reference material was added to the experiment."
     },
     {
       "command": "assay-audit",
       "name": "audit_metrics",
       "image": "assay-audit__audit_metrics.png",
       "data": "assay-audit__audit_metrics.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "Analysis scope and recorded quantities",
+      "why": "Reliable interpretation depends on knowing what ran and which denominators and units were recorded.",
+      "read": "Use these recorded quantities to trace the analysis. Values with different units remain separate rather than sharing an arbitrary numeric scale."
     },
     {
       "command": "assay-audit",
       "name": "assay_reach",
       "image": "assay-audit__assay_reach.png",
       "data": "assay-audit__assay_reach.tsv",
-      "caption": "Donor counts for the recorded assay-availability patterns; denominators come from this roster."
+      "caption": "Donor counts for the recorded assay-availability patterns; denominators come from this roster.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "assay-audit",
       "name": "policy_intervals",
       "image": "assay-audit__policy_intervals.png",
       "data": "assay-audit__policy_intervals.tsv",
-      "caption": "Intervals are read from the completed analysis, not recomputed by the visualization. Their inferential scope is the scope of the source analysis."
+      "caption": "Intervals are read from the completed analysis, not recomputed by the visualization. Their inferential scope is the scope of the source analysis.",
+      "title": "Validation and uncertainty",
+      "why": "A promising training result needs to be assessed against measured outcomes and the uncertainty in the comparison.",
+      "read": "Inspect the reference line or interval, sample denominator and endpoint definition. These panels display the supplied validation outputs."
     },
     {
       "command": "candidate-evidence",
       "name": "audit_metrics",
       "image": "candidate-evidence__audit_metrics.png",
       "data": "candidate-evidence__audit_metrics.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "Analysis scope and recorded quantities",
+      "why": "Reliable interpretation depends on knowing what ran and which denominators and units were recorded.",
+      "read": "Use these recorded quantities to trace the analysis. Values with different units remain separate rather than sharing an arbitrary numeric scale."
     },
     {
       "command": "candidate-evidence",
       "name": "candidate_confirmation",
       "image": "candidate-evidence__candidate_confirmation.png",
       "data": "candidate-evidence__candidate_confirmation.tsv",
-      "caption": "Measured endpoint confirmations remain separate from perturbation evidence. Missing evidence is not a negative experiment."
+      "caption": "Measured endpoint confirmations remain separate from perturbation evidence. Missing evidence is not a negative experiment.",
+      "title": "Validation and uncertainty",
+      "why": "A promising training result needs to be assessed against measured outcomes and the uncertainty in the comparison.",
+      "read": "Inspect the reference line or interval, sample denominator and endpoint definition. These panels display the supplied validation outputs."
     },
     {
       "command": "graft-readouts",
       "name": "graft_readouts",
       "image": "graft-readouts__graft_readouts.png",
       "data": "graft-readouts__graft_readouts.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Graft readouts",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "vep-annotate",
       "name": "vep_Consequence",
       "image": "vep-annotate__vep_Consequence.png",
       "data": "vep-annotate__vep_Consequence.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "vep-annotate",
       "name": "vep_IMPACT",
       "image": "vep-annotate__vep_IMPACT.png",
       "data": "vep-annotate__vep_IMPACT.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "vep-annotate",
       "name": "vep_BIOTYPE",
       "image": "vep-annotate__vep_BIOTYPE.png",
       "data": "vep-annotate__vep_BIOTYPE.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Annotation and scientific-model context",
+      "why": "Variant and model annotations provide extra context for research prioritization when their coverage and score definitions are visible.",
+      "read": "Check matched records, model identity and score units. Different model outputs keep separate scales; annotation is distinct from experimental confirmation."
     },
     {
       "command": "decision-methods",
       "name": "method_metrics",
       "image": "decision-methods__method_metrics.png",
       "data": "decision-methods__method_metrics.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "Analysis scope and recorded quantities",
+      "why": "Reliable interpretation depends on knowing what ran and which denominators and units were recorded.",
+      "read": "Use these recorded quantities to trace the analysis. Values with different units remain separate rather than sharing an arbitrary numeric scale."
     },
     {
       "command": "decision-methods",
       "name": "assay_rank_matrix",
       "image": "decision-methods__assay_rank_matrix.png",
       "data": "decision-methods__assay_rank_matrix.tsv",
-      "caption": "Same declared feature family across the arms. Rank is descriptive; it is not a p-value or a measure of independent validation."
+      "caption": "Same declared feature family across the arms. Rank is descriptive; it is not a p-value or a measure of independent validation.",
+      "title": "How prioritization changes",
+      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
+      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
     },
     {
       "command": "decision-methods",
       "name": "rank_transition_1",
       "image": "decision-methods__rank_transition_1.png",
       "data": "decision-methods__rank_transition_1.tsv",
-      "caption": "Negative change means a better numerical rank after the specified transition; same feature family, without a causal attribution."
+      "caption": "Negative change means a better numerical rank after the specified transition; same feature family, without a causal attribution.",
+      "title": "How prioritization changes",
+      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
+      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
     },
     {
       "command": "bladder-example",
       "name": "shortlist_status",
       "image": "bladder-example__shortlist_status.png",
       "data": "bladder-example__shortlist_status.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "How prioritization changes",
+      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
+      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
     },
     {
       "command": "bladder-example",
       "name": "shortlist_rank_changes",
       "image": "bladder-example__shortlist_rank_changes.png",
       "data": "bladder-example__shortlist_rank_changes.tsv",
-      "caption": "Up to 25 genes reaching the highest rank in any arm. All arms use the source recipe definitions; changing the cohort and adding an assay remain separate comparisons."
+      "caption": "Up to 25 genes reaching the highest rank in any arm. All arms use the source recipe definitions; changing the cohort and adding an assay remain separate comparisons.",
+      "title": "How prioritization changes",
+      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
+      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
     },
     {
       "command": "bladder-example",
       "name": "recipe_denominators",
       "image": "bladder-example__recipe_denominators.png",
       "data": "bladder-example__recipe_denominators.tsv",
-      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries."
+      "caption": "Receipt values retain their individual units; they are not compared on a shared numeric axis. Up to 24 rows displayed; TSV includes all scalar entries.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "scrna",
       "name": "cell_qc",
       "image": "scrna__cell_qc.png",
       "data": "scrna__cell_qc.tsv",
-      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read."
+      "caption": "Separate scales preserve each quantity. Histograms use the available finite values; no missing values are imputed. At most 100,000 input rows are read.",
+      "title": "Cell qc",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "scrna",
       "name": "cells_qc_pass",
       "image": "scrna__cells_qc_pass.png",
       "data": "scrna__cells_qc_pass.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Cells qc pass",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "scrna",
       "name": "cells_sample",
       "image": "scrna__cells_sample.png",
       "data": "scrna__cells_sample.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read."
+      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
+      "title": "Cells sample",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "scrna",
       "name": "cell_complexity",
       "image": "scrna__cell_complexity.png",
       "data": "scrna__cell_complexity.tsv",
-      "caption": "Each point is a cell read from cell_qc.tsv; orange indicates a cell excluded by the recorded QC flags."
+      "caption": "Each point is a cell read from cell_qc.tsv; orange indicates a cell excluded by the recorded QC flags.",
+      "title": "Cell complexity",
+      "why": "Measurement quality and distribution determine which comparisons the data can support.",
+      "read": "Inspect the units, counts and unusual values alongside the source QC flags. This display summarizes the recorded measurements without changing the analysis."
     },
     {
       "command": "scrna",
       "name": "umap_leiden",
       "image": "scrna__umap_leiden.png",
       "data": "scrna__umap_leiden.tsv",
-      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types."
+      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types.",
+      "title": "Single-cell structure and composition",
+      "why": "Cell populations and sample composition provide context for interpreting donor-level differences.",
+      "read": "Check sample mixing and cluster composition. Embedding distance and cluster labels are exploratory; donors remain the replication unit for comparative inference."
     },
     {
       "command": "scrna",
       "name": "umap_sample",
       "image": "scrna__umap_sample.png",
       "data": "scrna__umap_sample.tsv",
-      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types."
+      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types.",
+      "title": "Single-cell structure and composition",
+      "why": "Cell populations and sample composition provide context for interpreting donor-level differences.",
+      "read": "Check sample mixing and cluster composition. Embedding distance and cluster labels are exploratory; donors remain the replication unit for comparative inference."
     },
     {
       "command": "scrna",
       "name": "umap_total_counts",
       "image": "scrna__umap_total_counts.png",
       "data": "scrna__umap_total_counts.tsv",
-      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types."
+      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types.",
+      "title": "Single-cell structure and composition",
+      "why": "Cell populations and sample composition provide context for interpreting donor-level differences.",
+      "read": "Check sample mixing and cluster composition. Embedding distance and cluster labels are exploratory; donors remain the replication unit for comparative inference."
     },
     {
       "command": "scrna",
       "name": "umap_pct_counts_mt",
       "image": "scrna__umap_pct_counts_mt.png",
       "data": "scrna__umap_pct_counts_mt.tsv",
-      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types."
+      "caption": "Uses the stored embedding; no re-clustering. First 10,000 retained cells displayed. Clusters are exploratory groups, not automatically validated cell types.",
+      "title": "Single-cell structure and composition",
+      "why": "Cell populations and sample composition provide context for interpreting donor-level differences.",
+      "read": "Check sample mixing and cluster composition. Embedding distance and cluster labels are exploratory; donors remain the replication unit for comparative inference."
     },
     {
       "command": "scrna",
       "name": "cell_composition",
       "image": "scrna__cell_composition.png",
       "data": "scrna__cell_composition.tsv",
-      "caption": "Descriptive fractions among the first 10,000 retained cells. Donors, not individual cells, are the replication unit for comparative inference."
+      "caption": "Descriptive fractions among the first 10,000 retained cells. Donors, not individual cells, are the replication unit for comparative inference.",
+      "title": "Single-cell structure and composition",
+      "why": "Cell populations and sample composition provide context for interpreting donor-level differences.",
+      "read": "Check sample mixing and cluster composition. Embedding distance and cluster labels are exploratory; donors remain the replication unit for comparative inference."
     },
     {
       "command": "scrna",
       "name": "cell_expression_dotplot",
       "image": "scrna__cell_expression_dotplot.png",
       "data": "scrna__cell_expression_dotplot.tsv",
-      "caption": "Dot area is the nonzero fraction; color is mean stored log-normalized expression. First 20 declared variable genes (or genes if flags absent). This is descriptive, not a differential marker test."
+      "caption": "Dot area is the nonzero fraction; color is mean stored log-normalized expression. First 20 declared variable genes (or genes if flags absent). This is descriptive, not a differential marker test.",
+      "title": "Expression and detection by cluster",
+      "why": "A cluster average can hide whether most cells or just a small fraction express a gene.",
+      "read": "Read color as mean expression and dot area as the fraction of cells with a nonzero measurement. These displayed genes are not automatically tested cell-type markers."
     },
     {
       "command": "multiomic-meta",
       "name": "evidence_heatmap",
       "image": "multiomic-meta__evidence_heatmap.png",
       "data": "multiomic-meta__evidence_heatmap.tsv",
-      "caption": "Direction is defined by the declared orientation. Per-layer p values include feature-to-gene aggregation; color is descriptive and does not identify individually significant layers."
+      "caption": "Rows are aligned across evidence, measured-layer counts and joint BY q. Direction is defined by the declared orientation. Per-layer p values include feature-to-gene aggregation. Hatched gray cells are untestable; pale cells have weak evidence. Colors retain the same direction scale across all displayed assays.",
+      "title": "Evidence across assays",
+      "why": "A candidate can look convincing in one assay while being unmeasured or discordant in another.",
+      "read": "Read each row across assays, then check measured-layer coverage and joint adjusted evidence. Color shows the declared direction; a missing cell is not a negative result."
     },
     {
       "command": "multiomic-meta",
       "name": "combined_ranking",
       "image": "multiomic-meta__combined_ranking.png",
       "data": "multiomic-meta__combined_ranking.tsv",
-      "caption": "Orange marks selected genes; point area increases with measured layer count. Untestable rows have no point. Ranking uses raw joint p; the horizontal scale uses BY q."
+      "caption": "Orange marks selected genes; point area increases with measured layer count. Untestable rows have no point. Ranking uses raw joint p; the horizontal scale uses BY q.",
+      "title": "Ranked evidence",
+      "why": "A prioritized list needs both an evidence scale and an explanation of how much information supports each entry.",
+      "read": "Use the axis, threshold and size legend together. Prioritization helps choose follow-up candidates; it does not make the candidates experimentally validated."
     },
     {
       "command": "multiomic-meta",
       "name": "concordance",
       "image": "multiomic-meta__concordance.png",
       "data": "multiomic-meta__concordance.tsv",
-      "caption": "Counts include all declared genes, without a significance filter. Same direction is not independent replication. Neutral denotes tied directional evidence; not-both includes unmeasured/untestable genes."
+      "caption": "Counts include all declared genes, without a significance filter. Same direction is not independent replication. Neutral denotes tied directional evidence; not-both includes unmeasured/untestable genes.",
+      "title": "Agreement between molecular layers",
+      "why": "Combining assays is more informative when agreement, disagreement and missing evidence remain distinguishable.",
+      "read": "Compare direction counts with the total declared feature set. Matching directions across assays are not automatically independent confirmations."
     },
     {
       "command": "multiomic-meta",
       "name": "measurement_patterns",
       "image": "multiomic-meta__measurement_patterns.png",
       "data": "multiomic-meta__measurement_patterns.tsv",
-      "caption": "Exclusive measurement patterns preserve the distinction between absence of evidence and evidence of no association. The TSV contains every observed pattern."
+      "caption": "Exclusive measurement patterns preserve the distinction between absence of evidence and evidence of no association. The TSV contains every observed pattern.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "multiomic-meta",
       "name": "rank_sensitivity",
       "image": "multiomic-meta__rank_sensitivity.png",
       "data": "multiomic-meta__rank_sensitivity.tsv",
-      "caption": "Each column removes one assay and holds r fixed. Average ranks handle ties within the same common testable gene set. Positive values indicate a better rank with that assay. This is sensitivity of supplied evidence, not measured predictive gain; eligibility losses are recorded separately."
+      "caption": "Each column removes one assay and holds r fixed. Average ranks handle ties within the same common testable gene set. Positive values indicate a better rank with that assay. This is sensitivity of supplied evidence, not measured predictive gain; eligibility losses are recorded separately.",
+      "title": "How prioritization changes",
+      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
+      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
     },
     {
       "command": "pathway-compare",
       "name": "pathway_evidence",
       "image": "pathway-compare__pathway_evidence.png",
       "data": "pathway-compare__pathway_evidence.tsv",
-      "caption": "Top 25 by joint p when enabled, otherwise by minimum layer p for display only. Unsigned enrichment is plotted positive regardless of mechanism. All raw p and descriptive scores remain in the TSV."
+      "caption": "Top 25 by joint p when enabled, otherwise by minimum layer p for display only. Unsigned enrichment is plotted positive regardless of mechanism. All raw p and descriptive scores remain in the TSV.",
+      "title": "Pathway evidence across assays",
+      "why": "Different molecular layers can implicate the same process through different genes.",
+      "read": "Compare pathway support across assays, then inspect coverage and contributing genes. Signed and unsigned upstream tests have different interpretations."
     },
     {
       "command": "pathway-compare",
       "name": "pathway_coverage",
       "image": "pathway-compare__pathway_coverage.png",
       "data": "pathway-compare__pathway_coverage.tsv",
-      "caption": "Gene coverage uses the assay-specific measured background. A large overlap does not itself establish enrichment."
+      "caption": "Gene coverage uses the assay-specific measured background. A large overlap does not itself establish enrichment.",
+      "title": "What was actually measurable?",
+      "why": "Apparent improvements can arise when an analysis quietly changes which samples or features it includes.",
+      "read": "Check the measured denominator and missing categories before comparing results. Coverage and eligibility are different from positive biological evidence."
     },
     {
       "command": "pathway-compare",
       "name": "shared_gene_support",
       "image": "pathway-compare__shared_gene_support.png",
       "data": "pathway-compare__shared_gene_support.tsv",
-      "caption": "Genes supplied by upstream analyses, such as leading-edge genes or ORA hits, are counted once per pathway. Empty contributions mean the upstream test did not supply gene-level support."
+      "caption": "Genes supplied by upstream analyses, such as leading-edge genes or ORA hits, are counted once per pathway. Empty contributions mean the upstream test did not supply gene-level support.",
+      "title": "Genes behind pathway support",
+      "why": "Two assays can support the same pathway using entirely different genes.",
+      "read": "Check which genes contribute and whether support is shared across layers before interpreting pathway agreement as a common mechanism."
     },
     {
       "command": "pathway-compare",
       "name": "pathway_overlap",
       "image": "pathway-compare__pathway_overlap.png",
       "data": "pathway-compare__pathway_overlap.tsv",
-      "caption": "Edges join pathways with full-GMT gene-set Jaccard overlap >= 0.25. This shows annotation redundancy, not molecular interactions or independent biological confirmations."
+      "caption": "Edges join pathways with full-GMT gene-set Jaccard overlap >= 0.25. This shows annotation redundancy, not molecular interactions or independent biological confirmations.",
+      "title": "Redundancy between pathway annotations",
+      "why": "Closely overlapping gene sets can make one biological pattern appear to be many separate findings.",
+      "read": "Edges indicate shared annotation genes at the declared overlap threshold, not regulatory interactions. Use this view to organize related results."
     },
     {
       "command": "enrich",
       "name": "pathway_ranking",
       "image": "enrich__pathway_ranking.png",
       "data": "enrich__pathway_ranking.tsv",
-      "caption": "Point area encodes -log10(FDR q), capped at 16; position and color encode NES. Negative NES means enrichment toward the negative end of the supplied ranking."
+      "caption": "Point area encodes -log10(FDR q), capped at 16; position and color encode NES. Negative NES means enrichment toward the negative end of the supplied ranking.",
+      "title": "Ranked evidence",
+      "why": "A prioritized list needs both an evidence scale and an explanation of how much information supports each entry.",
+      "read": "Use the axis, threshold and size legend together. Prioritization helps choose follow-up candidates; it does not make the candidates experimentally validated."
     },
     {
       "command": "enrich",
       "name": "leading_edge",
       "image": "enrich__leading_edge.png",
       "data": "enrich__leading_edge.tsv",
-      "caption": "Blue indicates leading-edge membership; white is absence from that leading edge, not a negative gene effect. The TSV includes all leading-edge genes in the displayed pathways."
+      "caption": "Blue indicates leading-edge membership; white is absence from that leading edge, not a negative gene effect. The TSV includes all leading-edge genes in the displayed pathways.",
+      "title": "Genes behind pathway support",
+      "why": "Two assays can support the same pathway using entirely different genes.",
+      "read": "Check which genes contribute and whether support is shared across layers before interpreting pathway agreement as a common mechanism."
     },
     {
       "command": "enrich",
       "name": "enrichment_curve_1",
       "image": "enrich__enrichment_curve_1.png",
       "data": "enrich__enrichment_curve_1.tsv",
-      "caption": "Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves."
+      "caption": "Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves.",
+      "title": "Where enrichment is concentrated",
+      "why": "The running score shows which portion of the full gene ranking drives a gene-set result.",
+      "read": "Read the score peak alongside hit positions and the signed ranking. Enrichment direction refers to that ranking, not proven pathway activation."
     },
     {
       "command": "enrich",
       "name": "enrichment_curve_2",
       "image": "enrich__enrichment_curve_2.png",
       "data": "enrich__enrichment_curve_2.tsv",
-      "caption": "Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves."
+      "caption": "Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves.",
+      "title": "Where enrichment is concentrated",
+      "why": "The running score shows which portion of the full gene ranking drives a gene-set result.",
+      "read": "Read the score peak alongside hit positions and the signed ranking. Enrichment direction refers to that ranking, not proven pathway activation."
     },
     {
       "command": "enrich",
       "name": "enrichment_curve_3",
       "image": "enrich__enrichment_curve_3.png",
       "data": "enrich__enrichment_curve_3.tsv",
-      "caption": "Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves."
+      "caption": "Native fgsea plotEnrichment output. The TSV records the full ranked universe and set membership; the separate enrichment-curves.pdf retains native vector curves.",
+      "title": "Where enrichment is concentrated",
+      "why": "The running score shows which portion of the full gene ranking drives a gene-set result.",
+      "read": "Read the score peak alongside hit positions and the signed ranking. Enrichment direction refers to that ranking, not proven pathway activation."
     }
   ]
 }

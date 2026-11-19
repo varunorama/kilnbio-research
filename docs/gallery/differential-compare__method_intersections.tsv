@@ -1,8 +1,10 @@
-category	records
-DESeq2:0 | edgeR:0 | limma_voom:0	67
-DESeq2:NA | edgeR:NA | limma_voom:NA	7
-DESeq2:0 | edgeR:1 | limma_voom:1	2
-DESeq2:1 | edgeR:1 | limma_voom:1	1
-DESeq2:-1 | edgeR:0 | limma_voom:-1	1
-DESeq2:0 | edgeR:-1 | limma_voom:-1	1
-DESeq2:-1 | edgeR:0 | limma_voom:0	1
+DESeq2	edgeR	limma_voom	features
+0.0	0.0	0.0	59
+NA	NA	NA	7
+-1.0	-1.0	-1.0	4
+1.0	1.0	1.0	4
+0.0	1.0	1.0	2
+1.0	0.0	1.0	1
+-1.0	0.0	-1.0	1
+0.0	-1.0	-1.0	1
+1.0	0.0	0.0	1

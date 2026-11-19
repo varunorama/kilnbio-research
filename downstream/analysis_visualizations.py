@@ -12,6 +12,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from visual_reports import Report, canvas, matrix, empty, strength, BLUE, ORANGE, MISSING
+from plot_design import MUTED, PALETTE
 
 MAX_ROWS=100000
 
@@ -98,9 +99,21 @@ class Builder:
         d['label']=d[feature].astype(str) if feature else d.index.astype(str)
         if ((d.display_p.dropna()<0)|(d.display_p.dropna()>1)).any():raise ValueError('Invalid p-value in report input')
         valid=d.display_effect.notna()&d.display_p.notna();sig=d.display_q.le(.05)
-        fig,ax=canvas(10);ax.scatter(d.loc[valid,'display_effect'],strength(d.loc[valid,'display_p']),c=np.where(sig[valid],ORANGE,BLUE),s=8,alpha=.55)
-        ax.set_xlabel(effect);ax.set_ylabel('-log10(raw p), capped at 16');ax.set_title(name.replace('_',' ')+' evidence')
-        self.add(name+'_volcano',fig,'Orange marks supplied adjusted p <= 0.05 for display; the analysis discovery threshold and result table remain authoritative. Effects keep their original units. No adjusted values are inferred when absent.',d)
+        fig=plt.figure(figsize=(11,6.4),layout='constrained');gs=fig.add_gridspec(2,1,height_ratios=[1,4],hspace=.04)
+        marginal=fig.add_subplot(gs[0]);ax=fig.add_subplot(gs[1],sharex=marginal)
+        groups=[(valid&~sig,'Other / q unavailable','#B7C3CE'),(valid&sig&(d.display_effect<0),'Negative · q ≤ 0.05',BLUE),(valid&sig&(d.display_effect>=0),'Nonnegative · q ≤ 0.05',ORANGE)]
+        for mask,label,color in groups:
+            ax.scatter(d.loc[mask,'display_effect'],strength(d.loc[mask,'display_p']),s=30 if color!='#B7C3CE' else 16,c=color,alpha=.85 if color!='#B7C3CE' else .55,edgecolors='white',linewidths=.35,label=f'{label} (n={int(mask.sum()):,})',zorder=3)
+        if valid.any():marginal.hist(d.loc[valid,'display_effect'],bins=35,color='#C6D7E4',edgecolor='white',lw=.4)
+        marginal.set_ylabel('Count',fontsize=9);marginal.tick_params(labelbottom=False);marginal.spines['bottom'].set_visible(False)
+        marginal.set_title(f'Effect and evidence  |  {int(valid.sum()):,} plotted / {len(d):,} rows',fontsize=14)
+        ax.axvline(0,color='#A1B0BE',lw=.8,ls='--');ax.set_ylim(bottom=0);ax.margins(x=.12,y=.15)
+        for positive in [False,True]:
+            label_rows=d[valid&sig&(d.display_effect.ge(0) if positive else d.display_effect.lt(0))].sort_values(['display_p','label'],kind='stable').head(3)
+            for i,(_,row) in enumerate(label_rows.iterrows()):
+                ax.annotate(str(row.label),xy=(row.display_effect,float(strength([row.display_p])[0])),xytext=(.97 if positive else .03,.93-.13*i),textcoords='axes fraction',ha='right' if positive else 'left',fontsize=9,color=MUTED,arrowprops=dict(arrowstyle='-',color='#9BABBA',lw=.6),bbox=dict(facecolor='white',edgecolor='none',alpha=.9,pad=2))
+        ax.set_xlabel(effect);ax.set_ylabel('−log₁₀(raw p), display cap 16');ax.legend(loc='upper left',bbox_to_anchor=(1.01,1),fontsize=9)
+        self.add(name+'_volcano',fig,'Blue/orange mark negative/nonnegative effects with supplied adjusted p <= 0.05; gray includes other points and unavailable q. The marginal histogram shows the plotted effect distribution. At most three qualifying features per direction are labeled by raw p then identifier. No horizontal FDR line is inferred on the raw-p axis. The analysis discovery threshold and result table remain authoritative.',d)
         if abundance:
             a=numbers(d[abundance]);display=np.log2(a+1) if abundance=='baseMean' else a
             fig,ax=canvas(10);ax.scatter(display,d.display_effect,s=8,c=np.where(sig,ORANGE,BLUE),alpha=.5);ax.axhline(0,color='#666',lw=.7);ax.set_xlabel('log2(baseMean+1)' if abundance=='baseMean' else abundance);ax.set_ylabel(effect);ax.set_title('Abundance versus effect')
@@ -115,13 +128,15 @@ class Builder:
         chrom=next((c for c in ['chr','chrom','seqnames'] if c in d),None);pos=next((c for c in ['pos','start'] if c in d),None)
         if chrom and pos:
             fig,ax=canvas(10,12);offset=0;ticks=[];labels=[];coords=[]
+            spans=[float(numbers(t[pos]).max()-numbers(t[pos]).min()) for _,t in d.groupby(chrom) if numbers(t[pos]).notna().any()]
+            gap=max(1,sum(spans)*.035)
             for i,(c,sub) in enumerate(d.groupby(chrom,sort=True)):
-                positions=numbers(sub[pos]);ok=positions.notna()&sub.display_p.notna();xx=positions[ok]+offset
-                ax.scatter(xx,strength(sub.loc[ok,'display_p']),s=5,color=BLUE if i%2==0 else ORANGE)
-                if ok.any():ticks.append((xx.min()+xx.max())/2);labels.append(str(c));offset=float(xx.max())+1e6
-                coords.extend(dict(feature=k,chrom=c,position=v,display_x=x) for k,v,x in zip(sub.loc[ok,'label'],positions[ok],xx))
-            ax.set_xticks(ticks,labels,rotation=45,ha='right');ax.set_ylabel('-log10(raw p), capped at 16');ax.set_title('Genomic distribution of tested evidence')
-            self.add(name+'_manhattan',fig,'Contigs are concatenated lexically with fixed display gaps. Coordinates use the source table convention; missing sites are not plotted. No genome-wide threshold is inferred.',pd.DataFrame(coords))
+                positions=numbers(sub[pos]);ok=positions.notna()&sub.display_p.notna();xx=positions[ok]-positions[ok].min()+offset
+                ax.scatter(xx,strength(sub.loc[ok,'display_p']),s=16,color=BLUE if i%2==0 else ORANGE,alpha=.8)
+                if ok.any():ticks.append((xx.min()+xx.max())/2);labels.append(str(c));offset=float(xx.max())+gap
+                coords.extend(dict(feature=k,chrom=c,position=v,display_x=x,raw_p=pv) for k,v,x,pv in zip(sub.loc[ok,'label'],positions[ok],xx,sub.loc[ok,'display_p']))
+            ax.set_xticks(ticks,labels,rotation=0);ax.set_ylabel('−log₁₀(raw p), display cap 16');ax.set_xlabel('Observed spans, concatenated by contig');ax.set_title('Where tested evidence occurs')
+            self.add(name+'_manhattan',fig,'Observed contig spans are concatenated lexically with gaps equal to 3.5% of their summed spans (minimum one coordinate unit); unobserved contig prefixes are trimmed for display. Coordinates in the TSV retain the source convention. This is not a full-genome coverage map. No genome-wide threshold is inferred.',pd.DataFrame(coords))
 
     def matrix_qc(self,frame,prefix='matrix',metadata=None,scale='already transformed'):
         if frame is None or frame.empty or len(frame.columns)<2:self.skip(prefix+'_matrix','No feature-by-sample matrix');return
@@ -136,7 +151,9 @@ class Builder:
         fig,ax=canvas(8,12);ax.bar(np.arange(len(missing)),missing.fraction_missing,color=BLUE);ax.set_xticks(range(len(missing)),missing['sample'],rotation=90,fontsize=6);ax.set_ylabel('Fraction missing');ax.set_title(prefix+' missing measurements')
         self.add(prefix+'_missingness',fig,'Fraction of missing values among the feature rows read. Zero values remain observed measurements.',missing)
         selected=x.columns[:60];fig,ax=canvas(9,12)
-        vals=[x[c].dropna().to_numpy() for c in selected];ax.boxplot(vals,showfliers=False);ax.set_xticks(range(1,len(selected)+1),selected);ax.tick_params(axis='x',labelrotation=90,labelsize=6);ax.set_ylabel(scale);ax.set_title(prefix+' distributions')
+        vals=[x[c].dropna().to_numpy() for c in selected];boxes=ax.boxplot(vals,showfliers=False)
+        for box in boxes['boxes']:box.set_facecolor('#D8E6F0');box.set_linewidth(.9)
+        ax.set_xticks(range(1,len(selected)+1),selected);ax.tick_params(axis='x',labelrotation=90,labelsize=6);ax.set_ylabel(scale);ax.set_title(prefix+' distributions')
         self.add(prefix+'_distributions',fig,'First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard 1.5-IQR rule; outliers are hidden in the figure but retained in plotted data.',x[selected].reset_index(names='feature'))
         complete=x.dropna();complete=complete.loc[complete.std(axis=1)>0]
         if len(complete)<2 or x.shape[1]<2:self.skip(prefix+'_pca','Fewer than two complete variable features or samples');return
@@ -155,7 +172,7 @@ class Builder:
             if field:
                 cats=pdata[field].fillna('Missing').astype(str);unique=sorted(cats.unique())
                 for j,c in enumerate(unique):
-                    ok=cats==c;ax.scatter(pdata.loc[ok,'PC1'],pdata.loc[ok,'PC2'],s=30,label=c,color=plt.get_cmap('tab20')(j%20))
+                    ok=cats==c;ax.scatter(pdata.loc[ok,'PC1'],pdata.loc[ok,'PC2'],s=65,label=c,color=PALETTE[j%len(PALETTE)],edgecolors='white',linewidths=.8)
                 if len(unique)<=12:ax.legend(fontsize=7)
             else:ax.scatter(pdata.PC1,pdata.PC2,color=BLUE)
             ax.set_title(str(field or 'samples'));ax.set_xlabel(f'PC1 ({var[0]:.1%})');ax.set_ylabel(f'PC2 ({var[1]:.1%})')
@@ -185,8 +202,13 @@ def methods(b,frame,alpha=.05):
     calls.index=frame.iloc[:,0].astype(str);order=calls.abs().sum(axis=1).sort_values(ascending=False,kind='stable').head(30).index
     fig,ax=canvas(len(order));matrix(fig,ax,calls.loc[order],order,names,f'Call direction at q <= {alpha:g}',1);ax.set_title('Agreement across methods')
     b.add('method_calls',fig,'Signed calls from supplied adjusted values. Gray denotes untestable; zero denotes no call. Agreement is descriptive, not an additional FDR procedure.',calls.reset_index(names='feature'))
-    patterns=calls.apply(lambda r:' | '.join(n+':'+('NA' if pd.isna(r[n]) else str(int(r[n]))) for n in names),axis=1)
-    b.categories('method_intersections',patterns,'Exclusive method-call patterns')
+    patterns=calls.value_counts(dropna=False).rename('features').reset_index();shown=patterns.head(25)
+    fig,(ax,count)=plt.subplots(1,2,figsize=(11,max(4.8,2+.34*len(shown))),width_ratios=[max(3,len(names)),2],layout='constrained')
+    matrix(fig,ax,shown[names],range(1,len(shown)+1),names,f'Call at q ≤ {alpha:g}: −1 / 0 / +1',1)
+    ax.set_title('Method-call combinations');ax.set_ylabel('Pattern')
+    count.barh(range(len(shown)),shown.features,color=BLUE,height=.55);count.set_ylim(len(shown)-.5,-.5);count.set_yticks([]);count.set_xlabel('Features');count.set_title('Exclusive counts');count.margins(x=.2)
+    for i,k in enumerate(shown.features):count.text(k+.03*max(shown.features.max(),1),i,str(k),va='center',fontsize=9)
+    b.add('method_intersections',fig,'Each row is an exclusive combination of signed calls at the declared adjusted-p threshold. Zero is no call, hatched gray is untestable; up to 25 most frequent patterns are shown. The TSV contains all combinations. This is descriptive robustness, not a new FDR procedure.',patterns)
     pairs=[]
     for i,a in enumerate(names):
         for bb in names[i+1:]:

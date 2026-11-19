@@ -4,6 +4,7 @@ These are renderer examples, not fitted biological findings or accuracy benchmar
 Run: python examples/visualizations/make_gallery.py NEW_OUTPUT [--publish docs/gallery]
 """
 import argparse
+import math
 import json
 from pathlib import Path
 import shutil
@@ -16,6 +17,7 @@ import pandas as pd
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'downstream'))
 from auto_reports import render
+from plot_design import panel_guide
 
 
 def fixtures(out):
@@ -23,7 +25,10 @@ def fixtures(out):
     counts=rng.negative_binomial(15,.2,(80,8));counts[:10,4:]*=3
     mat=pd.DataFrame(counts,columns=samples);mat.insert(0,'feature',genes)
     meta=pd.DataFrame({'sample':samples,'group':['control']*4+['treated']*4,'batch':['A','B']*4})
-    stats=pd.DataFrame({'feature':genes,'effect':rng.normal(0,1,80),'p':10**(-rng.uniform(0,5,80)),'q':np.linspace(.001,1,80),'baseMean':counts.mean(axis=1)})
+    effects=rng.normal(0,.35,80);effects[:12]+=np.tile([-1.8,1.8],6)
+    se=rng.uniform(.2,.6,80);pvals=np.array([math.erfc(abs(x)/s/math.sqrt(2)) for x,s in zip(effects,se)])
+    order=np.argsort(pvals);qvals=np.empty(80);qvals[order]=np.minimum(1,np.minimum.accumulate((pvals[order]*80/np.arange(1,81))[::-1])[::-1])
+    stats=pd.DataFrame({'feature':genes,'effect':effects,'p':pvals,'q':qvals,'baseMean':counts.mean(axis=1)})
     stats.loc[::13,['effect','p','q']]=np.nan
     def folder(n):p=out/n;p.mkdir();return p
     def tsv(t,p):t.to_csv(p,sep='\t',index=False)
@@ -62,19 +67,23 @@ def fixtures(out):
 
 
 def publish(reports,dest):
-    from PIL import Image,ImageOps,ImageDraw
+    from PIL import Image,ImageOps,ImageDraw,ImageFont
+    from matplotlib import font_manager
     dest.mkdir(parents=True,exist_ok=False);items=[]
     for cmd,report in reports:
         receipt=json.loads((report/'visualization.json').read_text())
         for panel in receipt['panels']:
             name=cmd+'__'+panel['name'];src=report/'figures'/(panel['name']+'.png');dst=dest/(name+'.png');shutil.copyfile(src,dst)
             data=report/'plotted_data'/(panel['name']+'.tsv');shutil.copyfile(data,dest/(name+'.tsv'))
-            items.append(dict(command=cmd,name=panel['name'],image=dst.name,data=name+'.tsv',caption=panel['caption']))
+            items.append(dict(command=cmd,name=panel['name'],image=dst.name,data=name+'.tsv',caption=panel['caption'],**panel_guide(panel['name'])))
     (dest/'manifest.json').write_text(json.dumps({'data':'synthetic renderer fixtures; not biological validation','generator':'examples/visualizations/make_gallery.py','panels':items},indent=2)+'\n')
     text=['# KilnBio visualization gallery','','Every example below uses **fictional data**. These are the same renderers called automatically by the listed commands. They demonstrate output design, not biological validation. Each image links to its full resolution; each TSV contains the plotted values.','','Run `python examples/visualizations/make_gallery.py NEW_OUTPUT --with-enrichment` in the singlecell environment to regenerate these examples and their offline HTML/PDF reports. For real data, run the analysis command normally. See [automatic reports](../VISUALIZATIONS.md) for required inputs, command aliases, output locations, display limits, and native upstream reports.','','The matrix-QC designs shown for `de` and Olink are also used by `multiomic-layers`, `featurecounts` and donor-level `pseudobulk`. Method-comparison panels also serve `method-agreement`; modification panels also serve completed `ont` outputs; score panels serve compatible methylation and other assay clocks. A new fitted model is never inferred from a similar-looking chart.','']
-    for cmd in dict.fromkeys(x['command'] for x in items):
+    commands=list(dict.fromkeys(x['command'] for x in items))
+    text+=['## Browse by analysis','',' · '.join(f'[`{cmd}`](#{cmd})' for cmd in commands),'']
+    for cmd in commands:
         text+=['## '+cmd,'']
-        for x in [v for v in items if v['command']==cmd]:text+=['### '+x['name'].replace('_',' '),'',f"[![{x['name']}]({x['image']})]({x['image']})",'',x['caption'],f"[Plotted data]({x['data']})",'']
+        for x in [v for v in items if v['command']==cmd]:
+            text+=['### '+x['title'],'','**Why it matters.** '+x['why'],'',f"[![{x['title']}]({x['image']})]({x['image']})",'','**How to read it.** '+x['read'],'','<details><summary>Method and display details</summary>','',x['caption'],'','</details>','',f"[Full-size figure]({x['image']}) · [Plotted values (TSV)]({x['data']})",'']
     (dest/'README.md').write_text('\n'.join(text)+'\n')
     selections=[('assays',['de','dm','olink-import','scrna']),('integration',['differential-compare','compare-assays','assay-audit','candidate-evidence']),('platforms',['capture-panel','genomic-panel','alphafold','clock-panel'])]
     for title,commands in selections:
@@ -83,9 +92,19 @@ def publish(reports,dest):
             choices=[v for v in items if v['command']==cmd and v['name'] not in ['audit_metrics']]
             preferred={'de':'all_features_volcano','dm':'all_loci_manhattan','olink-import':'NPX_feature_heatmap','scrna':'cell_expression_dotplot','differential-compare':'method_calls','capture-panel':'panel_intervals'}
             chosen.append(next((x for x in choices if x['name']==preferred.get(cmd)),choices[-1]))
-        sheet=Image.new('RGB',(1440,1040),'#f5f7fa');draw=ImageDraw.Draw(sheet)
+        sheet=Image.new('RGB',(2000,1550),'#EEF2F6');draw=ImageDraw.Draw(sheet)
+        regular=font_manager.findfont('DejaVu Sans');bold=font_manager.findfont(font_manager.FontProperties(family='DejaVu Sans',weight='bold'))
+        fonts={s:ImageFont.truetype(regular,s) for s in [21,24]};heading=ImageFont.truetype(bold,44);subhead=ImageFont.truetype(bold,26)
+        titles={'assays':'Understand each assay','integration':'Connect evidence. Inspect decisions.','platforms':'Add molecular context'}
+        draw.text((52,30),'KILNBIO  /  VISUAL ANALYSIS',font=fonts[21],fill='#286FA3')
+        draw.text((52,69),titles[title],font=heading,fill='#203447')
+        draw.text((52,130),'Automatic reports  ·  Inspectable values  ·  Fictional demonstration data',font=fonts[24],fill='#637587')
         for i,item in enumerate(chosen):
-            im=Image.open(dest/item['image']).convert('RGB');im=ImageOps.contain(im,(690,450));x=20+(i%2)*720;y=60+(i//2)*510;sheet.paste(im,(x+(690-im.width)//2,y));draw.text((x,y-30),item['command']+' | SYNTHETIC EXAMPLE',fill='#182b3a')
+            x=42+(i%2)*980;y=195+(i//2)*655
+            draw.rounded_rectangle((x,y,x+936,y+625),radius=20,fill='white',outline='#D9E2EB',width=2)
+            draw.text((x+24,y+20),f'{i+1:02d}  '+item['title'],font=subhead,fill='#203447')
+            draw.text((x+24,y+62),item['command']+'  /  SYNTHETIC EXAMPLE',font=fonts[21],fill='#637587')
+            im=Image.open(dest/item['image']).convert('RGB');im=ImageOps.contain(im,(900,500));sheet.paste(im,(x+(936-im.width)//2,y+112+(500-im.height)//2))
         sheet.save(dest/(title+'-overview.png'))
 
 
@@ -93,8 +112,13 @@ def integration_examples(out):
     import importlib.util
     import multiomic_meta,pathway_compare
     p=out/'joint_inputs';p.mkdir();layers=[]
-    for i,n in enumerate(['RNA','protein','methylation']):
-        pd.DataFrame({'feature':['SYN1','SYN2','SYN3','SYN4','SYN5'],'effect':[1,-1 if i==1 else 1,0,np.nan,1],'p':[.0001*(i+1),.001,1,np.nan,.2]}).to_csv(p/(n+'.tsv'),sep='\t',index=False)
+    for i,n in enumerate(['RNA','protein','ATAC','methylation']):
+        genes=[f'SYN{k+1:02d}' for k in range(24)]
+        effect=np.array([1 if k%3 else -1 for k in range(24)],float);pv=np.array([10**(-5.5+.35*k+.18*i) if k<12 else .03+.03*(k-12)+.02*i for k in range(24)])
+        effect[8:12]*=(-1 if i in [1,3] else 1)
+        for k in [6+i,15+i,19+i]:effect[k]=np.nan;pv[k]=np.nan
+        effect[22]=np.nan;pv[22]=np.nan;effect[23]=0;pv[23]=1
+        pd.DataFrame({'feature':genes,'effect':effect,'p':pv}).to_csv(p/(n+'.tsv'),sep='\t',index=False)
         layers.append(dict(layer=n,results=n+'.tsv',feature_map='identity',orientation=1))
     pd.DataFrame(layers).to_csv(p/'manifest.tsv',sep='\t',index=False)
     multiomic_meta.run(SimpleNamespace(manifest=str(p/'manifest.tsv'),out=str(out/'joint'),min_layers=2,alpha=.05))
