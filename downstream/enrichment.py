@@ -24,10 +24,14 @@ def main():
         cfg.update(ranks=str(ranks),gmt=str(gmt))
         rscript=os.environ.get('KILNBIO_RSCRIPT') or shutil.which('Rscript');need(rscript,'Rscript not installed')
         out.mkdir(parents=True);resolved=out/'config.resolved.json';resolved.write_text(json.dumps(cfg,indent=2)+'\n')
-        record={'input_sha256':{str(f):digest(f) for f in (config,ranks,gmt)},'source_sha256':{f.name:digest(f) for f in (Path(__file__),Path(__file__).with_suffix('.R'))},'ties':len(values)-len(set(values)),'seed':20261031}
+        record={'input_sha256':{str(f):digest(f) for f in (config,ranks,gmt)},'source_sha256':{f.name:digest(f) for f in (Path(__file__),Path(__file__).with_suffix('.R'),Path(__file__).with_name('visual_reports.py'))},'ties':len(values)-len(set(values)),'seed':20261031}
         (out/'provenance.json').write_text(json.dumps(record,indent=2)+'\n')
         with (out/'R.log').open('w') as log:r=subprocess.run([rscript,'--vanilla',str(Path(__file__).with_suffix('.R')),str(resolved),str(out)],stdout=log,stderr=subprocess.STDOUT)
-        (out/'status.json').write_text(json.dumps({'complete':r.returncode==0,'exit_code':r.returncode})+'\n')
-        need(r.returncode==0,f'Enrichment failed; inspect {out / "R.log"}');print(f'Enrichment completed: {out}')
+        (out/'status.json').write_text(json.dumps({'complete':False,'exit_code':r.returncode,'stage':'statistics' if r.returncode else 'visualization'})+'\n')
+        need(r.returncode==0,f'Enrichment failed; inspect {out / "R.log"}')
+        from visual_reports import enrichment_report
+        enrichment_report(out,cfg)
+        (out/'status.json').write_text(json.dumps({'complete':True,'exit_code':0,'stage':'complete'})+'\n')
+        print(f'Enrichment completed: {out}')
     except (ValueError,KeyError,OSError) as e:p.exit(2,f'ERROR: {e}\n')
 if __name__=='__main__':main()

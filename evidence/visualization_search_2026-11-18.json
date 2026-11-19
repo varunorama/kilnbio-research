@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-18",
+  "scope": "Structured broad review, not a formal exhaustive systematic review; foundational and 2024-2026 primary methods plus current official documentation.",
+  "sources": "PubMed/PMC via web search, primary publishers, Bioconductor, official tool documentation. No PubMed MCP was available.",
+  "recorded_exact_batches": [
+    {
+      "batch": 6,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov QIIME 2 2019 reproducible interactive scalable extensible microbiome"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov phyloseq 2013 R package reproducible interactive microbiome"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov maftools efficient comprehensive analysis somatic variants"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov MOFA multi omics factor analysis 2020 mixOmics 2017"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "batch": 7,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"Complex heatmaps reveal patterns\" "
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"MSstats version 4.0\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"Olink\" \"OlinkAnalyze\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"methylKit\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "batch": 8,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"2025\" multiomics visualization interactive"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"2024\" multiomics visualization pathway"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"2026\" omics visualization"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"2025\" \"enrichplot\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "batch": 9,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"PaintOmics 4\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"Gviz\" visualization genomic data"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"scVelo\" dynamical RNA velocity"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"MetaboAnalyst 6.0\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "batch": 10,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"LIANA+\" 2024"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"mixOmics\" \"2017\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"MOFA+\" \"2020\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"Gene set enrichment analysis for genome-wide DNA methylation data\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "batch": 11,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"NanoPack\" visualizing processing long read sequencing"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"LIANA+\" framework cell cell communication"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"RNA velocity\" \"dynamical\" 2020"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"Pathview\" 2013"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "batch": 12,
+      "search_query": [
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"ANCOM-BC2\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"biolearn\" epigenetic 2024 2025"
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"2025\" \"visualization\" \"multi-omics\" \"tool\""
+        },
+        {
+          "q": "site.pubmed.ncbi.nlm.nih.gov \"2026\" \"pathway\" \"visualization\" \"tool\""
+        }
+      ],
+      "response_length": "long"
+    }
+  ],
+  "earlier_topic_searches_not_preserved_verbatim": [
+    "clusterProfiler/enrichplot, multiGSEA, Reimand pathway visualization",
+    "GOmeth/GOregion, GREAT, ActivePathways/DPM, ReactomeGSA, decoupleR",
+    "deepTools, ChIPseeker, pyGenomeTracks, Signac",
+    "ComplexHeatmap, UpSet, MultiQC, Scanpy"
+  ],
+  "additional_checks": [
+    "Screening for partial conjunction hypotheses Benjamini Heller DOI",
+    "18261164 partial conjunction",
+    "Multitask benchmarking of single-cell multimodal omics integration methods 2025",
+    "fgsea official tutorial",
+    "nf-core pinned output documentation"
+  ],
+  "selection": "Retain methods and docs that support a concrete input, plot type or interpretation. Distinguish peer-reviewed papers, documentation and new statistical models. Exclude search snippets as evidence of KilnBio implementation or superiority.",
+  "bibliography": "docs/VISUALIZATION_REVIEW.md"
+}

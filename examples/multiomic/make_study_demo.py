@@ -22,7 +22,7 @@ def create(out):
         {'id':'layers','command':'multiomic-layers','args':['{{run}}/configs/layers.json','{{run}}/layers'],
          'depends_on':['olink'],'outputs':['layers/manifest.tsv','layers/layers_design.tsv','layers/rna.tsv','layers/olink.tsv','layers/methylation.tsv']},
         {'id':'joint','command':'multiomic-meta','args':['{{run}}/layers/manifest.tsv','--min-layers','2','--out','{{run}}/joint'],
-         'depends_on':['layers'],'outputs':['joint/genes.tsv','joint/nominations.tsv','joint/summary.json']}]}
+         'depends_on':['layers'],'outputs':['joint/genes.tsv','joint/nominations.tsv','joint/summary.json','joint/report.html','joint/visualizations.pdf','joint/visualization.json']}]}
     (out/'study.json').write_text(json.dumps(study,indent=2)+'\n')
     print('Synthetic study created. Run: kilnbio study '+str(out/'study.json')+' NEW_RUN')
 

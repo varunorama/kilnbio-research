@@ -11,7 +11,7 @@ import sys
 from variant_annotations import digest
 
 ROOT = Path(__file__).resolve().parents[1]
-COMMANDS = {'rnaseq','scrnaseq','atacseq','chipseq','wgbs','rrbs','exome','ch-somatic',
+COMMANDS = {'rnaseq','scrnaseq','atacseq','chipseq','wgbs','rrbs','exome','ch-somatic','pathway-compare',
     'olink-import','multiomic-layers','multiomic-meta','variant-annotations','vep-annotate','alphafold','alphagenome',
     'ch-screen','ch-import','capture-panel','genomic-panel','genomic-associate','method-agreement',
     'differential-compare','assay-audit','candidate-evidence','compare-assays','compare-predictions',

@@ -8,7 +8,8 @@ LLM calls. Alignment, R statistics and Python integration remain explicit code.
 |---|---|---|
 | `olink-import` | Delivered long NPX export and explicit sample roster | NPX matrix, eligibility, measurement QC, technical-design audit and input hashes |
 | `multiomic-layers` | Matrices, donor/specimen maps and a model specification | limma/voom feature effects and two-sided p-values, design audits and session information |
-| `multiomic-meta` | Feature results, prespecified gene maps and directions | Directional partial-conjunction tests, BY-adjusted values and nominations |
+| `multiomic-meta` | Feature results, prespecified gene maps and directions | Directional partial-conjunction tests, BY-adjusted values, nominations and automatic figures |
+| `pathway-compare` | Complete pathway tests from each assay and measured backgrounds | Cross-assay pathway evidence, contributing genes, coverage and automatic figures |
 
 The statistical methods are established. KilnBio contributes the interfaces,
 design checks, missingness policy and traceable connection between the steps.
@@ -17,9 +18,10 @@ better than a single-assay target. That requires a separate held-out endpoint.
 
 ## Install the direct-analysis dependencies
 
-Use a dedicated Python environment with NumPy, pandas and SciPy; add pyarrow for
-Parquet. R needs limma, edgeR and jsonlite. The complete preprocessing installation
-does not install these direct-analysis packages automatically. Point
+The managed installer includes these dependencies with
+`bash setup.sh --profile analysis`, including Matplotlib for automatic reports.
+For manual installation, use a dedicated Python environment with NumPy, pandas,
+SciPy and Matplotlib; add pyarrow for Parquet. R needs limma, edgeR and jsonlite. Point
 `KILNBIO_PYTHON` and `KILNBIO_RSCRIPT` at the chosen environments; an optional
 `KILNBIO_R_LIBRARY` selects a private R library.
 
@@ -115,6 +117,11 @@ record which donors and features were used. Study-specific mixed models and
 exchangeability-aware permutations are not implemented here.
 
 ## Test cross-assay evidence
+
+`multiomic-meta` automatically writes `report.html`, PDF/SVG/PNG figures and
+plotted-data TSVs. See the [visualization guide](VISUALIZATIONS.md) for evidence
+heatmaps, concordance, coverage and rank sensitivity, and for the separate
+cross-assay pathway comparison.
 
 ```bash
 kilnbio multiomic-meta layers/manifest.tsv --min-layers 2 --out new_joint

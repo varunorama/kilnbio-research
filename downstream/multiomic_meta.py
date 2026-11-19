@@ -157,6 +157,8 @@ def run(args):
         (stage/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
         paths=[Path(args.manifest),*(p for _,inputs in loaded for p in inputs)]
         pd.DataFrame([dict(input=p.name,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths]).to_csv(stage/'inputs.tsv',sep='\t',index=False)
+        from visual_reports import multiomic_report
+        multiomic_report(stage, result, manifest, summary)
         if out.exists():
             raise ValueError('Output appeared during execution')
         stage.rename(out)

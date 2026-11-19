@@ -9,6 +9,13 @@ write.table(data.frame(pathway=names(sets),genes_in_ranked_universe=overlap),fil
 if(!any(overlap>=cfg$min_size & overlap<=cfg$max_size))stop('No gene sets pass overlap/size limits; check identifier compatibility')
 result<-fgsea::fgseaMultilevel(pathways=sets,stats=ranks,minSize=cfg$min_size,maxSize=cfg$max_size,eps=0,nproc=1)
 result<-as.data.frame(result);saveRDS(result,file.path(out,'enrichment.rds'))
+grDevices::pdf(file.path(out,'enrichment-curves.pdf'),width=9,height=6)
+curve_rows<-head(order(result$padj,result$pathway,na.last=NA),6)
+if(!length(curve_rows)){plot.new();text(.5,.5,'No finite adjusted pathway p-values for enrichment curves')}
+for(i in curve_rows) {
+  print(fgsea::plotEnrichment(sets[[result$pathway[i]]],ranks)+ggplot2::labs(title=result$pathway[i]))
+}
+grDevices::dev.off()
 result$leadingEdge<-vapply(result$leadingEdge,paste,collapse=';',character(1))
 write.table(result,file.path(out,'all_pathways.tsv'),sep='\t',row.names=FALSE,quote=FALSE,na='NA')
 write.table(result[!is.na(result$padj)&result$padj<cfg$fdr,,drop=FALSE],file.path(out,'discoveries.tsv'),sep='\t',row.names=FALSE,quote=FALSE,na='NA')

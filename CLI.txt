@@ -24,6 +24,9 @@ DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
   kilnbio olink-import export.csv --samples samples.tsv --out NEW_OUTPUT
   kilnbio multiomic-layers config.json NEW_OUTPUT
   kilnbio multiomic-meta manifest.tsv --min-layers 2 --out NEW_OUTPUT
+    Automatically writes report.html, PDF/SVG/PNG figures and plotted-data TSVs.
+  kilnbio pathway-compare config.json NEW_OUTPUT
+    Compare full pathway test families across assays with automatic figures.
   kilnbio ch-screen --samples blood.tsv --variants annotated.vcf.gz --drivers drivers.tsv --assembly GRCh38 --out NEW_OUTPUT
   kilnbio ch-import --calls provider.csv --variants mutations.csv --samples private_linkage.tsv --out NEW_OUTPUT
   kilnbio capture-panel --targets targets.bed --sizes genome.fa.fai --assembly GRCh38 --name PANEL --out NEW_OUTPUT [--bam sorted.bam --data-assembly GRCh38]
@@ -41,6 +44,7 @@ DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
   kilnbio de config.json NEW_OUTPUT [--dry-run]
   kilnbio dm config.json NEW_OUTPUT [--dry-run]
   kilnbio enrich config.json NEW_OUTPUT
+    Automatically writes pathway figures, leading-edge maps and enrichment curves.
   kilnbio scrna config.json NEW_OUTPUT
   kilnbio pseudobulk config.json NEW_OUTPUT
   kilnbio import-mods config.json NEW_OUTPUT

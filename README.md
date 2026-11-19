@@ -85,6 +85,26 @@ For a configured study, `kilnbio study study.json NEW_RUN` runs declared stages 
 
 [![KilnBio workflow from reads or existing measurements through processing, specimen and feature matching, analysis and biological validation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
 
+## Figures and pathway interpretation
+
+Figures are generated automatically when you run `multiomic-meta`, `enrich` or
+`pathway-compare`. Open `report.html` in the output folder; PDF, SVG, PNG and
+the plotted data are saved alongside it. No plotting notebook or AI call is needed.
+
+* **Across genes and assays:** evidence heatmaps, joint rankings, direction
+  agreement, missing measurements and leave-one-assay-out rank sensitivity.
+* **Within pathways:** enrichment rankings, leading-edge genes and running
+  enrichment curves from fgsea.
+* **Across pathways and assays:** shared versus assay-specific support,
+  measurement coverage and pathway overlap. Use valid assay-specific tests and
+  measured backgrounds; methylation and chromatin need appropriate mappings.
+
+Install with `bash setup.sh --profile analysis`. Follow the
+[report and pathway walkthrough](docs/VISUALIZATIONS.md), or browse the
+[literature-backed visualization inventory](docs/VISUALIZATION_REVIEW.md) for
+each assay and its implementation status. **16S microbiome sequencing is not
+currently implemented**; its proposed analyses are documented separately in that review.
+
 ## Use KilnBio with an assistant
 
 An approved researcher can connect Claude, ChatGPT, Codex or Antigravity to a configured KilnBio project to list pipelines, start runs and inspect output receipts. Your local machine or lab server supplies the analysis compute. [Assistant installation and connection guide](docs/ASSISTANT_SETUP.md)
