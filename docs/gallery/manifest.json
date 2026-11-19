@@ -924,23 +924,53 @@
     },
     {
       "command": "bladder-example",
+      "name": "bladder_cohort_coverage",
+      "image": "bladder-example__bladder_cohort_coverage.png",
+      "data": "bladder-example__bladder_cohort_coverage.tsv",
+      "caption": "Recorded population counts by FGFR3 grouping. The matched and excluded populations partition the all-RNA population; the three rows are not independent cohorts.",
+      "title": "Which patients remain in the comparison?",
+      "why": "Adding an assay can change the study population before it changes the evidence used to prioritize genes.",
+      "read": "Compare all eligible RNA patients with the matched subset and the excluded patients. Colored segments retain the original FGFR3 grouping; matched and excluded patients partition the first row."
+    },
+    {
+      "command": "bladder-example",
       "name": "shortlist_status",
       "image": "bladder-example__shortlist_status.png",
       "data": "bladder-example__shortlist_status.tsv",
-      "caption": "Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.",
-      "title": "How prioritization changes",
-      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
-      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
+      "caption": "Gene counts are separated by comparison. Retained + entered describes the new shortlist; retained + exited describes the previous shortlist. Counts are not pooled across comparisons.",
+      "title": "Separate cohort effects from added assay evidence",
+      "why": "A different shortlist can reflect either a different cohort or additional molecular evidence.",
+      "read": "Read each comparison separately. A to B restricts the cohort; B to C adds protein on those same patients. Retained plus entered equals the new shortlist, while retained plus exited equals the previous shortlist."
     },
     {
       "command": "bladder-example",
       "name": "shortlist_rank_changes",
       "image": "bladder-example__shortlist_rank_changes.png",
       "data": "bladder-example__shortlist_rank_changes.tsv",
-      "caption": "Up to 25 genes reaching the highest rank in any arm. All arms use the source recipe definitions; changing the cohort and adding an assay remain separate comparisons.",
-      "title": "How prioritization changes",
-      "why": "An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.",
-      "read": "Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set."
+      "caption": "Genes nominated in any A/B/C arm; numbers are their original ranks among the recorded common universe. 18 of 18 nominated genes displayed, sorted by best A/B/C rank then gene. The TSV retains all ranked genes and records which rows were displayed.",
+      "title": "Which candidates remain within the follow-up budget?",
+      "why": "A fixed experimental budget makes it useful to see exactly which candidates each analysis would nominate.",
+      "read": "Each row is a gene and each column is a declared analysis arm. Numbers give exact ranks; blue cells fall within the recorded budget and gray cells fall outside it."
+    },
+    {
+      "command": "bladder-example",
+      "name": "bladder_returning_candidates",
+      "image": "bladder-example__bladder_returning_candidates.png",
+      "data": "bladder-example__bladder_returning_candidates.tsv",
+      "caption": "Display rule: rank within budget in A and C, but outside budget in B. Up to eight such genes are drawn in alphabetical order; the TSV includes every qualifying gene. This shows the recorded ranking behavior, not independent biological confirmation.",
+      "title": "Why a candidate can drop out and return",
+      "why": "Looking only at the first and last shortlist can hide changes caused by restricting the cohort.",
+      "read": "Follow a gene from all-RNA to matched-RNA to joint evidence. The shaded area marks the same follow-up budget at every stage. Returning reflects the recorded ranking, not a new validation experiment."
+    },
+    {
+      "command": "bladder-example",
+      "name": "bladder_rank_evidence",
+      "image": "bladder-example__bladder_rank_evidence.png",
+      "data": "bladder-example__bladder_rank_evidence.tsv",
+      "caption": "A/B/P are signed rank scores from their original moderated t statistics; C is the recorded mean of B and P. These dimensionless scores preserve the recipe, and are not expression levels, fold changes or adjusted p-values. Display uses the same nominated genes as the rank panel.",
+      "title": "How RNA and protein contribute to prioritization",
+      "why": "Separate assay scores reveal the direction and relative strength of the evidence behind a combined rank.",
+      "read": "Blue and copper indicate negative and positive signed rank scores. C averages the matched RNA and protein scores. The colors show ranking evidence, not expression magnitude or statistical significance."
     },
     {
       "command": "bladder-example",
@@ -1141,6 +1171,16 @@
       "title": "Redundancy between pathway annotations",
       "why": "Closely overlapping gene sets can make one biological pattern appear to be many separate findings.",
       "read": "Edges indicate shared annotation genes at the declared overlap threshold, not regulatory interactions. Use this view to organize related results."
+    },
+    {
+      "command": "circos",
+      "name": "circos_tracks",
+      "image": "circos__circos_tracks.png",
+      "data": "circos__circos_tracks.tsv",
+      "caption": "Circos-style plot rendered by KilnBio/Matplotlib. Chromosome spans follow supplied lengths and order; dots mark interval midpoints. Rings follow configured assay order and retain independent declared value scales. Gray crosses denote supplied missing values; blank locations have no supplied row. Curves show only declared links and their relation labels, not interactions inferred from proximity. Overlapping dots may obscure each other; all input rows remain in TSV. No new test or target selection is performed.",
+      "title": "Multi-omics in shared genomic context",
+      "why": "A common genomic view makes it easier to inspect where different assays have measurements and which regions are explicitly linked.",
+      "read": "Read rings from outside to inside using their separate scales. Dots mark supplied interval midpoints; curves represent declared links. Gray crosses are missing values, while blank positions have no supplied record. Co-location does not establish an interaction."
     },
     {
       "command": "enrich",

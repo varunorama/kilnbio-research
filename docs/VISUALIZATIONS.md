@@ -66,9 +66,10 @@ older software release are not overwritten by installing the new design.
 | `compare-assays`, `compare-predictions` | Held-out predictions and recorded intervals | Observed/predicted scatter, residuals and supplied comparison uncertainty |
 | `assay-audit`, `candidate-evidence`, `epidiff-coverage` | Completed audit/confirmation records | Donor availability and policy comparisons, candidate confirmation heatmap, recorded denominators/coverage metrics |
 | `spikein-factors`, `graft-readouts` | Reference counts or lot-level measurements | Reference/target exposure and factor distributions; lot-level predictor, outcome and recipient denominators |
-| `bladder-example` | Completed recipe rankings and transitions | Candidate rank changes, shortlist changes and recipe denominators |
+| `bladder-example` | Completed recipe rankings and transitions | Cohort coverage, changes separated by comparison, exact shortlist ranks, returning candidates when present, signed RNA/protein rank evidence and recipe denominators |
 | `decision-methods` | Completed method JSON | Recorded method metrics; array-specific views depend on the returned data (see report availability) |
 | `multiomic-meta` | Complete directional gene-layer evidence | Evidence heatmap, joint ranking, concordance, measured patterns and fixed-r leave-one-assay-out rank sensitivity |
+| `circos` | Compatible mapped intervals, chromosome lengths and optional explicit links | Assay-dependent circular tracks, independent per-track scales, declared genomic links and downloadable plotted values |
 | `enrich` | Complete signed ranking and frozen GMT | NES ranking, leading-edge membership and native fgsea enrichment curves |
 | `pathway-compare` | Complete valid pathway tests and assay backgrounds | Pathway-by-assay evidence, measurement coverage, shared/assay-specific contributing genes and pathway overlap network |
 | `rnaseq`, `scrnaseq`, `atacseq`, `chipseq`, `wgbs`, `rrbs`, `exome`, `ch-somatic` | Completed pinned workflow | Index and links to its actual FastQC/MultiQC/other native QC reports; enabled upstream steps determine the detailed panels |
@@ -256,3 +257,7 @@ pooled effects would require another model and compatible effect estimates.
 
 Automatic analysis remains explicit Python and R code. These reports do not
 generate biological narratives with language models.
+
+### Circular genomic views
+
+`kilnbio circos config.json NEW_OUTPUT` generates a Circos-style report with one track for each supplied assay and optional declared links. `multiomic-meta --circos-config config.json` includes the panel in its report without changing tests or nominations. Track count and layout adapt to the configuration; measurements keep their own units and scales. See [inputs, safeguards and synthetic example](CIRCOS.md).

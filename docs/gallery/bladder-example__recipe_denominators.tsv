@@ -2,3 +2,12 @@ metric	value
 budget	15
 common_genes	20
 data	fictional rankings, not the bladder cohort
+groups.RNA_all.patients	16
+groups.RNA_all.positive	4
+groups.RNA_all.no_qualifying_call	12
+groups.matched.patients	12
+groups.matched.positive	3
+groups.matched.no_qualifying_call	9
+groups.RNA_only.patients	4
+groups.RNA_only.positive	1
+groups.RNA_only.no_qualifying_call	3

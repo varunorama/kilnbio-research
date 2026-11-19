@@ -24,6 +24,8 @@ DIRECT ANALYSIS MODULES (R/Bioconductor and Python, no nf-core dependency)
   kilnbio olink-import export.csv --samples samples.tsv --out NEW_OUTPUT
   kilnbio multiomic-layers config.json NEW_OUTPUT
   kilnbio multiomic-meta manifest.tsv --min-layers 2 --out NEW_OUTPUT
+    [--circos-config mapped_tracks.json] adds coordinate-based assay tracks and declared links.
+  kilnbio circos mapped_tracks.json NEW_OUTPUT
     Automatically writes report.html, PDF/SVG/PNG figures and plotted-data TSVs.
   kilnbio pathway-compare config.json NEW_OUTPUT
     Compare full pathway test families across assays with automatic figures.

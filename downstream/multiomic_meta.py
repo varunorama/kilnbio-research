@@ -158,7 +158,7 @@ def run(args):
         paths=[Path(args.manifest),*(p for _,inputs in loaded for p in inputs)]
         pd.DataFrame([dict(input=p.name,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths]).to_csv(stage/'inputs.tsv',sep='\t',index=False)
         from visual_reports import multiomic_report
-        multiomic_report(stage, result, manifest, summary)
+        multiomic_report(stage, result, manifest, summary, circos_config=getattr(args,'circos_config',None))
         if out.exists():
             raise ValueError('Output appeared during execution')
         stage.rename(out)
@@ -174,6 +174,7 @@ def main():
     parser.add_argument('--out',required=True)
     parser.add_argument('--min-layers',type=int,default=2)
     parser.add_argument('--alpha',type=float,default=.05)
+    parser.add_argument('--circos-config',help='Optional coordinate/track manifest; appends a Circos-style panel without changing tests')
     args=parser.parse_args()
     try:
         print(json.dumps(run(args)))

@@ -361,13 +361,8 @@ def build(command,args,output,dest):
         if t is not None:
             b.numeric('graft_readouts',t,['predictor','median_outcome','enrolled_recipients','measured_recipients'],'Lot-level readouts');b.report.notes.append('Recipient measurements are nested within lots/donors; these distributions do not treat recipients as independent lots.')
     elif command=='bladder-example':
-        t=b.load(root/'rankings.tsv');categorical_columns(b,b.load(root/'changes.tsv'),['status'],'shortlist')
-        if t is not None and {'arm','gene','rank'}<=set(t):
-            ranks=t.pivot(index='gene',columns='arm',values='rank');shown=ranks.loc[ranks.min(axis=1).sort_values().head(25).index]
-            fig,ax=canvas(15,11)
-            for gene,row in shown.iterrows():ax.plot(range(len(row)),row,marker='o',alpha=.65,label=gene)
-            ax.set_xticks(range(len(shown.columns)),shown.columns);ax.invert_yaxis();ax.set_ylabel('Rank (smaller is higher)');ax.set_title('Candidate ranks across declared assay/cohort choices');ax.legend(fontsize=6,bbox_to_anchor=(1.02,1),loc='upper left')
-            b.add('shortlist_rank_changes',fig,'Up to 25 genes reaching the highest rank in any arm. All arms use the source recipe definitions; changing the cohort and adding an assay remain separate comparisons.',ranks.reset_index())
+        from bladder_visualizations import bladder_report
+        bladder_report(b,root)
         record_table(b,root/'report.json','recipe_denominators')
     else:upstream(b,root)
     b.finish()

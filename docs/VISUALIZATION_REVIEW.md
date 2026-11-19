@@ -274,3 +274,6 @@ Pinned processing-output documentation checked for this review:
 [methylseq 4.2.0](https://nf-co.re/methylseq/4.2.0/docs/output).
 Tool-specific output depends on enabled workflow options; these links do not
 assert that every optional module ran in every KilnBio study.
+
+
+Circular visualization update: KilnBio now includes a local Matplotlib Circos-style renderer with assay-dependent tracks and declared interval links. The concept follows [Krzywinski et al. (2009), PMID 19541911](https://pubmed.ncbi.nlm.nih.gov/19541911/), doi:10.1101/gr.092759.109. It does not invoke the original Circos executable. See [input and interpretation rules](CIRCOS.md).

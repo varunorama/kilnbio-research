@@ -50,7 +50,9 @@ def render(command,args,output):
     try:
         build(command,args,output,stage)
         receipt=stage/'visualization.json';obj=json.loads(receipt.read_text())
-        obj['report_source_sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),ROOT/'downstream/report_profiles.py',ROOT/'downstream/analysis_visualizations.py']}
+        source_files=[Path(__file__),ROOT/'downstream/report_profiles.py',ROOT/'downstream/analysis_visualizations.py']
+        if command=='bladder-example':source_files.append(ROOT/'downstream/bladder_visualizations.py')
+        obj['report_source_sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in source_files}
         receipt.write_text(json.dumps(obj,indent=2,allow_nan=False)+'\n')
         stage.rename(dest)
         print('Automatic report: '+str(dest/'report.html'),flush=True)

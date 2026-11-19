@@ -134,7 +134,7 @@ def evidence_board(values, rows, columns, q, measured, alpha, title, subtitle, s
     return fig
 
 
-def multiomic_report(out, result, manifest, summary):
+def multiomic_report(out, result, manifest, summary, circos_config=None):
     # Import lazily to avoid changing the statistical module's public interface.
     from multiomic_meta import directional_pc
     layers = list(manifest.layer)
@@ -211,7 +211,11 @@ def multiomic_report(out, result, manifest, summary):
         matrix(fig,ax,mat,mat.index,mat.columns,'Rank without assay - rank with assay')
         ax.set_title('Rank sensitivity on common testable genes')
     report.add('rank_sensitivity',fig,'Each column removes one assay and holds r fixed. Average ranks handle ties within the same common testable gene set. Positive values indicate a better rank with that assay. This is sensitivity of supplied evidence, not measured predictive gain; eligibility losses are recorded separately.',changes)
-    report.finish(dict(top_n=30,min_layers=r,rank_ties='average',rank_eligibility=eligibility,alpha=summary['alpha']))
+    details=dict(top_n=30,min_layers=r,rank_ties='average',rank_eligibility=eligibility,alpha=summary['alpha'])
+    if circos_config is not None:
+        from circos_report import add_circos
+        details['circos']=add_circos(report,circos_config,allowed_layers=layers)
+    report.finish(details)
 
 
 def enrichment_report(out, cfg):

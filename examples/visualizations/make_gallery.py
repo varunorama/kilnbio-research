@@ -58,7 +58,21 @@ def fixtures(out):
     p=folder('graft');tsv(pd.DataFrame({'lot':['A','B','C'],'predictor':[.2,.5,.8],'median_outcome':[20,30,35],'enrolled_recipients':[4,5,4],'measured_recipients':[3,5,4]}),p/'lots.tsv');job('graft-readouts',p)
     p=folder('vep');(p/'annotated.vcf').write_text('##fileformat=VCFv4.2\n##INFO=<ID=CSQ,Number=.,Type=String,Description="Format: Allele|Consequence|IMPACT|BIOTYPE">\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\nchr1\t100\t.\tA\tG\t.\tPASS\tCSQ=G|missense_variant|MODERATE|protein_coding\nchr2\t200\t.\tC\tT\t.\tPASS\tCSQ=T|intron_variant|MODIFIER|protein_coding\n');job('vep-annotate',p)
     p=folder('decisions');js({'method':'rank_assays','result':{'features':['SYN1','SYN2','SYN3'],'arms':{'RNA':{'ranking':['SYN1','SYN2','SYN3']},'protein':{'ranking':['SYN3','SYN1','SYN2']},'combined':{'ranking':['SYN1','SYN3','SYN2']}},'transitions':[{'from':'RNA','to':'combined','rank_change':{'SYN1':0,'SYN2':1,'SYN3':-1}}]}},p/'ranks.json');job('decision-methods',p/'ranks.json')
-    p=folder('bladder_style');tsv(pd.DataFrame([{'arm':arm,'gene':g,'rank':i+1} for arm,gs in [('A',genes[:20]),('B',genes[2:20]+genes[:2]),('C',genes[1:20]+genes[:1])] for i,g in enumerate(gs)]),p/'rankings.tsv');tsv(pd.DataFrame({'gene':genes[:3],'status':['retained','entered','exited']}),p/'changes.tsv');js({'budget':15,'common_genes':20,'data':'fictional rankings, not the bladder cohort'},p/'report.json');job('bladder-example',p)
+    p=folder('bladder_style')
+    arm_genes={'A':genes[:20],'B':genes[2:20]+genes[:2],'C':genes[1:20]+genes[:1],'P':genes[4:20]+genes[:4]}
+    ranking=pd.DataFrame([dict(arm=arm,gene=g,rank=i+1,score=(1 if i%3 else -1)*(20-i)/21) for arm,gs in arm_genes.items() for i,g in enumerate(gs)])
+    score=ranking[ranking.arm.isin(['B','P'])].groupby('gene').score.mean()
+    joint=score.rename('score').reset_index().assign(strength=lambda x:x.score.abs()).sort_values(['strength','gene'],ascending=[False,True])
+    joint['arm']='C';joint['rank']=range(1,len(joint)+1)
+    ranking=pd.concat([ranking[ranking.arm!='C'],joint[ranking.columns]],ignore_index=True)
+    arm_genes['C']=joint.gene.tolist()
+    tsv(ranking,p/'rankings.tsv')
+    changes=[]
+    for before,after in [('A','B'),('B','C'),('A','C')]:
+        a=set(arm_genes[before][:15]);b=set(arm_genes[after][:15])
+        changes.extend(dict(comparison=before+'_to_'+after,gene=g,status='retained' if g in a&b else 'entered' if g in b else 'exited') for g in sorted(a|b))
+    tsv(pd.DataFrame(changes),p/'changes.tsv')
+    js({'budget':15,'common_genes':20,'data':'fictional rankings, not the bladder cohort','groups':{'RNA_all':{'patients':16,'positive':4,'no_qualifying_call':12},'matched':{'patients':12,'positive':3,'no_qualifying_call':9},'RNA_only':{'patients':4,'positive':1,'no_qualifying_call':3}}},p/'report.json');job('bladder-example',p)
     # An existing embedding is provided only to exercise the renderer, not to claim a fitted cluster result.
     import anndata
     p=folder('singlecell');n=160;obs=pd.DataFrame({'sample':np.repeat(samples,20),'leiden':pd.Categorical(np.tile(['0','1','2','3'],40)),'total_counts':rng.integers(500,5000,n),'n_genes_by_counts':rng.integers(100,1000,n),'pct_counts_mt':rng.uniform(0,20,n),'qc_pass':[True]*n},index=[f'C{i}' for i in range(n)])
@@ -123,7 +137,10 @@ def integration_examples(out):
     pd.DataFrame(layers).to_csv(p/'manifest.tsv',sep='\t',index=False)
     multiomic_meta.run(SimpleNamespace(manifest=str(p/'manifest.tsv'),out=str(out/'joint'),min_layers=2,alpha=.05))
     spec=importlib.util.spec_from_file_location('demo',ROOT/'examples/pathways/make_demo.py');demo=importlib.util.module_from_spec(spec);spec.loader.exec_module(demo);demo.create(out/'pathway_inputs');pathway_compare.run(out/'pathway_inputs/compare.json',out/'pathway_report')
-    return [('multiomic-meta',out/'joint'),('pathway-compare',out/'pathway_report')]
+    from circos_report import run as run_circos
+    circos_spec=importlib.util.spec_from_file_location('circos_demo',ROOT/'examples/circos/make_demo.py');circos_demo=importlib.util.module_from_spec(circos_spec);circos_spec.loader.exec_module(circos_demo)
+    run_circos(circos_demo.create(out/'circos_inputs'),out/'circos_report')
+    return [('multiomic-meta',out/'joint'),('pathway-compare',out/'pathway_report'),('circos',out/'circos_report')]
 
 
 def enrichment_example(out):

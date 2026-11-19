@@ -8,7 +8,7 @@ The matrix-QC designs shown for `de` and Olink are also used by `multiomic-layer
 
 ## Browse by analysis
 
-[`de`](#de) Â· [`dm`](#dm) Â· [`differential-compare`](#differential-compare) Â· [`olink-import`](#olink-import) Â· [`import-mods`](#import-mods) Â· [`capture-panel`](#capture-panel) Â· [`genomic-panel`](#genomic-panel) Â· [`ch-screen`](#ch-screen) Â· [`variant-annotations`](#variant-annotations) Â· [`alphafold`](#alphafold) Â· [`alphagenome`](#alphagenome) Â· [`clock-panel`](#clock-panel) Â· [`compare-assays`](#compare-assays) Â· [`spikein-factors`](#spikein-factors) Â· [`assay-audit`](#assay-audit) Â· [`candidate-evidence`](#candidate-evidence) Â· [`graft-readouts`](#graft-readouts) Â· [`vep-annotate`](#vep-annotate) Â· [`decision-methods`](#decision-methods) Â· [`bladder-example`](#bladder-example) Â· [`scrna`](#scrna) Â· [`multiomic-meta`](#multiomic-meta) Â· [`pathway-compare`](#pathway-compare) Â· [`enrich`](#enrich)
+[`de`](#de) · [`dm`](#dm) · [`differential-compare`](#differential-compare) · [`olink-import`](#olink-import) · [`import-mods`](#import-mods) · [`capture-panel`](#capture-panel) · [`genomic-panel`](#genomic-panel) · [`ch-screen`](#ch-screen) · [`variant-annotations`](#variant-annotations) · [`alphafold`](#alphafold) · [`alphagenome`](#alphagenome) · [`clock-panel`](#clock-panel) · [`compare-assays`](#compare-assays) · [`spikein-factors`](#spikein-factors) · [`assay-audit`](#assay-audit) · [`candidate-evidence`](#candidate-evidence) · [`graft-readouts`](#graft-readouts) · [`vep-annotate`](#vep-annotate) · [`decision-methods`](#decision-methods) · [`bladder-example`](#bladder-example) · [`scrna`](#scrna) · [`multiomic-meta`](#multiomic-meta) · [`pathway-compare`](#pathway-compare) · [`circos`](#circos) · [`enrich`](#enrich)
 
 ## de
 
@@ -26,7 +26,7 @@ Blue/orange mark negative/nonnegative effects with supplied adjusted p <= 0.05; 
 
 </details>
 
-[Full-size figure](de__all_features_volcano.png) Â· [Plotted values (TSV)](de__all_features_volcano.tsv)
+[Full-size figure](de__all_features_volcano.png) · [Plotted values (TSV)](de__all_features_volcano.tsv)
 
 ### Abundance and effect size
 
@@ -42,7 +42,7 @@ MA/MD-style descriptive diagnostic; original model values are not altered.
 
 </details>
 
-[Full-size figure](de__all_features_ma.png) Â· [Plotted values (TSV)](de__all_features_ma.tsv)
+[Full-size figure](de__all_features_ma.png) · [Plotted values (TSV)](de__all_features_ma.tsv)
 
 ### P-value distribution check
 
@@ -58,7 +58,7 @@ A diagnostic comparison with uniform p-values. Alternatives, dependence, discret
 
 </details>
 
-[Full-size figure](de__all_features_qq.png) Â· [Plotted values (TSV)](de__all_features_qq.tsv)
+[Full-size figure](de__all_features_qq.png) · [Plotted values (TSV)](de__all_features_qq.tsv)
 
 ### What was actually measurable?
 
@@ -74,7 +74,7 @@ Fraction of missing values among the feature rows read. Zero values remain obser
 
 </details>
 
-[Full-size figure](de__display_transformed_missingness.png) Â· [Plotted values (TSV)](de__display_transformed_missingness.tsv)
+[Full-size figure](de__display_transformed_missingness.png) · [Plotted values (TSV)](de__display_transformed_missingness.tsv)
 
 ### Display transformed distributions
 
@@ -90,7 +90,7 @@ First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard
 
 </details>
 
-[Full-size figure](de__display_transformed_distributions.png) Â· [Plotted values (TSV)](de__display_transformed_distributions.tsv)
+[Full-size figure](de__display_transformed_distributions.png) · [Plotted values (TSV)](de__display_transformed_distributions.tsv)
 
 ### Sample relationships
 
@@ -106,7 +106,7 @@ Unscaled PCA on at most 2,000 variable, complete features among the rows read. M
 
 </details>
 
-[Full-size figure](de__display_transformed_pca.png) Â· [Plotted values (TSV)](de__display_transformed_pca.tsv)
+[Full-size figure](de__display_transformed_pca.png) · [Plotted values (TSV)](de__display_transformed_pca.tsv)
 
 ### Sample relationships
 
@@ -122,7 +122,7 @@ Pearson correlation on complete variable features in the displayed matrix. Const
 
 </details>
 
-[Full-size figure](de__display_transformed_correlation.png) Â· [Plotted values (TSV)](de__display_transformed_correlation.tsv)
+[Full-size figure](de__display_transformed_correlation.png) · [Plotted values (TSV)](de__display_transformed_correlation.tsv)
 
 ### Patterns in measured features
 
@@ -138,7 +138,7 @@ Thirty highest-variance complete features among rows read; within-feature z scor
 
 </details>
 
-[Full-size figure](de__display_transformed_feature_heatmap.png) Â· [Plotted values (TSV)](de__display_transformed_feature_heatmap.tsv)
+[Full-size figure](de__display_transformed_feature_heatmap.png) · [Plotted values (TSV)](de__display_transformed_feature_heatmap.tsv)
 
 ### Patterns in measured features
 
@@ -154,7 +154,7 @@ Individual measurements for four variable features, selected for visualization r
 
 </details>
 
-[Full-size figure](de__display_transformed_feature_values.png) Â· [Plotted values (TSV)](de__display_transformed_feature_values.tsv)
+[Full-size figure](de__display_transformed_feature_values.png) · [Plotted values (TSV)](de__display_transformed_feature_values.tsv)
 
 ### Library diagnostics
 
@@ -170,7 +170,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](de__library_diagnostics.png) Â· [Plotted values (TSV)](de__library_diagnostics.tsv)
+[Full-size figure](de__library_diagnostics.png) · [Plotted values (TSV)](de__library_diagnostics.tsv)
 
 ## dm
 
@@ -188,7 +188,7 @@ Blue/orange mark negative/nonnegative effects with supplied adjusted p <= 0.05; 
 
 </details>
 
-[Full-size figure](dm__all_loci_volcano.png) Â· [Plotted values (TSV)](dm__all_loci_volcano.tsv)
+[Full-size figure](dm__all_loci_volcano.png) · [Plotted values (TSV)](dm__all_loci_volcano.tsv)
 
 ### P-value distribution check
 
@@ -204,7 +204,7 @@ A diagnostic comparison with uniform p-values. Alternatives, dependence, discret
 
 </details>
 
-[Full-size figure](dm__all_loci_qq.png) Â· [Plotted values (TSV)](dm__all_loci_qq.tsv)
+[Full-size figure](dm__all_loci_qq.png) · [Plotted values (TSV)](dm__all_loci_qq.tsv)
 
 ### Where the evidence occurs
 
@@ -220,7 +220,7 @@ Observed contig spans are concatenated lexically with gaps equal to 3.5% of thei
 
 </details>
 
-[Full-size figure](dm__all_loci_manhattan.png) Â· [Plotted values (TSV)](dm__all_loci_manhattan.tsv)
+[Full-size figure](dm__all_loci_manhattan.png) · [Plotted values (TSV)](dm__all_loci_manhattan.tsv)
 
 ### What was actually measurable?
 
@@ -236,7 +236,7 @@ Fraction of missing values among the feature rows read. Zero values remain obser
 
 </details>
 
-[Full-size figure](dm__display_fractions_missingness.png) Â· [Plotted values (TSV)](dm__display_fractions_missingness.tsv)
+[Full-size figure](dm__display_fractions_missingness.png) · [Plotted values (TSV)](dm__display_fractions_missingness.tsv)
 
 ### Display fractions distributions
 
@@ -252,7 +252,7 @@ First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard
 
 </details>
 
-[Full-size figure](dm__display_fractions_distributions.png) Â· [Plotted values (TSV)](dm__display_fractions_distributions.tsv)
+[Full-size figure](dm__display_fractions_distributions.png) · [Plotted values (TSV)](dm__display_fractions_distributions.tsv)
 
 ### Sample relationships
 
@@ -268,7 +268,7 @@ Unscaled PCA on at most 2,000 variable, complete features among the rows read. M
 
 </details>
 
-[Full-size figure](dm__display_fractions_pca.png) Â· [Plotted values (TSV)](dm__display_fractions_pca.tsv)
+[Full-size figure](dm__display_fractions_pca.png) · [Plotted values (TSV)](dm__display_fractions_pca.tsv)
 
 ### Sample relationships
 
@@ -284,7 +284,7 @@ Pearson correlation on complete variable features in the displayed matrix. Const
 
 </details>
 
-[Full-size figure](dm__display_fractions_correlation.png) Â· [Plotted values (TSV)](dm__display_fractions_correlation.tsv)
+[Full-size figure](dm__display_fractions_correlation.png) · [Plotted values (TSV)](dm__display_fractions_correlation.tsv)
 
 ### Patterns in measured features
 
@@ -300,7 +300,7 @@ Thirty highest-variance complete features among rows read; within-feature z scor
 
 </details>
 
-[Full-size figure](dm__display_fractions_feature_heatmap.png) Â· [Plotted values (TSV)](dm__display_fractions_feature_heatmap.tsv)
+[Full-size figure](dm__display_fractions_feature_heatmap.png) · [Plotted values (TSV)](dm__display_fractions_feature_heatmap.tsv)
 
 ### Patterns in measured features
 
@@ -316,7 +316,7 @@ Individual measurements for four variable features, selected for visualization r
 
 </details>
 
-[Full-size figure](dm__display_fractions_feature_values.png) Â· [Plotted values (TSV)](dm__display_fractions_feature_values.tsv)
+[Full-size figure](dm__display_fractions_feature_values.png) · [Plotted values (TSV)](dm__display_fractions_feature_values.tsv)
 
 ### Methylation depth
 
@@ -332,7 +332,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](dm__methylation_depth.png) Â· [Plotted values (TSV)](dm__methylation_depth.tsv)
+[Full-size figure](dm__methylation_depth.png) · [Plotted values (TSV)](dm__methylation_depth.tsv)
 
 ### Where the evidence occurs
 
@@ -348,7 +348,7 @@ First 2 kb of retained covered loci and first 12 samples. Lines connect measured
 
 </details>
 
-[Full-size figure](dm__methylation_sample_locus.png) Â· [Plotted values (TSV)](dm__methylation_sample_locus.tsv)
+[Full-size figure](dm__methylation_sample_locus.png) · [Plotted values (TSV)](dm__methylation_sample_locus.tsv)
 
 ## differential-compare
 
@@ -366,7 +366,7 @@ Signed calls from supplied adjusted values. Gray denotes untestable; zero denote
 
 </details>
 
-[Full-size figure](differential-compare__method_calls.png) Â· [Plotted values (TSV)](differential-compare__method_calls.tsv)
+[Full-size figure](differential-compare__method_calls.png) · [Plotted values (TSV)](differential-compare__method_calls.tsv)
 
 ### Sensitivity to analysis method
 
@@ -382,7 +382,7 @@ Each row is an exclusive combination of signed calls at the declared adjusted-p 
 
 </details>
 
-[Full-size figure](differential-compare__method_intersections.png) Â· [Plotted values (TSV)](differential-compare__method_intersections.tsv)
+[Full-size figure](differential-compare__method_intersections.png) · [Plotted values (TSV)](differential-compare__method_intersections.tsv)
 
 ### Sensitivity to analysis method
 
@@ -398,7 +398,7 @@ First six method pairs; values retain each method's effect definition. Shared di
 
 </details>
 
-[Full-size figure](differential-compare__method_effects.png) Â· [Plotted values (TSV)](differential-compare__method_effects.tsv)
+[Full-size figure](differential-compare__method_effects.png) · [Plotted values (TSV)](differential-compare__method_effects.tsv)
 
 ### What was actually measurable?
 
@@ -414,7 +414,7 @@ Fraction of missing values among the feature rows read. Zero values remain obser
 
 </details>
 
-[Full-size figure](differential-compare__input_missingness.png) Â· [Plotted values (TSV)](differential-compare__input_missingness.tsv)
+[Full-size figure](differential-compare__input_missingness.png) · [Plotted values (TSV)](differential-compare__input_missingness.tsv)
 
 ### Input distributions
 
@@ -430,7 +430,7 @@ First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard
 
 </details>
 
-[Full-size figure](differential-compare__input_distributions.png) Â· [Plotted values (TSV)](differential-compare__input_distributions.tsv)
+[Full-size figure](differential-compare__input_distributions.png) · [Plotted values (TSV)](differential-compare__input_distributions.tsv)
 
 ### Sample relationships
 
@@ -446,7 +446,7 @@ Unscaled PCA on at most 2,000 variable, complete features among the rows read. M
 
 </details>
 
-[Full-size figure](differential-compare__input_pca.png) Â· [Plotted values (TSV)](differential-compare__input_pca.tsv)
+[Full-size figure](differential-compare__input_pca.png) · [Plotted values (TSV)](differential-compare__input_pca.tsv)
 
 ### Sample relationships
 
@@ -462,7 +462,7 @@ Pearson correlation on complete variable features in the displayed matrix. Const
 
 </details>
 
-[Full-size figure](differential-compare__input_correlation.png) Â· [Plotted values (TSV)](differential-compare__input_correlation.tsv)
+[Full-size figure](differential-compare__input_correlation.png) · [Plotted values (TSV)](differential-compare__input_correlation.tsv)
 
 ### Patterns in measured features
 
@@ -478,7 +478,7 @@ Thirty highest-variance complete features among rows read; within-feature z scor
 
 </details>
 
-[Full-size figure](differential-compare__input_feature_heatmap.png) Â· [Plotted values (TSV)](differential-compare__input_feature_heatmap.tsv)
+[Full-size figure](differential-compare__input_feature_heatmap.png) · [Plotted values (TSV)](differential-compare__input_feature_heatmap.tsv)
 
 ### Patterns in measured features
 
@@ -494,7 +494,7 @@ Individual measurements for four variable features, selected for visualization r
 
 </details>
 
-[Full-size figure](differential-compare__input_feature_values.png) Â· [Plotted values (TSV)](differential-compare__input_feature_values.tsv)
+[Full-size figure](differential-compare__input_feature_values.png) · [Plotted values (TSV)](differential-compare__input_feature_values.tsv)
 
 ### What was actually measurable?
 
@@ -510,7 +510,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](differential-compare__feature_eligibility.png) Â· [Plotted values (TSV)](differential-compare__feature_eligibility.tsv)
+[Full-size figure](differential-compare__feature_eligibility.png) · [Plotted values (TSV)](differential-compare__feature_eligibility.tsv)
 
 ## olink-import
 
@@ -528,7 +528,7 @@ Fraction of missing values among the feature rows read. Zero values remain obser
 
 </details>
 
-[Full-size figure](olink-import__NPX_missingness.png) Â· [Plotted values (TSV)](olink-import__NPX_missingness.tsv)
+[Full-size figure](olink-import__NPX_missingness.png) · [Plotted values (TSV)](olink-import__NPX_missingness.tsv)
 
 ### Npx distributions
 
@@ -544,7 +544,7 @@ First 60 sample columns displayed, up to 300 analyzed. Whiskers use the standard
 
 </details>
 
-[Full-size figure](olink-import__NPX_distributions.png) Â· [Plotted values (TSV)](olink-import__NPX_distributions.tsv)
+[Full-size figure](olink-import__NPX_distributions.png) · [Plotted values (TSV)](olink-import__NPX_distributions.tsv)
 
 ### Sample relationships
 
@@ -560,7 +560,7 @@ Unscaled PCA on at most 2,000 variable, complete features among the rows read. M
 
 </details>
 
-[Full-size figure](olink-import__NPX_pca.png) Â· [Plotted values (TSV)](olink-import__NPX_pca.tsv)
+[Full-size figure](olink-import__NPX_pca.png) · [Plotted values (TSV)](olink-import__NPX_pca.tsv)
 
 ### Sample relationships
 
@@ -576,7 +576,7 @@ Pearson correlation on complete variable features in the displayed matrix. Const
 
 </details>
 
-[Full-size figure](olink-import__NPX_correlation.png) Â· [Plotted values (TSV)](olink-import__NPX_correlation.tsv)
+[Full-size figure](olink-import__NPX_correlation.png) · [Plotted values (TSV)](olink-import__NPX_correlation.tsv)
 
 ### Patterns in measured features
 
@@ -592,7 +592,7 @@ Thirty highest-variance complete features among rows read; within-feature z scor
 
 </details>
 
-[Full-size figure](olink-import__NPX_feature_heatmap.png) Â· [Plotted values (TSV)](olink-import__NPX_feature_heatmap.tsv)
+[Full-size figure](olink-import__NPX_feature_heatmap.png) · [Plotted values (TSV)](olink-import__NPX_feature_heatmap.tsv)
 
 ### Patterns in measured features
 
@@ -608,7 +608,7 @@ Individual measurements for four variable features, selected for visualization r
 
 </details>
 
-[Full-size figure](olink-import__NPX_feature_values.png) Â· [Plotted values (TSV)](olink-import__NPX_feature_values.tsv)
+[Full-size figure](olink-import__NPX_feature_values.png) · [Plotted values (TSV)](olink-import__NPX_feature_values.tsv)
 
 ### Measurement sampleqc
 
@@ -624,7 +624,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](olink-import__measurement_SampleQC.png) Â· [Plotted values (TSV)](olink-import__measurement_SampleQC.tsv)
+[Full-size figure](olink-import__measurement_SampleQC.png) · [Plotted values (TSV)](olink-import__measurement_SampleQC.tsv)
 
 ### Measurement assayqc
 
@@ -640,7 +640,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](olink-import__measurement_AssayQC.png) Â· [Plotted values (TSV)](olink-import__measurement_AssayQC.tsv)
+[Full-size figure](olink-import__measurement_AssayQC.png) · [Plotted values (TSV)](olink-import__measurement_AssayQC.tsv)
 
 ### Measurement above lod
 
@@ -656,7 +656,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](olink-import__measurement_above_LOD.png) Â· [Plotted values (TSV)](olink-import__measurement_above_LOD.tsv)
+[Full-size figure](olink-import__measurement_above_LOD.png) · [Plotted values (TSV)](olink-import__measurement_above_LOD.tsv)
 
 ### Relationship between study variables
 
@@ -672,7 +672,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](olink-import__metadata_association.png) Â· [Plotted values (TSV)](olink-import__metadata_association.tsv)
+[Full-size figure](olink-import__metadata_association.png) · [Plotted values (TSV)](olink-import__metadata_association.tsv)
 
 ### Analysis scope and recorded quantities
 
@@ -688,7 +688,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](olink-import__olink_receipt.png) Â· [Plotted values (TSV)](olink-import__olink_receipt.tsv)
+[Full-size figure](olink-import__olink_receipt.png) · [Plotted values (TSV)](olink-import__olink_receipt.tsv)
 
 ## import-mods
 
@@ -706,7 +706,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](import-mods__methylation_counts.png) Â· [Plotted values (TSV)](import-mods__methylation_counts.tsv)
+[Full-size figure](import-mods__methylation_counts.png) · [Plotted values (TSV)](import-mods__methylation_counts.tsv)
 
 ### Methylation contigs
 
@@ -722,7 +722,7 @@ Counts apply to rows read, not whole-genome coverage when the input exceeds the 
 
 </details>
 
-[Full-size figure](import-mods__methylation_contigs.png) Â· [Plotted values (TSV)](import-mods__methylation_contigs.tsv)
+[Full-size figure](import-mods__methylation_contigs.png) · [Plotted values (TSV)](import-mods__methylation_contigs.tsv)
 
 ### Where the evidence occurs
 
@@ -738,7 +738,7 @@ Display interval chr1:1000-3000; absent sites remain gaps. The fraction uses act
 
 </details>
 
-[Full-size figure](import-mods__methylation_locus.png) Â· [Plotted values (TSV)](import-mods__methylation_locus.tsv)
+[Full-size figure](import-mods__methylation_locus.png) · [Plotted values (TSV)](import-mods__methylation_locus.tsv)
 
 ### Analysis scope and recorded quantities
 
@@ -754,7 +754,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](import-mods__chemistry_and_scope.png) Â· [Plotted values (TSV)](import-mods__chemistry_and_scope.tsv)
+[Full-size figure](import-mods__chemistry_and_scope.png) · [Plotted values (TSV)](import-mods__chemistry_and_scope.tsv)
 
 ## capture-panel
 
@@ -772,7 +772,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](capture-panel__panel_width.png) Â· [Plotted values (TSV)](capture-panel__panel_width.tsv)
+[Full-size figure](capture-panel__panel_width.png) · [Plotted values (TSV)](capture-panel__panel_width.tsv)
 
 ### Panel contigs
 
@@ -788,7 +788,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](capture-panel__panel_contigs.png) Â· [Plotted values (TSV)](capture-panel__panel_contigs.tsv)
+[Full-size figure](capture-panel__panel_contigs.png) · [Plotted values (TSV)](capture-panel__panel_contigs.tsv)
 
 ### Where the evidence occurs
 
@@ -800,11 +800,11 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 <details><summary>Method and display details</summary>
 
-Each row is a separate interval; coordinates on different contigs are not a shared genomic location. This is interval geometry, not evidence of enhancerâ€“gene linkage.
+Each row is a separate interval; coordinates on different contigs are not a shared genomic location. This is interval geometry, not evidence of enhancer–gene linkage.
 
 </details>
 
-[Full-size figure](capture-panel__panel_intervals.png) Â· [Plotted values (TSV)](capture-panel__panel_intervals.tsv)
+[Full-size figure](capture-panel__panel_intervals.png) · [Plotted values (TSV)](capture-panel__panel_intervals.tsv)
 
 ### Features fully on target
 
@@ -820,7 +820,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](capture-panel__features_fully_on_target.png) Â· [Plotted values (TSV)](capture-panel__features_fully_on_target.tsv)
+[Full-size figure](capture-panel__features_fully_on_target.png) · [Plotted values (TSV)](capture-panel__features_fully_on_target.tsv)
 
 ### What was actually measurable?
 
@@ -836,7 +836,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](capture-panel__panel_coverage.png) Â· [Plotted values (TSV)](capture-panel__panel_coverage.tsv)
+[Full-size figure](capture-panel__panel_coverage.png) · [Plotted values (TSV)](capture-panel__panel_coverage.tsv)
 
 ## genomic-panel
 
@@ -854,7 +854,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](genomic-panel__genomic_states.png) Â· [Plotted values (TSV)](genomic-panel__genomic_states.tsv)
+[Full-size figure](genomic-panel__genomic_states.png) · [Plotted values (TSV)](genomic-panel__genomic_states.tsv)
 
 ### Genomic states and candidate evidence
 
@@ -870,7 +870,7 @@ States come from reviewed calls. Missing or unknown entries are never converted 
 
 </details>
 
-[Full-size figure](genomic-panel__genomic_oncoprint.png) Â· [Plotted values (TSV)](genomic-panel__genomic_oncoprint.tsv)
+[Full-size figure](genomic-panel__genomic_oncoprint.png) · [Plotted values (TSV)](genomic-panel__genomic_oncoprint.tsv)
 
 ## ch-screen
 
@@ -888,7 +888,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](ch-screen__CH_states.png) Â· [Plotted values (TSV)](ch-screen__CH_states.tsv)
+[Full-size figure](ch-screen__CH_states.png) · [Plotted values (TSV)](ch-screen__CH_states.tsv)
 
 ### Genomic states and candidate evidence
 
@@ -904,7 +904,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](ch-screen__variants_alleles.png) Â· [Plotted values (TSV)](ch-screen__variants_alleles.tsv)
+[Full-size figure](ch-screen__variants_alleles.png) · [Plotted values (TSV)](ch-screen__variants_alleles.tsv)
 
 ### Variants gene
 
@@ -920,7 +920,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](ch-screen__variants_gene.png) Â· [Plotted values (TSV)](ch-screen__variants_gene.tsv)
+[Full-size figure](ch-screen__variants_gene.png) · [Plotted values (TSV)](ch-screen__variants_gene.tsv)
 
 ### Variants candidate
 
@@ -936,7 +936,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](ch-screen__variants_candidate.png) Â· [Plotted values (TSV)](ch-screen__variants_candidate.tsv)
+[Full-size figure](ch-screen__variants_candidate.png) · [Plotted values (TSV)](ch-screen__variants_candidate.tsv)
 
 ### Variants reasons
 
@@ -952,7 +952,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](ch-screen__variants_reasons.png) Â· [Plotted values (TSV)](ch-screen__variants_reasons.tsv)
+[Full-size figure](ch-screen__variants_reasons.png) · [Plotted values (TSV)](ch-screen__variants_reasons.tsv)
 
 ## variant-annotations
 
@@ -970,7 +970,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](variant-annotations__annotation_clinvar_status.png) Â· [Plotted values (TSV)](variant-annotations__annotation_clinvar_status.tsv)
+[Full-size figure](variant-annotations__annotation_clinvar_status.png) · [Plotted values (TSV)](variant-annotations__annotation_clinvar_status.tsv)
 
 ### Annotation and scientific-model context
 
@@ -986,7 +986,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](variant-annotations__annotation_alphamissense_status.png) Â· [Plotted values (TSV)](variant-annotations__annotation_alphamissense_status.tsv)
+[Full-size figure](variant-annotations__annotation_alphamissense_status.png) · [Plotted values (TSV)](variant-annotations__annotation_alphamissense_status.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1002,7 +1002,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](variant-annotations__annotation_vep_status.png) Â· [Plotted values (TSV)](variant-annotations__annotation_vep_status.tsv)
+[Full-size figure](variant-annotations__annotation_vep_status.png) · [Plotted values (TSV)](variant-annotations__annotation_vep_status.tsv)
 
 ## alphafold
 
@@ -1020,7 +1020,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](alphafold__structure_mapping_status.png) Â· [Plotted values (TSV)](alphafold__structure_mapping_status.tsv)
+[Full-size figure](alphafold__structure_mapping_status.png) · [Plotted values (TSV)](alphafold__structure_mapping_status.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1036,7 +1036,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](alphafold__structure_tool_used.png) Â· [Plotted values (TSV)](alphafold__structure_tool_used.tsv)
+[Full-size figure](alphafold__structure_tool_used.png) · [Plotted values (TSV)](alphafold__structure_tool_used.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1052,7 +1052,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](alphafold__structure_confidence.png) Â· [Plotted values (TSV)](alphafold__structure_confidence.tsv)
+[Full-size figure](alphafold__structure_confidence.png) · [Plotted values (TSV)](alphafold__structure_confidence.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1068,7 +1068,7 @@ Model span and mapped position from the lookup receipt, not a rendered protein s
 
 </details>
 
-[Full-size figure](alphafold__protein_positions.png) Â· [Plotted values (TSV)](alphafold__protein_positions.tsv)
+[Full-size figure](alphafold__protein_positions.png) · [Plotted values (TSV)](alphafold__protein_positions.tsv)
 
 ## alphagenome
 
@@ -1086,7 +1086,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](alphagenome__prediction_output_type.png) Â· [Plotted values (TSV)](alphagenome__prediction_output_type.tsv)
+[Full-size figure](alphagenome__prediction_output_type.png) · [Plotted values (TSV)](alphagenome__prediction_output_type.tsv)
 
 ### Prediction variant id
 
@@ -1102,7 +1102,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](alphagenome__prediction_variant_id.png) Â· [Plotted values (TSV)](alphagenome__prediction_variant_id.tsv)
+[Full-size figure](alphagenome__prediction_variant_id.png) · [Plotted values (TSV)](alphagenome__prediction_variant_id.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1118,7 +1118,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](alphagenome__regulatory_predictions_1.png) Â· [Plotted values (TSV)](alphagenome__regulatory_predictions_1.tsv)
+[Full-size figure](alphagenome__regulatory_predictions_1.png) · [Plotted values (TSV)](alphagenome__regulatory_predictions_1.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1134,7 +1134,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](alphagenome__regulatory_predictions_2.png) Â· [Plotted values (TSV)](alphagenome__regulatory_predictions_2.tsv)
+[Full-size figure](alphagenome__regulatory_predictions_2.png) · [Plotted values (TSV)](alphagenome__regulatory_predictions_2.tsv)
 
 ### Analysis scope and recorded quantities
 
@@ -1150,7 +1150,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](alphagenome__prediction_receipt.png) Â· [Plotted values (TSV)](alphagenome__prediction_receipt.tsv)
+[Full-size figure](alphagenome__prediction_receipt.png) · [Plotted values (TSV)](alphagenome__prediction_receipt.tsv)
 
 ## clock-panel
 
@@ -1168,7 +1168,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](clock-panel__score_synthetic_age_years.png) Â· [Plotted values (TSV)](clock-panel__score_synthetic_age_years.tsv)
+[Full-size figure](clock-panel__score_synthetic_age_years.png) · [Plotted values (TSV)](clock-panel__score_synthetic_age_years.tsv)
 
 ### Biomarker outputs and coverage
 
@@ -1184,7 +1184,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](clock-panel__score_synthetic_pace.png) Â· [Plotted values (TSV)](clock-panel__score_synthetic_pace.tsv)
+[Full-size figure](clock-panel__score_synthetic_pace.png) · [Plotted values (TSV)](clock-panel__score_synthetic_pace.tsv)
 
 ### Sample relationships
 
@@ -1200,7 +1200,7 @@ Pairwise complete profiles (minimum three). Scores retain different endpoints; c
 
 </details>
 
-[Full-size figure](clock-panel__clock_correlation.png) Â· [Plotted values (TSV)](clock-panel__clock_correlation.tsv)
+[Full-size figure](clock-panel__clock_correlation.png) · [Plotted values (TSV)](clock-panel__clock_correlation.tsv)
 
 ### What was actually measurable?
 
@@ -1216,7 +1216,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](clock-panel__coverage.png) Â· [Plotted values (TSV)](clock-panel__coverage.tsv)
+[Full-size figure](clock-panel__coverage.png) · [Plotted values (TSV)](clock-panel__coverage.tsv)
 
 ### What was actually measurable?
 
@@ -1232,7 +1232,7 @@ Feature presence is distinct from complete profiles and successful scoring. Cove
 
 </details>
 
-[Full-size figure](clock-panel__clock_coverage.png) Â· [Plotted values (TSV)](clock-panel__clock_coverage.tsv)
+[Full-size figure](clock-panel__clock_coverage.png) · [Plotted values (TSV)](clock-panel__clock_coverage.tsv)
 
 ## compare-assays
 
@@ -1250,7 +1250,7 @@ Supplied held-out or out-of-fold predictions; the report does not train or selec
 
 </details>
 
-[Full-size figure](compare-assays__heldout_predictions.png) Â· [Plotted values (TSV)](compare-assays__heldout_predictions.tsv)
+[Full-size figure](compare-assays__heldout_predictions.png) · [Plotted values (TSV)](compare-assays__heldout_predictions.tsv)
 
 ### Validation and uncertainty
 
@@ -1266,7 +1266,7 @@ Residual pattern by supplied model, without refitting. Units are those of the ou
 
 </details>
 
-[Full-size figure](compare-assays__prediction_residuals.png) Â· [Plotted values (TSV)](compare-assays__prediction_residuals.tsv)
+[Full-size figure](compare-assays__prediction_residuals.png) · [Plotted values (TSV)](compare-assays__prediction_residuals.tsv)
 
 ### Validation and uncertainty
 
@@ -1282,7 +1282,7 @@ Intervals are read from the completed analysis, not recomputed by the visualizat
 
 </details>
 
-[Full-size figure](compare-assays__comparison_intervals.png) Â· [Plotted values (TSV)](compare-assays__comparison_intervals.tsv)
+[Full-size figure](compare-assays__comparison_intervals.png) · [Plotted values (TSV)](compare-assays__comparison_intervals.tsv)
 
 ## spikein-factors
 
@@ -1300,7 +1300,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](spikein-factors__spikein_counts.png) Â· [Plotted values (TSV)](spikein-factors__spikein_counts.tsv)
+[Full-size figure](spikein-factors__spikein_counts.png) · [Plotted values (TSV)](spikein-factors__spikein_counts.tsv)
 
 ### External-reference normalization
 
@@ -1316,7 +1316,7 @@ Recorded target and reference counts. Reference exposure assumptions are specifi
 
 </details>
 
-[Full-size figure](spikein-factors__spikein_exposure.png) Â· [Plotted values (TSV)](spikein-factors__spikein_exposure.tsv)
+[Full-size figure](spikein-factors__spikein_exposure.png) · [Plotted values (TSV)](spikein-factors__spikein_exposure.tsv)
 
 ## assay-audit
 
@@ -1334,7 +1334,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](assay-audit__audit_metrics.png) Â· [Plotted values (TSV)](assay-audit__audit_metrics.tsv)
+[Full-size figure](assay-audit__audit_metrics.png) · [Plotted values (TSV)](assay-audit__audit_metrics.tsv)
 
 ### What was actually measurable?
 
@@ -1350,7 +1350,7 @@ Donor counts for the recorded assay-availability patterns; denominators come fro
 
 </details>
 
-[Full-size figure](assay-audit__assay_reach.png) Â· [Plotted values (TSV)](assay-audit__assay_reach.tsv)
+[Full-size figure](assay-audit__assay_reach.png) · [Plotted values (TSV)](assay-audit__assay_reach.tsv)
 
 ### Validation and uncertainty
 
@@ -1366,7 +1366,7 @@ Intervals are read from the completed analysis, not recomputed by the visualizat
 
 </details>
 
-[Full-size figure](assay-audit__policy_intervals.png) Â· [Plotted values (TSV)](assay-audit__policy_intervals.tsv)
+[Full-size figure](assay-audit__policy_intervals.png) · [Plotted values (TSV)](assay-audit__policy_intervals.tsv)
 
 ## candidate-evidence
 
@@ -1384,7 +1384,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](candidate-evidence__audit_metrics.png) Â· [Plotted values (TSV)](candidate-evidence__audit_metrics.tsv)
+[Full-size figure](candidate-evidence__audit_metrics.png) · [Plotted values (TSV)](candidate-evidence__audit_metrics.tsv)
 
 ### Validation and uncertainty
 
@@ -1400,7 +1400,7 @@ Measured endpoint confirmations remain separate from perturbation evidence. Miss
 
 </details>
 
-[Full-size figure](candidate-evidence__candidate_confirmation.png) Â· [Plotted values (TSV)](candidate-evidence__candidate_confirmation.tsv)
+[Full-size figure](candidate-evidence__candidate_confirmation.png) · [Plotted values (TSV)](candidate-evidence__candidate_confirmation.tsv)
 
 ## graft-readouts
 
@@ -1418,7 +1418,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](graft-readouts__graft_readouts.png) Â· [Plotted values (TSV)](graft-readouts__graft_readouts.tsv)
+[Full-size figure](graft-readouts__graft_readouts.png) · [Plotted values (TSV)](graft-readouts__graft_readouts.tsv)
 
 ## vep-annotate
 
@@ -1436,7 +1436,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](vep-annotate__vep_Consequence.png) Â· [Plotted values (TSV)](vep-annotate__vep_Consequence.tsv)
+[Full-size figure](vep-annotate__vep_Consequence.png) · [Plotted values (TSV)](vep-annotate__vep_Consequence.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1452,7 +1452,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](vep-annotate__vep_IMPACT.png) Â· [Plotted values (TSV)](vep-annotate__vep_IMPACT.tsv)
+[Full-size figure](vep-annotate__vep_IMPACT.png) · [Plotted values (TSV)](vep-annotate__vep_IMPACT.tsv)
 
 ### Annotation and scientific-model context
 
@@ -1468,7 +1468,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](vep-annotate__vep_BIOTYPE.png) Â· [Plotted values (TSV)](vep-annotate__vep_BIOTYPE.tsv)
+[Full-size figure](vep-annotate__vep_BIOTYPE.png) · [Plotted values (TSV)](vep-annotate__vep_BIOTYPE.tsv)
 
 ## decision-methods
 
@@ -1486,7 +1486,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](decision-methods__method_metrics.png) Â· [Plotted values (TSV)](decision-methods__method_metrics.tsv)
+[Full-size figure](decision-methods__method_metrics.png) · [Plotted values (TSV)](decision-methods__method_metrics.tsv)
 
 ### How prioritization changes
 
@@ -1502,7 +1502,7 @@ Same declared feature family across the arms. Rank is descriptive; it is not a p
 
 </details>
 
-[Full-size figure](decision-methods__assay_rank_matrix.png) Â· [Plotted values (TSV)](decision-methods__assay_rank_matrix.tsv)
+[Full-size figure](decision-methods__assay_rank_matrix.png) · [Plotted values (TSV)](decision-methods__assay_rank_matrix.tsv)
 
 ### How prioritization changes
 
@@ -1518,41 +1518,89 @@ Negative change means a better numerical rank after the specified transition; sa
 
 </details>
 
-[Full-size figure](decision-methods__rank_transition_1.png) Â· [Plotted values (TSV)](decision-methods__rank_transition_1.tsv)
+[Full-size figure](decision-methods__rank_transition_1.png) · [Plotted values (TSV)](decision-methods__rank_transition_1.tsv)
 
 ## bladder-example
 
-### How prioritization changes
+### Which patients remain in the comparison?
 
-**Why it matters.** An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.
+**Why it matters.** Adding an assay can change the study population before it changes the evidence used to prioritize genes.
 
-[![How prioritization changes](bladder-example__shortlist_status.png)](bladder-example__shortlist_status.png)
+[![Which patients remain in the comparison?](bladder-example__bladder_cohort_coverage.png)](bladder-example__bladder_cohort_coverage.png)
 
-**How to read it.** Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set.
-
-<details><summary>Method and display details</summary>
-
-Counts of records; not a significance test. Largest 25 categories shown; TSV includes all categories read.
-
-</details>
-
-[Full-size figure](bladder-example__shortlist_status.png) Â· [Plotted values (TSV)](bladder-example__shortlist_status.tsv)
-
-### How prioritization changes
-
-**Why it matters.** An additional assay or a different analysis choice is useful when its effect on the follow-up list is visible.
-
-[![How prioritization changes](bladder-example__shortlist_rank_changes.png)](bladder-example__shortlist_rank_changes.png)
-
-**How to read it.** Inspect which candidates move and compare their eligibility. Rank movement is meaningful only within the declared comparison set.
+**How to read it.** Compare all eligible RNA patients with the matched subset and the excluded patients. Colored segments retain the original FGFR3 grouping; matched and excluded patients partition the first row.
 
 <details><summary>Method and display details</summary>
 
-Up to 25 genes reaching the highest rank in any arm. All arms use the source recipe definitions; changing the cohort and adding an assay remain separate comparisons.
+Recorded population counts by FGFR3 grouping. The matched and excluded populations partition the all-RNA population; the three rows are not independent cohorts.
 
 </details>
 
-[Full-size figure](bladder-example__shortlist_rank_changes.png) Â· [Plotted values (TSV)](bladder-example__shortlist_rank_changes.tsv)
+[Full-size figure](bladder-example__bladder_cohort_coverage.png) · [Plotted values (TSV)](bladder-example__bladder_cohort_coverage.tsv)
+
+### Separate cohort effects from added assay evidence
+
+**Why it matters.** A different shortlist can reflect either a different cohort or additional molecular evidence.
+
+[![Separate cohort effects from added assay evidence](bladder-example__shortlist_status.png)](bladder-example__shortlist_status.png)
+
+**How to read it.** Read each comparison separately. A to B restricts the cohort; B to C adds protein on those same patients. Retained plus entered equals the new shortlist, while retained plus exited equals the previous shortlist.
+
+<details><summary>Method and display details</summary>
+
+Gene counts are separated by comparison. Retained + entered describes the new shortlist; retained + exited describes the previous shortlist. Counts are not pooled across comparisons.
+
+</details>
+
+[Full-size figure](bladder-example__shortlist_status.png) · [Plotted values (TSV)](bladder-example__shortlist_status.tsv)
+
+### Which candidates remain within the follow-up budget?
+
+**Why it matters.** A fixed experimental budget makes it useful to see exactly which candidates each analysis would nominate.
+
+[![Which candidates remain within the follow-up budget?](bladder-example__shortlist_rank_changes.png)](bladder-example__shortlist_rank_changes.png)
+
+**How to read it.** Each row is a gene and each column is a declared analysis arm. Numbers give exact ranks; blue cells fall within the recorded budget and gray cells fall outside it.
+
+<details><summary>Method and display details</summary>
+
+Genes nominated in any A/B/C arm; numbers are their original ranks among the recorded common universe. 18 of 18 nominated genes displayed, sorted by best A/B/C rank then gene. The TSV retains all ranked genes and records which rows were displayed.
+
+</details>
+
+[Full-size figure](bladder-example__shortlist_rank_changes.png) · [Plotted values (TSV)](bladder-example__shortlist_rank_changes.tsv)
+
+### Why a candidate can drop out and return
+
+**Why it matters.** Looking only at the first and last shortlist can hide changes caused by restricting the cohort.
+
+[![Why a candidate can drop out and return](bladder-example__bladder_returning_candidates.png)](bladder-example__bladder_returning_candidates.png)
+
+**How to read it.** Follow a gene from all-RNA to matched-RNA to joint evidence. The shaded area marks the same follow-up budget at every stage. Returning reflects the recorded ranking, not a new validation experiment.
+
+<details><summary>Method and display details</summary>
+
+Display rule: rank within budget in A and C, but outside budget in B. Up to eight such genes are drawn in alphabetical order; the TSV includes every qualifying gene. This shows the recorded ranking behavior, not independent biological confirmation.
+
+</details>
+
+[Full-size figure](bladder-example__bladder_returning_candidates.png) · [Plotted values (TSV)](bladder-example__bladder_returning_candidates.tsv)
+
+### How RNA and protein contribute to prioritization
+
+**Why it matters.** Separate assay scores reveal the direction and relative strength of the evidence behind a combined rank.
+
+[![How RNA and protein contribute to prioritization](bladder-example__bladder_rank_evidence.png)](bladder-example__bladder_rank_evidence.png)
+
+**How to read it.** Blue and copper indicate negative and positive signed rank scores. C averages the matched RNA and protein scores. The colors show ranking evidence, not expression magnitude or statistical significance.
+
+<details><summary>Method and display details</summary>
+
+A/B/P are signed rank scores from their original moderated t statistics; C is the recorded mean of B and P. These dimensionless scores preserve the recipe, and are not expression levels, fold changes or adjusted p-values. Display uses the same nominated genes as the rank panel.
+
+</details>
+
+[Full-size figure](bladder-example__bladder_rank_evidence.png) · [Plotted values (TSV)](bladder-example__bladder_rank_evidence.tsv)
 
 ### What was actually measurable?
 
@@ -1568,7 +1616,7 @@ Receipt values retain their individual units; they are not compared on a shared 
 
 </details>
 
-[Full-size figure](bladder-example__recipe_denominators.png) Â· [Plotted values (TSV)](bladder-example__recipe_denominators.tsv)
+[Full-size figure](bladder-example__recipe_denominators.png) · [Plotted values (TSV)](bladder-example__recipe_denominators.tsv)
 
 ## scrna
 
@@ -1586,7 +1634,7 @@ Separate scales preserve each quantity. Histograms use the available finite valu
 
 </details>
 
-[Full-size figure](scrna__cell_qc.png) Â· [Plotted values (TSV)](scrna__cell_qc.tsv)
+[Full-size figure](scrna__cell_qc.png) · [Plotted values (TSV)](scrna__cell_qc.tsv)
 
 ### Cells qc pass
 
@@ -1602,7 +1650,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](scrna__cells_qc_pass.png) Â· [Plotted values (TSV)](scrna__cells_qc_pass.tsv)
+[Full-size figure](scrna__cells_qc_pass.png) · [Plotted values (TSV)](scrna__cells_qc_pass.tsv)
 
 ### Cells sample
 
@@ -1618,7 +1666,7 @@ Counts of records; not a significance test. Largest 25 categories shown; TSV inc
 
 </details>
 
-[Full-size figure](scrna__cells_sample.png) Â· [Plotted values (TSV)](scrna__cells_sample.tsv)
+[Full-size figure](scrna__cells_sample.png) · [Plotted values (TSV)](scrna__cells_sample.tsv)
 
 ### Cell complexity
 
@@ -1634,7 +1682,7 @@ Each point is a cell read from cell_qc.tsv; orange indicates a cell excluded by 
 
 </details>
 
-[Full-size figure](scrna__cell_complexity.png) Â· [Plotted values (TSV)](scrna__cell_complexity.tsv)
+[Full-size figure](scrna__cell_complexity.png) · [Plotted values (TSV)](scrna__cell_complexity.tsv)
 
 ### Single-cell structure and composition
 
@@ -1650,7 +1698,7 @@ Uses the stored embedding; no re-clustering. First 10,000 retained cells display
 
 </details>
 
-[Full-size figure](scrna__umap_leiden.png) Â· [Plotted values (TSV)](scrna__umap_leiden.tsv)
+[Full-size figure](scrna__umap_leiden.png) · [Plotted values (TSV)](scrna__umap_leiden.tsv)
 
 ### Single-cell structure and composition
 
@@ -1666,7 +1714,7 @@ Uses the stored embedding; no re-clustering. First 10,000 retained cells display
 
 </details>
 
-[Full-size figure](scrna__umap_sample.png) Â· [Plotted values (TSV)](scrna__umap_sample.tsv)
+[Full-size figure](scrna__umap_sample.png) · [Plotted values (TSV)](scrna__umap_sample.tsv)
 
 ### Single-cell structure and composition
 
@@ -1682,7 +1730,7 @@ Uses the stored embedding; no re-clustering. First 10,000 retained cells display
 
 </details>
 
-[Full-size figure](scrna__umap_total_counts.png) Â· [Plotted values (TSV)](scrna__umap_total_counts.tsv)
+[Full-size figure](scrna__umap_total_counts.png) · [Plotted values (TSV)](scrna__umap_total_counts.tsv)
 
 ### Single-cell structure and composition
 
@@ -1698,7 +1746,7 @@ Uses the stored embedding; no re-clustering. First 10,000 retained cells display
 
 </details>
 
-[Full-size figure](scrna__umap_pct_counts_mt.png) Â· [Plotted values (TSV)](scrna__umap_pct_counts_mt.tsv)
+[Full-size figure](scrna__umap_pct_counts_mt.png) · [Plotted values (TSV)](scrna__umap_pct_counts_mt.tsv)
 
 ### Single-cell structure and composition
 
@@ -1714,7 +1762,7 @@ Descriptive fractions among the first 10,000 retained cells. Donors, not individ
 
 </details>
 
-[Full-size figure](scrna__cell_composition.png) Â· [Plotted values (TSV)](scrna__cell_composition.tsv)
+[Full-size figure](scrna__cell_composition.png) · [Plotted values (TSV)](scrna__cell_composition.tsv)
 
 ### Expression and detection by cluster
 
@@ -1730,7 +1778,7 @@ Dot area is the nonzero fraction; color is mean stored log-normalized expression
 
 </details>
 
-[Full-size figure](scrna__cell_expression_dotplot.png) Â· [Plotted values (TSV)](scrna__cell_expression_dotplot.tsv)
+[Full-size figure](scrna__cell_expression_dotplot.png) · [Plotted values (TSV)](scrna__cell_expression_dotplot.tsv)
 
 ## multiomic-meta
 
@@ -1748,7 +1796,7 @@ Rows are aligned across evidence, measured-layer counts and joint BY q. Directio
 
 </details>
 
-[Full-size figure](multiomic-meta__evidence_heatmap.png) Â· [Plotted values (TSV)](multiomic-meta__evidence_heatmap.tsv)
+[Full-size figure](multiomic-meta__evidence_heatmap.png) · [Plotted values (TSV)](multiomic-meta__evidence_heatmap.tsv)
 
 ### Ranked evidence
 
@@ -1764,7 +1812,7 @@ Orange marks selected genes; point area increases with measured layer count. Unt
 
 </details>
 
-[Full-size figure](multiomic-meta__combined_ranking.png) Â· [Plotted values (TSV)](multiomic-meta__combined_ranking.tsv)
+[Full-size figure](multiomic-meta__combined_ranking.png) · [Plotted values (TSV)](multiomic-meta__combined_ranking.tsv)
 
 ### Agreement between molecular layers
 
@@ -1780,7 +1828,7 @@ Counts include all declared genes, without a significance filter. Same direction
 
 </details>
 
-[Full-size figure](multiomic-meta__concordance.png) Â· [Plotted values (TSV)](multiomic-meta__concordance.tsv)
+[Full-size figure](multiomic-meta__concordance.png) · [Plotted values (TSV)](multiomic-meta__concordance.tsv)
 
 ### What was actually measurable?
 
@@ -1796,7 +1844,7 @@ Exclusive measurement patterns preserve the distinction between absence of evide
 
 </details>
 
-[Full-size figure](multiomic-meta__measurement_patterns.png) Â· [Plotted values (TSV)](multiomic-meta__measurement_patterns.tsv)
+[Full-size figure](multiomic-meta__measurement_patterns.png) · [Plotted values (TSV)](multiomic-meta__measurement_patterns.tsv)
 
 ### How prioritization changes
 
@@ -1812,7 +1860,7 @@ Each column removes one assay and holds r fixed. Average ranks handle ties withi
 
 </details>
 
-[Full-size figure](multiomic-meta__rank_sensitivity.png) Â· [Plotted values (TSV)](multiomic-meta__rank_sensitivity.tsv)
+[Full-size figure](multiomic-meta__rank_sensitivity.png) · [Plotted values (TSV)](multiomic-meta__rank_sensitivity.tsv)
 
 ## pathway-compare
 
@@ -1830,7 +1878,7 @@ Top 25 by joint p when enabled, otherwise by minimum layer p for display only. U
 
 </details>
 
-[Full-size figure](pathway-compare__pathway_evidence.png) Â· [Plotted values (TSV)](pathway-compare__pathway_evidence.tsv)
+[Full-size figure](pathway-compare__pathway_evidence.png) · [Plotted values (TSV)](pathway-compare__pathway_evidence.tsv)
 
 ### What was actually measurable?
 
@@ -1846,7 +1894,7 @@ Gene coverage uses the assay-specific measured background. A large overlap does 
 
 </details>
 
-[Full-size figure](pathway-compare__pathway_coverage.png) Â· [Plotted values (TSV)](pathway-compare__pathway_coverage.tsv)
+[Full-size figure](pathway-compare__pathway_coverage.png) · [Plotted values (TSV)](pathway-compare__pathway_coverage.tsv)
 
 ### Genes behind pathway support
 
@@ -1862,7 +1910,7 @@ Genes supplied by upstream analyses, such as leading-edge genes or ORA hits, are
 
 </details>
 
-[Full-size figure](pathway-compare__shared_gene_support.png) Â· [Plotted values (TSV)](pathway-compare__shared_gene_support.tsv)
+[Full-size figure](pathway-compare__shared_gene_support.png) · [Plotted values (TSV)](pathway-compare__shared_gene_support.tsv)
 
 ### Redundancy between pathway annotations
 
@@ -1878,7 +1926,25 @@ Edges join pathways with full-GMT gene-set Jaccard overlap >= 0.25. This shows a
 
 </details>
 
-[Full-size figure](pathway-compare__pathway_overlap.png) Â· [Plotted values (TSV)](pathway-compare__pathway_overlap.tsv)
+[Full-size figure](pathway-compare__pathway_overlap.png) · [Plotted values (TSV)](pathway-compare__pathway_overlap.tsv)
+
+## circos
+
+### Multi-omics in shared genomic context
+
+**Why it matters.** A common genomic view makes it easier to inspect where different assays have measurements and which regions are explicitly linked.
+
+[![Multi-omics in shared genomic context](circos__circos_tracks.png)](circos__circos_tracks.png)
+
+**How to read it.** Read rings from outside to inside using their separate scales. Dots mark supplied interval midpoints; curves represent declared links. Gray crosses are missing values, while blank positions have no supplied record. Co-location does not establish an interaction.
+
+<details><summary>Method and display details</summary>
+
+Circos-style plot rendered by KilnBio/Matplotlib. Chromosome spans follow supplied lengths and order; dots mark interval midpoints. Rings follow configured assay order and retain independent declared value scales. Gray crosses denote supplied missing values; blank locations have no supplied row. Curves show only declared links and their relation labels, not interactions inferred from proximity. Overlapping dots may obscure each other; all input rows remain in TSV. No new test or target selection is performed.
+
+</details>
+
+[Full-size figure](circos__circos_tracks.png) · [Plotted values (TSV)](circos__circos_tracks.tsv)
 
 ## enrich
 
@@ -1896,7 +1962,7 @@ Point area encodes -log10(FDR q), capped at 16; position and color encode NES. N
 
 </details>
 
-[Full-size figure](enrich__pathway_ranking.png) Â· [Plotted values (TSV)](enrich__pathway_ranking.tsv)
+[Full-size figure](enrich__pathway_ranking.png) · [Plotted values (TSV)](enrich__pathway_ranking.tsv)
 
 ### Genes behind pathway support
 
@@ -1912,7 +1978,7 @@ Blue indicates leading-edge membership; white is absence from that leading edge,
 
 </details>
 
-[Full-size figure](enrich__leading_edge.png) Â· [Plotted values (TSV)](enrich__leading_edge.tsv)
+[Full-size figure](enrich__leading_edge.png) · [Plotted values (TSV)](enrich__leading_edge.tsv)
 
 ### Where enrichment is concentrated
 
@@ -1928,7 +1994,7 @@ Native fgsea plotEnrichment output. The TSV records the full ranked universe and
 
 </details>
 
-[Full-size figure](enrich__enrichment_curve_1.png) Â· [Plotted values (TSV)](enrich__enrichment_curve_1.tsv)
+[Full-size figure](enrich__enrichment_curve_1.png) · [Plotted values (TSV)](enrich__enrichment_curve_1.tsv)
 
 ### Where enrichment is concentrated
 
@@ -1944,7 +2010,7 @@ Native fgsea plotEnrichment output. The TSV records the full ranked universe and
 
 </details>
 
-[Full-size figure](enrich__enrichment_curve_2.png) Â· [Plotted values (TSV)](enrich__enrichment_curve_2.tsv)
+[Full-size figure](enrich__enrichment_curve_2.png) · [Plotted values (TSV)](enrich__enrichment_curve_2.tsv)
 
 ### Where enrichment is concentrated
 
@@ -1960,39 +2026,4 @@ Native fgsea plotEnrichment output. The TSV records the full ranked universe and
 
 </details>
 
-[Full-size figure](enrich__enrichment_curve_3.png) Â· [Plotted values (TSV)](enrich__enrichment_curve_3.tsv)
-
-
-## Native fitted-model diagnostics
-
-These original R diagnostics come from fitted models on **synthetic inputs** using `tests/integration_auto_reports.py`. They retain the upstream tool design. Their original vector PDFs are available below.
-
-### DESeq2 dispersion
-
-**Why it matters.** Variability between biological samples affects how confidently a gene can be compared between conditions.
-
-[![DESeq2 dispersion](de-deseq2-dispersion.png)](de-deseq2-dispersion.pdf)
-
-**How to read it.** Inspect the relationship between mean abundance, gene-wise dispersion and the fitted model trend. Use unusual values to guide model and sample checks.
-
-[Native vector PDF](de-deseq2-dispersion.pdf)
-
-### edgeR quasi-likelihood dispersion
-
-**Why it matters.** The fitted variability model determines the uncertainty assigned to count-based comparisons.
-
-[![edgeR quasi-likelihood dispersion](de-edger-ql-dispersion.png)](de-edger-ql-dispersion.pdf)
-
-**How to read it.** Inspect the dispersion pattern across abundance and the fitted trend alongside the experimental design.
-
-[Native vector PDF](de-edger-ql-dispersion.pdf)
-
-### limma-voom mean-variance trend
-
-**Why it matters.** Measurements at different abundances have different precision. Voom uses the mean-variance trend to assign precision weights.
-
-[![limma-voom mean-variance trend](multiomic-layers-voom.png)](multiomic-layers-voom.pdf)
-
-**How to read it.** Inspect the fitted trend and the range of abundances represented. The plot explains the weighting model used by the count-data fit.
-
-[Native vector PDF](multiomic-layers-voom.pdf)
+[Full-size figure](enrich__enrichment_curve_3.png) · [Plotted values (TSV)](enrich__enrichment_curve_3.tsv)

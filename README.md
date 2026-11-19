@@ -85,49 +85,78 @@ For a configured study, `kilnbio study study.json NEW_RUN` runs declared stages 
 
 [![KilnBio workflow from reads or existing measurements through processing, specimen and feature matching, analysis and biological validation.](docs/figures/kilnbio-workflow.png)](docs/figures/kilnbio-workflow.png)
 
-## See the figures KilnBio generates
+## Visualizations generated with your analysis
 
-Run an analysis through `kilnbio` and its figures are generated automatically.
-Open `visualization/report.html` under that analysis output. A command that
-writes one result file creates `RESULT_FILE.visualization/report.html` next to it.
-The integrated-evidence and enrichment commands write `report.html` directly in
-their output folder. Reports include PDF, SVG, PNG and the plotted values as TSV.
+Run an analysis through `kilnbio` and open `visualization/report.html` in its
+output folder. Single-file commands put the report next to their result as
+`RESULT_FILE.visualization/report.html`; `multiomic-meta`, `enrich`, and
+`pathway-compare` write `report.html` directly in their output folder.
+Reports explain **why each figure matters** and **how to read it**, and include
+PDF, SVG, PNG, plotted values (TSV), and provenance. Plotting is automatic when
+the required measurements or fitted results are present.
 
-**Browse the [complete visualization gallery](docs/gallery/README.md)** for an
-example of each KilnBio report panel, its command and its interpretation.
-These examples use **fictional data**, separate from manuscript results.
+### Standard analysis visualizations
 
-Each example explains **why it matters** and **how to read it**. Reports use
-consistent spacing, readable legends, explicit missing-data marks, and linked
-evidence/coverage panels. Technical details stay available beneath each figure;
-PNG, vector SVG, PDF and plotted values are available for export.
+Start here to inspect one assay, its quality, differential results, and pathways.
+The examples below use **fictional data**, separate from manuscript results.
 
-| Assay QC and differential analysis | Integration, eligibility and validation |
+| Visualization | What you can learn | Automatic source and requirements |
+|---|---|---|
+| [Volcano plots](docs/gallery/README.md#de) | Compare reported effects with statistical evidence and identify candidates for inspection. | `de` and compatible differential-result reports with effect and p-value columns; supplied adjusted p-values determine display highlighting. |
+| [Expression heatmaps](docs/gallery/de__display_transformed_feature_heatmap.png) | Inspect sample-level patterns and variation across measured genes. | `de`, `differential-compare`, Olink and other supported matrix reports; assay-appropriate measurements are required. Row z-scores are for display. |
+| [GO / pathway enrichment plots](docs/gallery/README.md#enrich) | See which gene sets are enriched and which genes contribute. | `enrich` with a complete signed ranking and a frozen GMT, including GO collections when supplied; NES plots, leading-edge membership and running enrichment curves. |
+| [Manhattan-style plots](docs/gallery/dm__all_loci_manhattan.png) | Locate concentrations of test evidence along recorded genomic coordinates. | Compatible differential tables, such as `dm`, with recognized chromosome, position and p-value columns. Displayed spans are not a complete genome coverage map. |
+| [Circos-style circular plots](docs/CIRCOS.md) | View coordinate-mapped measurements in shared genomic context, with an independent scale per assay and declared links between regions. | `circos`, or `multiomic-meta --circos-config`; tracks adapt to the supplied assays. Requires compatible genome builds, mapped intervals and optional explicit links. |
+| [QC, single-cell and platform views](docs/gallery/README.md) | Examine sample structure, missingness, cell populations, capture coverage and annotation. | Supported matrix/QC outputs, stored single-cell embeddings, genomic/capture outputs and native FastQC/MultiQC reports. |
+
+| Volcano: effect and evidence | Expression: sample-level patterns |
 |---|---|
-| [![Synthetic assay visualization examples](docs/gallery/assays-overview.png)](docs/gallery/README.md) | [![Synthetic integration visualization examples](docs/gallery/integration-overview.png)](docs/gallery/README.md) |
+| [![Synthetic volcano plot](docs/gallery/de__all_features_volcano.png)](docs/gallery/README.md#de) | [![Synthetic expression heatmap](docs/gallery/de__display_transformed_feature_heatmap.png)](docs/gallery/README.md#de) |
 
-[![Synthetic capture, genomic-state, protein-position and clock-coverage examples](docs/gallery/platforms-overview.png)](docs/gallery/README.md)
+| GO / pathway enrichment | Manhattan-style genomic evidence |
+|---|---|
+| [![Synthetic pathway enrichment ranking](docs/gallery/enrich__pathway_ranking.png)](docs/gallery/README.md#enrich) | [![Synthetic Manhattan-style plot](docs/gallery/dm__all_loci_manhattan.png)](docs/gallery/README.md#dm) |
 
-| Integrated gene evidence | Shared pathway evidence |
+**Circular multi-omics view:** the rings below follow five supplied assays. A run with only two declared assays produces two rings; missing assays and links are not fabricated.
+
+[![Synthetic five-assay Circos-style example](docs/gallery/circos__circos_tracks.png)](docs/CIRCOS.md)
+
+```bash
+python examples/circos/make_demo.py DEMO_INPUT
+kilnbio circos DEMO_INPUT/config.json NEW_CIRCOS_REPORT
+```
+
+### Integrative multi-omics investigations
+
+These reports connect evidence across assays, compare analysis choices, and make
+the measured populations and features visible. They answer different questions
+from a single-assay volcano plot or expression heatmap.
+
+| Investigation | What the report shows | Command |
+|---|---|---|
+| Coordinate-linked multi-omics | Assay-dependent rings, original measurement scales and explicit feature links; can be included in the integrated-evidence report. | `circos`, `multiomic-meta --circos-config` |
+| Gene evidence across omics | Gene-by-assay evidence, joint adjusted evidence, measured layers, direction agreement and leave-one-assay-out rank changes. | `multiomic-meta` |
+| Pathways across omics | Pathway-by-assay evidence, measured pathway coverage, contributing genes and overlap among pathways. Each assay retains its own test and background. | `pathway-compare` |
+| Robustness across methods | Directional calls, exclusive call patterns and effect comparisons across supported differential methods. | `differential-compare`, `method-agreement` |
+| Cohort and shortlist changes | Which samples an added assay excludes and which candidates enter or leave a fixed follow-up budget. | `assay-audit`, `bladder-example` |
+| Predictive and biological validation | Held-out model comparisons, uncertainty and recorded candidate confirmations. | `compare-assays`, `compare-predictions`, `candidate-evidence` |
+
+| Integrated gene evidence | Pathway evidence across assays |
 |---|---|
 | [![Synthetic gene-by-assay evidence](docs/gallery/multiomic-meta__evidence_heatmap.png)](docs/gallery/README.md#multiomic-meta) | [![Synthetic pathway-by-assay evidence](docs/gallery/pathway-compare__pathway_evidence.png)](docs/gallery/README.md#pathway-compare) |
 
-The gallery covers expression and methylation results, method agreement, Olink,
-single-cell QC and embeddings, modification counts, genomic annotations,
-capture coverage, biomarker scores, held-out predictions, and joint gene/pathway
-evidence. FASTQ routes retain their native FastQC/MultiQC reports and link them
-from the automatic report. Figures requiring a measured input or a fitted model
-appear when that input exists; the report records why a panel is unavailable.
+`multiomic-meta` combines directional evidence across assay layers. It does not
+perform fixed- or random-effects pooled-effect meta-analysis across studies;
+conventional meta-analysis forest and funnel plots are therefore not claimed.
 
-Install or update with `bash setup.sh` and the profile for your analysis. Basic
-plotting dependencies are now included in every profile. No plotting notebook,
-LLM call, or remote reporting service is needed.
+Browse the [complete gallery](docs/gallery/README.md), the
+[command-by-command report guide](docs/VISUALIZATIONS.md), and the
+[methods review](docs/VISUALIZATION_REVIEW.md). Reports record unavailable panels
+when required inputs are missing. Update with `bash setup.sh` and the profile for
+your analysis; every profile includes basic plotting dependencies. Reports run
+locally, without an LLM call or a separate plotting notebook.
 
-See the [command-by-command report guide](docs/VISUALIZATIONS.md) for required
-inputs and output paths, and the [methods review](docs/VISUALIZATION_REVIEW.md)
-for sources. **16S sequencing is not currently implemented.** Pathway comparison
-uses assay-specific tests and measured backgrounds; it does not treat every
-omics feature as an interchangeable gene measurement.
+**16S sequencing is not currently implemented.**
 
 ## Use KilnBio with an assistant
 

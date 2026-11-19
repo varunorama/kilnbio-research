@@ -1,4 +1,4 @@
-category	records
-retained	1
-entered	1
-exited	1
+comparison	retained	entered	exited
+A_to_B	13	2	2
+B_to_C	12	3	3
+A_to_C	13	2	2

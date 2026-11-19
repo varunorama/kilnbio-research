@@ -1,0 +1,4 @@
+population	patients	positive	no_qualifying_call
+A / All eligible RNA	16	4	12
+B, C, P / Matched	12	3	9
+Excluded by matching	4	1	3

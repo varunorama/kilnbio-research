@@ -105,13 +105,13 @@ The numbering below matches the expanded manuscript. Each procedure retains its 
 
 ### Validation at a fixed follow-up budget
 
-For a frozen list Sₐ(k) of k nominations from strategy a, let $d_g$ be the nominated direction, $\Delta_g$ the validation effect and $q_g$ its adjusted P value in the declared validation family. Define an endpoint-specific confirmation indicator and validation yield as
+For a frozen list Sₐ(k) of k nominations from strategy a, let $`d_g`$ be the nominated direction, $`\Delta_g`$ the validation effect and $`q_g`$ its adjusted P value in the declared validation family. Define an endpoint-specific confirmation indicator and validation yield as
 
 Equation 1:
 
-$$
-C_g=\mathbf{1}\{\mathrm{testable}_g,\ d_g\Delta_g>0,\ q_g\leq\alpha\},\qquad Y_a(k)=\sum_{g\in S_a(k)}C_g.
-$$
+```math
+C_g=\mathbf{1}\lbrace \mathrm{testable}_g,\ d_g\Delta_g>0,\ q_g\leq\alpha\rbrace ,\qquad Y_a(k)=\sum_{g\in S_a(k)}C_g.
+```
 
 Untestable nominations contribute zero confirmations and remain in the denominator k. Thus Yₐ(k)/k describes the return on a fixed follow-up budget, rather than the success rate after dropping unmeasurable targets. Contrasts between strategies use the same validation cohort and multiplicity family. The test and family are specific to each example: the glioma comparison uses the directional hypotheses defined above, whereas the lung comparison uses its externally measurable gene family. Resampling keeps the nominated lists fixed and preserves pairing between strategies. These yields evaluate held-out evidence and are not probabilities of causal or clinical validity.
 
@@ -123,9 +123,9 @@ For an eligible element e and replicate r, let cₑᵣⱼ be methylated-read equ
 
 Equation 2:
 
-$$
+```math
 M_e=\frac{1}{2}\sum_{r=1}^{2}\frac{\sum_{j\in J_e}c_{erj}}{\sum_{j\in J_e}n_{erj}},\qquad |J_e|\geq3.
-$$
+```
 
 This averages replicate fractions after depth weighting within each replicate. Model comparisons distinguish the original eligible link set from the subset with a measurable methylation summary. Within that common subset, each model selects 25 links using its own held-out prediction scores, and yield is the number of released screen-positive labels among those links. The count of screen-positive links excluded by methylation coverage is reported separately. It cannot be interpreted as a loss caused by methylation biology. Standardization and logistic-regression fitting use training pairs outside the test chromosome; paired target-gene resampling quantifies uncertainty conditional on the fitted predictions.
 
@@ -133,25 +133,25 @@ The reusable element_methylation function implements the covered-dyad summary. U
 
 ### Signed ranks and specimen-selection comparisons
 
-For the bladder recipe, A denotes RNA in all eligible tumors, B denotes RNA in matched tumors, and P denotes protein in those same matched tumors. All scores use the intersection U of genes eligible in A, B and P, with G = |U|. For gene g and arm a, the moderated statistic $t_{ga}$ is converted to an ascending average rank of its absolute value; the sign is then restored. The combined arm C is
+For the bladder recipe, A denotes RNA in all eligible tumors, B denotes RNA in matched tumors, and P denotes protein in those same matched tumors. All scores use the intersection U of genes eligible in A, B and P, with G = |U|. For gene g and arm a, the moderated statistic $`t_{ga}`$ is converted to an ascending average rank of its absolute value; the sign is then restored. The combined arm C is
 
 Equation 3:
 
-$$
-s_{ga}=\operatorname{sgn}(t_{ga})\frac{\operatorname{rank}_{U}(|t_{ga}|)}{G+1},\qquad s_{gC}=\frac{s_{gB}+s_{gP}}{2}.
-$$
+```math
+s_{ga}=\mathrm{sgn}(t_{ga})\frac{\mathrm{rank}_{U}(|t_{ga}|)}{G+1},\qquad s_{gC}=\frac{s_{gB}+s_{gP}}{2}.
+```
 
 Each arm orders genes by decreasing absolute score and uses gene identifiers to break exact score ties. The first 15 genes form its nomination set. The sign of the combined score supplies its direction; discordant assay signs can cancel. These scores are descriptive priorities, not P values, pooled effect estimates or probabilities of validation. The denominator G + 1 is the implemented bladder convention; it does not affect ordering within the shared family.
 
-The A-to-B comparison measures the observed change after restricting the patient set; B-to-C measures the observed change after adding protein on that fixed set. If $r_{ga}$ is the final rank, their rank differences satisfy
+The A-to-B comparison measures the observed change after restricting the patient set; B-to-C measures the observed change after adding protein on that fixed set. If $`r_{ga}`$ is the final rank, their rank differences satisfy
 
 Equation 4:
 
-$$
+```math
 r_{gC}-r_{gA}=(r_{gB}-r_{gA})+(r_{gC}-r_{gB}).
-$$
+```
 
-This identity organizes the comparison and does not identify causal effects of selection or measurement. For a transition a to b, entering genes are $S_b$(k) \ Sₐ(k), exiting genes are Sₐ(k) \ $S_b$(k), and direction changes among retained genes are recorded separately. Counts of replacements need not add across transitions because a gene can leave and re-enter. The common feature family prevents a changed gene denominator from being mistaken for a changed ranking rule.
+This identity organizes the comparison and does not identify causal effects of selection or measurement. For a transition a to b, entering genes are $`S_b`$(k) \ Sₐ(k), exiting genes are Sₐ(k) \ $`S_b`$(k), and direction changes among retained genes are recorded separately. Counts of replacements need not add across transitions because a gene can leave and re-enter. The common feature family prevents a changed gene denominator from being mistaken for a changed ranking rule.
 
 The rank_assays function exposes signed and unsigned modes with the denominators and tie rules specified here and in the GTEx section. Ranking places assay statistics with different measurement units on a common ordinal scale, while equal weighting makes the contribution of each supplied assay explicit. It sacrifices effect-size calibration and cannot correct an invalid assay model. The compare_nominations function applies the same budget to successive rankings and returns entries, exits and per-gene rank changes; users supply which transition represents specimen restriction or added evidence.
 
@@ -161,9 +161,9 @@ The control projection can be written as Y = XB + zγᵀ + E, where rows of Y ar
 
 Equation 5:
 
-$$
+```math
 z_{\mathrm{new}}=\left(\frac{y_C-\mu_C}{\sigma_C}\right)^{\!T}v-\bar z,\qquad y^{*}=y-z_{\mathrm{new}}\widehat\gamma.
-$$
+```
 
 The training control means μ, standard deviations σ, loading vector v, score center and coefficients are frozen. No held-out material label is required. The implementation declines adjustment when the protected and nuisance terms are rank deficient, fewer than three residual degrees of freedom remain, or the condition number of the standardized non-intercept design exceeds 10. These are operational safeguards for this implementation, not evidence that every remaining adjustment preserves biology.
 
@@ -171,15 +171,15 @@ Let D(u,v) be the root mean squared difference across the scored non-control fea
 
 Equation 6:
 
-$$
+```math
 R_{\mathrm{tech}}=\frac{1}{3}\sum_m D(y_m^{*},\mu_{m,-l}^{*}),
-$$
+```
 
 Equation 7:
 
-$$
+```math
 R_{\mathrm{bio}}=\frac{1}{3}\sum_{m<n}D(y_m^{*}-y_n^{*},\mu_{m,-l}^{\mathrm{raw}}-\mu_{n,-l}^{\mathrm{raw}}).
-$$
+```
 
 The three materials generate three pairwise contrasts. Technical agreement uses references on the same processing scale; biological contrast agreement uses the unadjusted reference differences. Their separate reporting makes a reduction in laboratory discrepancy distinguishable from preservation of material differences. Subtracting the same concurrent D6 vector from both materials cancels algebraically in a within-batch contrast.
 
@@ -187,21 +187,21 @@ The existing R functions adjust_assay and project_control_adjustment provide fit
 
 ### Assay availability and prediction policy
 
-Write bᵢ and aᵢ for eligibility of donor i for the baseline and additional assay. With baseline prediction $f_b$ and two-assay prediction $f_{ba}$, the frozen policy is
+Write bᵢ and aᵢ for eligibility of donor i for the baseline and additional assay. With baseline prediction $`f_b`$ and two-assay prediction $`f_{ba}`$, the frozen policy is
 
 Equation 8:
 
-$$
+```math
 \widehat y_i^{\pi}=\begin{cases}f_{ba}(x_i),&b_i=1,\ a_i=1,\\f_b(x_i),&b_i=1,\ a_i=0,\\\mathrm{abstain},&b_i=0.\end{cases}
-$$
+```
 
 The complete two-assay reach is the number with both eligibility indicators equal to one; policy reach is the number with baseline eligibility. For the same set L of scored donors with observed outcomes, the paired error gain is
 
 Equation 9:
 
-$$
+```math
 \Delta_{\mathrm{MAE}}=\frac{1}{|L|}\sum_{i\in L}\left(|y_i-f_b(x_i)|-|y_i-\widehat y_i^{\pi}|\right).
-$$
+```
 
 Positive gain favors the policy. Missing outcomes and abstentions are counted separately. The fallback donors contribute zero paired gain because both policies use the same baseline prediction. The reported resampling interval is conditional on the frozen fits and predictions; it does not include uncertainty from refitting a new development cohort.
 
@@ -213,13 +213,13 @@ The assay-audit pair operation implements this eligibility rule. Requiring a uni
 
 ### Agreement among analysis methods
 
-For a feature g, let M be the number of prespecified methods and $N_g^+$ and $N_g^-$ the numbers making positive and negative calls, respectively, at their within-method adjusted threshold. The reported agreement score is
+For a feature g, let M be the number of prespecified methods and $`N_g^+`$ and $`N_g^-`$ the numbers making positive and negative calls, respectively, at their within-method adjusted threshold. The reported agreement score is
 
 Equation 10:
 
-$$
+```math
 A_g=\frac{\max(N_g^{+},N_g^{-})}{M}.
-$$
+```
 
 Missing tests remain in the planned-method denominator. A second descriptive fraction divides by the number actually tested, when nonzero. Any positive and negative calls together produce an opposite-calls flag, including a tie; the score alone does not resolve that conflict. Agreement among methods fitted to the same observations is not independent replication, a combined P value or a calibrated confidence measure.
 
@@ -227,13 +227,13 @@ The method-agreement command exposes this calculation through the agreement func
 
 ### Promoter summaries and matched GTEx validation
 
-The GTEx ranking differs from the signed bladder rule. For assay a in a source tissue, it uses the unsigned percentile $u_{ga}$ of the absolute age statistic within the shared eligible gene family:
+The GTEx ranking differs from the signed bladder rule. For assay a in a source tissue, it uses the unsigned percentile $`u_{ga}`$ of the absolute age statistic within the shared eligible gene family:
 
 Equation 11:
 
-$$
-u_{ga}=\frac{\operatorname{rank}_{U}(|t_{ga}|)}{G},\qquad u_{g,\mathrm{combined}}=\frac{u_{g,\mathrm{RNA}}+u_{g,\mathrm{meth}}}{2}.
-$$
+```math
+u_{ga}=\frac{\mathrm{rank}_{U}(|t_{ga}|)}{G},\qquad u_{g,\mathrm{combined}}=\frac{u_{g,\mathrm{RNA}}+u_{g,\mathrm{meth}}}{2}.
+```
 
 Average ranks handle tied statistics; stable sorting of the fixed gene order resolves equal nomination scores. The two assay directions are retained separately. Thus nomination does not require RNA and methylation to change in the same direction. For CpG beta value β, the M-value is log₂[β/(1 − β)] after clipping β to [10⁻⁶, 1 − 10⁻⁶]. The gene summary takes the mean across its fixed annotated CpGs; the controlled alternative takes their median. The original RNA model used log₂ counts per million with a 0.5-count pseudocount and the corresponding library-size correction; TMM and voom were evaluated as sensitivities, as described below.
 
@@ -241,23 +241,23 @@ The donor_partition function assigns the first 16 hexadecimal digits of SHA256(s
 
 The promoter_summary function implements a fixed feature-to-gene map on the beta or M-value scale, with mean, median and optional omission of a named probe. Missing required probes or values produce an untestable gene–sample summary rather than changing the mapped set. Mean summaries represent the average measured promoter signal; medians assess sensitivity to an extreme probe. Neither summary implies that all promoter CpGs have equivalent regulatory effects.
 
-The fit_hc3 function estimates an explicitly supplied linear contrast in continuous measurements. For gene g, design X, residuals $e_{ig}$, leverages hᵢ and A = (XᵀX)⁻¹, its covariance estimate is
+The fit_hc3 function estimates an explicitly supplied linear contrast in continuous measurements. For gene g, design X, residuals $`e_{ig}`$, leverages hᵢ and A = (XᵀX)⁻¹, its covariance estimate is
 
 Equation 12:
 
-$$
-\widehat V_g=A X^{T}\operatorname{diag}\left\{\frac{e_{ig}^{2}}{(1-h_i)^2}\right\}X A.
-$$
+```math
+\widehat V_g=A X^{T}\mathrm{diag}\left\lbrace \frac{e_{ig}^{2}}{(1-h_i)^2}\right\rbrace X A.
+```
 
-A contrast c has estimated variance cᵀ$\widehat V_g$c, and the implementation uses an approximate t reference with n − rank(X) residual degrees of freedom. This is not an exact finite-sample calibration under arbitrary heteroskedasticity. The HC3 leverage correction addresses heteroskedastic residual variance (MacKinnon and White 1985). It does not remove unmeasured confounding, accommodate dependent donor rows, or make ordinary least squares appropriate for untransformed counts. The function requires a full-rank design, no unit-leverage observation and adequate residual degrees of freedom; zero or numerically near-zero standard-error contrasts are flagged untestable.
+A contrast c has estimated variance cᵀ$`\widehat V_g`$c, and the implementation uses an approximate t reference with n − rank(X) residual degrees of freedom. This is not an exact finite-sample calibration under arbitrary heteroskedasticity. The HC3 leverage correction addresses heteroskedastic residual variance (MacKinnon and White 1985). It does not remove unmeasured confounding, accommodate dependent donor rows, or make ordinary least squares appropriate for untransformed counts. The function requires a full-rank design, no unit-leverage observation and adequate residual degrees of freedom; zero or numerically near-zero standard-error contrasts are flagged untestable.
 
-For frozen discovery direction $d_{ga}$ and validation t statistic with residual degrees of freedom ν, directional validation uses the upper-tail probability below. The joint test requires support in both assay-specific directions:
+For frozen discovery direction $`d_{ga}`$ and validation t statistic with residual degrees of freedom ν, directional validation uses the upper-tail probability below. The joint test requires support in both assay-specific directions:
 
 Equation 13:
 
-$$
+```math
 p_{ga}^{\mathrm{dir}}=1-F_{t_\nu}(d_{ga}t_{ga}^{\mathrm{val}}),\qquad p_g^{\mathrm{both}}=\max(p_{g,\mathrm{RNA}}^{\mathrm{dir}},p_{g,\mathrm{meth}}^{\mathrm{dir}}).
-$$
+```
 
 The maximum is a conjunction test; it does not test whether one assay mediates the other. No extra search over direction occurs in validation because directions were frozen in discovery. A gene failing validation RNA expression eligibility receives RNA P = 1 and remains in the nomination-union adjustment family. Benjamini–Yekutieli adjustment supplies the additional dependence sensitivity.
 
@@ -265,9 +265,9 @@ At budget k = 25, the controlled summary comparison counts changed nominations a
 
 Equation 14:
 
-$$
+```math
 D_k=k-|S_{\mathrm{mean}}(k)\cap S_{\mathrm{median}}(k)|.
-$$
+```
 
 This is a sensitivity of the decision to a promoter summary, not a count of newly validated targets. Probe-level effect signs and leave-one-probe-out estimates distinguish an aggregate association from one dependent on a single CpG. Nomination overlap, directional coherence and adjusted validation evidence remain separate outputs; no composite robustness score was fitted.
 
@@ -275,29 +275,29 @@ The directional_conjunction function evaluates the frozen directions across the 
 
 ### Directional evidence across assay layers
 
-For a feature f mapped to gene g in layer l, let $p_{fl}$ be a valid two-sided P value from a symmetric test and $e_{fl}$ its effect multiplied by the prespecified layer orientation. The positive directional tail is $p_{fl}$/2 when $e_{fl}$ ≥ 0 and 1 − $p_{fl}$/2 otherwise; the negative tail reverses the inequality. A zero effect is accepted only with P = 1, giving both tails 0.5. If $K_{gl}$ features map to the gene in that layer, directional feature aggregation is
+For a feature f mapped to gene g in layer l, let $`p_{fl}`$ be a valid two-sided P value from a symmetric test and $`e_{fl}`$ its effect multiplied by the prespecified layer orientation. The positive directional tail is $`p_{fl}`$/2 when $`e_{fl}`$ ≥ 0 and 1 − $`p_{fl}`$/2 otherwise; the negative tail reverses the inequality. A zero effect is accepted only with P = 1, giving both tails 0.5. If $`K_{gl}`$ features map to the gene in that layer, directional feature aggregation is
 
 Equation 15:
 
-$$
-P_{gl}^{d}=\min\left(1,K_{gl}\min_{f\mapsto g}p_{fl}^{d}\right),\qquad d\in\{+,-\}.
-$$
+```math
+P_{gl}^{d}=\min\left(1,K_{gl}\min_{f\mapsto g}p_{fl}^{d}\right),\qquad d\in\lbrace +,-\rbrace .
+```
 
-Every mapped feature must have a finite effect and P value for that gene–layer result to be testable. An incomplete mapped feature set is not silently reduced. For a gene with $m_g$ testable layers and a required minimum r ≥ 2, let $P_{g,(r)}^d$ be the rth smallest directional layer P value. The implemented Bonferroni partial-conjunction test and correction for choosing either direction are
+Every mapped feature must have a finite effect and P value for that gene–layer result to be testable. An incomplete mapped feature set is not silently reduced. For a gene with $`m_g`$ testable layers and a required minimum r ≥ 2, let $`P_{g,(r)}^d`$ be the rth smallest directional layer P value. The implemented Bonferroni partial-conjunction test and correction for choosing either direction are
 
 Equation 16:
 
-$$
-P_g^{\mathrm{PC}}=\min\left\{1,\ 2(m_g-r+1)\min\left(P_{g,(r)}^{+},P_{g,(r)}^{-}\right)\right\},\qquad m_g\geq r.
-$$
+```math
+P_g^{\mathrm{PC}}=\min\left\lbrace 1,\ 2(m_g-r+1)\min\left(P_{g,(r)}^{+},P_{g,(r)}^{-}\right)\right\rbrace ,\qquad m_g\geq r.
+```
 
 Genes with fewer than r testable layers are untestable. For multiplicity adjustment, all G declared genes remain in the family, with untestable results temporarily assigned P = 1. For ordered P values, Benjamini–Yekutieli adjustment is
 
 Equation 17:
 
-$$
-q_{(i)}=\min\left\{1,\min_{j\geq i}\frac{G H_G P_{(j)}^{\mathrm{PC}}}{j}\right\},\qquad H_G=\sum_{h=1}^{G}\frac{1}{h}.
-$$
+```math
+q_{(i)}=\min\left\lbrace 1,\min_{j\geq i}\frac{G H_G P_{(j)}^{\mathrm{PC}}}{j}\right\rbrace ,\qquad H_G=\sum_{h=1}^{G}\frac{1}{h}.
+```
 
 Untestable q values are then restored to missing. A testable gene is labeled convergent when q ≤ α. This supports at least r associated layers in the selected orientation under the stated assumptions, including prespecified assay availability and valid input tests. It does not imply that every layer is individually significant or that the layers represent independent cohorts. Bonferroni and Benjamini–Yekutieli address dependence among valid tests; they do not repair invalid input models or outcome-driven feature selection (Benjamini and Heller 2008; Benjamini and Yekutieli 2001).
 
@@ -311,12 +311,12 @@ Operational checks keep annotation evidence distinct from observed molecular eff
 
 ### Exploratory Cauchy combination
 
-For the optional global-null diagnostic, each finite layer result is made nondirectional as $P_{gl} = \min(1,2\min(P_{gl}^{+},P_{gl}^{-}))$. With positive prespecified weights normalized over finite layers,
+For the optional global-null diagnostic, each finite layer result is made nondirectional as $`P_{gl} = \min(1,2\min(P_{gl}^{+},P_{gl}^{-}))`$. With positive prespecified weights normalized over finite layers,
 
-$$
-T_g=\frac{\sum_l w_l\tan\{\pi(1/2-P_{gl})\}}{\sum_l w_l},\qquad
+```math
+T_g=\frac{\sum_l w_l\tan\lbrace \pi(1/2-P_{gl})\rbrace }{\sum_l w_l},\qquad
 p_g^{\mathrm{ACAT}}=1/2-\arctan(T_g)/\pi.
-$$
+```
 
 The implementation clips numerical endpoints and uses tail approximations for extremely small P values or large statistics. It returns missing when no layer is observed. The Cauchy tail approximation is established methodology (Liu and Xie 2020), and this diagnostic tests a global null rather than the partial-conjunction claim. Its weights do not alter the primary partial-conjunction selection. An assay's inclusion or missingness cannot be selected after inspecting favorable evidence without invalidating the intended inference.
 
