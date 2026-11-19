@@ -21,6 +21,7 @@ case "${1:-}" in
   alphagenome) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/alphagenome_query.py" "$@" ;;
   olink-import) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/olink_import.py" "$@" ;;
   multiomic-meta) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/multiomic_meta.py" "$@" ;;
+  pathway-compare) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/pathway_compare.py" "$@" ;;
   multiomic-layers) shift; exec "${KILNBIO_RSCRIPT:-Rscript}" --vanilla "$ROOT/downstream/multiomic_layers.R" "$@" ;;
   ch-screen) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/clonal_hematopoiesis.py" screen "$@" ;;
   ch-import) shift; exec "${KILNBIO_PYTHON:-python3}" "$ROOT/downstream/clonal_hematopoiesis.py" import "$@" ;;
