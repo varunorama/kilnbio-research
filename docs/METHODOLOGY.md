@@ -178,7 +178,7 @@ R_{\mathrm{tech}}=\frac{1}{3}\sum_m D(y_m^{*},\mu_{m,-l}^{*}),
 Equation 7:
 
 ```math
-R_{\mathrm{bio}}=\frac{1}{3}\sum_{m<n}D(y_m^{*}-y_n^{*},\mu_{m,-l}^{\mathrm{raw}}-\mu_{n,-l}^{\mathrm{raw}}).
+R_{\mathrm{bio}}=\frac{1}{3}\sum_{m\lt n}D(y_m^{*}-y_n^{*},\mu_{m,-l}^{\mathrm{raw}}-\mu_{n,-l}^{\mathrm{raw}}).
 ```
 
 The three materials generate three pairwise contrasts. Technical agreement uses references on the same processing scale; biological contrast agreement uses the unadjusted reference differences. Their separate reporting makes a reduction in laboratory discrepancy distinguishable from preservation of material differences. Subtracting the same concurrent D6 vector from both materials cancels algebraically in a within-batch contrast.

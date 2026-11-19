@@ -18,6 +18,7 @@ class MarkdownMath(unittest.TestCase):
             expressions=blocks+re.findall(r'\$`([^`]+)`\$',prose)
             for tex in expressions:
                 self.assertNotIn('\\operatorname',tex,str(path))
+                self.assertNotIn('<',tex,'Use \\lt to avoid GitHub HTML parsing: '+str(path))
                 depth=0
                 for brace in re.findall(r'(?<!\\)[{}]',tex):
                     depth+=1 if brace=='{' else -1
